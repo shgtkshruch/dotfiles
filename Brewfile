@@ -8,7 +8,7 @@ upgrade
 tap homebrew/versions
 tap phinze/homebrew-cask
 tap homebrew/binary
-brew tap thoughtbot/formulae
+tap thoughtbot/formulae
 
 # Packages
 
