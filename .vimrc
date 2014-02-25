@@ -28,7 +28,6 @@ NeoBundle 'digitaltoad/vim-jade'
 NeoBundle 'tpope/vim-haml'
 NeoBundle 'slim-template/vim-slim'
 NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'heartsentwined/vim-emblem'
 NeoBundle 'nono/vim-handlebars'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'tpope/vim-rails'
@@ -45,8 +44,72 @@ NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'honza/vim-snippets'
-NeoBundle 'Shougo/vimfiler'
-NeoBundle 'Shougo/vimshell'
+
+" unite  "{{{
+NeoBundleLazy 'Shougo/unite.vim', {
+      \ 'autoload': {
+      \   'commands' : ['Unite']
+      \ }
+      \}
+
+let s:bundle = neobundle#get('unite.vim')
+function! s:bundle.hooks.on_source(bundle)
+  call unite#filters#matcher_default#use(['matcher_fuzzy'])
+  let g:unite_source_history_yank_enable = 1
+endfunction
+
+"}}}
+
+" Vimfiler  "{{{
+" https://github.com/Shougo/vimfiler.vim
+NeoBundleLazy 'Shougo/vimfiler', {
+      \ 'depends' : ['Shougo/unite.vim'],
+      \ 'autoload' : {
+      \   'commands' : ['VimFiler']
+      \ }
+      \}
+
+let s:bundle = neobundle#get('vimfiler')
+function! s:bundle.hooks.on_source(bundle)
+  " :e. で起動
+  let g:vimfiler_as_default_explorer = 1
+  " セーフモードをデフォルトで解除
+  let g:vimfiler_safe_mode_by_default = 0
+
+  " To open a vimfiler tree automatically when Vim starts up
+  " autocmd VimEnter * VimFiler
+
+  " Edit file by tabedit.
+  let g:vimfiler_edit_action = 'open'
+  "
+  " Like Textmate icons.
+  let g:vimfiler_tree_leaf_icon = ' '
+  let g:vimfiler_tree_opened_icon = '▾'
+  let g:vimfiler_tree_closed_icon = '▸'
+  let g:vimfiler_file_icon = '-'
+  let g:vimfiler_marked_file_icon = '*'
+endfunction
+
+"}}}
+
+" vimshell  "{{{
+" https://github.com/Shougo/vimshell.vim
+NeoBundleLazy 'Shougo/vimshell', {
+      \ 'depends' : ['Shougo/vimproc'],
+      \ 'autoload' : {
+      \   'commands' : ['vimshell', 'VimShellBufferDir', 'VimShellPop']
+      \ }
+      \}
+
+let s:bundle = neobundle#get('vimshell')
+function! s:bundle.hooks.on_source(bundle)
+  " Display command history <C-l> in insert mode.
+  let g:vimshell_prompt_expr = 'getcwd()." > "'
+  let g:vimshell_prompt_pattern = '^\f\+ > '
+endfunction
+
+"}}}
+
 NeoBundle 'Shougo/vimproc', {
   \ 'build' : {
   \ 'windows' : 'make -f make_mingw32.mak',
@@ -88,7 +151,6 @@ NeoBundle 'thinca/vim-quickrun'
 
 NeoBundle 'itchyny/calendar.vim'
 
-NeoBundle 'Shougo/unite.vim'
 NeoBundle 'koron/codic-vim'
 NeoBundle 'rhysd/unite-codic.vim'
 NeoBundle 'kmnk/vim-unite-giti'
@@ -174,6 +236,100 @@ vnoremap <silent> < <gv
 nnoremap <silent> co :ContinuousNumber <C-a><CR>
 vnoremap <silent> co :ContinuousNumber <C-a><CR>
 command! -count -nargs=1 ContinuousNumber let c = col('.')|for n in range(1, <count>?<count>-line('.'):1)|exec 'normal! j' . n . <q-args>|call cursor('.', c)|endfor
+"}}}
+
+" plugin keymapping  "{{{
+
+" Unite"{{{
+" start in insert mode so any typing will filter the candidate list
+nnoremap <leader>f :<C-u>Unite -start-insert file<CR>
+
+nnoremap <leader>r :<C-u>Unite -start-insert file_rec<CR>
+" nnoremap <leader>r :<C-u>Unite -start-insert file_rec/async:!<CR>
+
+" Most recently used files
+noremap <leader>m :<C-u>Unite file_mru<CR>
+
+" Search through yank history. First, this must be enabled to track yank history, then the mapping set.
+nnoremap <leader>y :<C-u>Unite history/yank<CR>
+
+" The prefix key.
+nnoremap    [unite]   <Nop>
+nmap    <Space> [unite]
+
+nnoremap <silent> [unite]c  :<C-u>UniteWithCurrentDir
+      \ -buffer-name=files buffer file_mru bookmark file<CR>
+" nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir
+"       \ -buffer-name=files -prompt=%\  buffer file_mru bookmark file<CR>
+nnoremap <silent> [unite]b  :<C-u>Unite buffer<CR>
+nnoremap <silent> [unite]r  :<C-u>Unite
+      \ -buffer-name=register register<CR>
+nnoremap <silent> [unite]o  :<C-u>Unite outline<CR>
+nnoremap <silent> [unite]f
+      \ :<C-u>Unite -buffer-name=resume resume<CR>
+nnoremap <silent> [unite]d
+      \ :<C-u>Unite -buffer-name=files -default-action=lcd directory_mru<CR>
+nnoremap <silent> [unite]ma
+      \ :<C-u>Unite mapping<CR>
+nnoremap <silent> [unite]me
+      \ :<C-u>Unite output:message<CR>
+nnoremap  [unite]f  :<C-u>Unite source<CR>
+
+nnoremap <silent> [unite]s
+      \ :<C-u>Unite -buffer-name=files -no-split
+      \ jump_point file_point buffer_tab
+      \ file_rec:! file file/new file_mru<CR>
+
+function! s:unite_my_settings()"{{{
+  " Overwrite settings.
+
+  nmap <buffer> <ESC>      <Plug>(unite_exit)
+  imap <buffer> jj      <Plug>(unite_insert_leave)
+  "imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
+
+  imap <buffer><expr> j unite#smart_map('j', '')
+  imap <buffer> <TAB>   <Plug>(unite_select_next_line)
+  imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
+  imap <buffer> '     <Plug>(unite_quick_match_default_action)
+  nmap <buffer> '     <Plug>(unite_quick_match_default_action)
+  imap <buffer><expr> x
+        \ unite#smart_map('x', "\<Plug>(unite_quick_match_choose_action)")
+  nmap <buffer> x     <Plug>(unite_quick_match_choose_action)
+  nmap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
+  imap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
+  imap <buffer> <C-y>     <Plug>(unite_narrowing_path)
+  nmap <buffer> <C-y>     <Plug>(unite_narrowing_path)
+  nmap <buffer> <C-j>     <Plug>(unite_toggle_auto_preview)
+  nmap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
+  imap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
+  nnoremap <silent><buffer><expr> l
+        \ unite#smart_map('l', unite#do_action('default'))
+
+  let unite = unite#get_current_unite()
+  if unite.profile_name ==# 'search'
+    nnoremap <silent><buffer><expr> r     unite#do_action('replace')
+  else
+    nnoremap <silent><buffer><expr> r     unite#do_action('rename')
+  endif
+
+  nnoremap <silent><buffer><expr> cd     unite#do_action('lcd')
+  nnoremap <buffer><expr> S      unite#mappings#set_current_filters(
+        \ empty(unite#mappings#get_current_filters()) ?
+        \ ['sorter_reverse'] : [])
+
+  " Runs "split" action by <C-s>.
+  imap <silent><buffer><expr> <C-s>     unite#do_action('split')
+endfunction
+"}}}
+"}}}
+
+" vimFiler
+noremap <Space>vf :VimFiler <CR>
+
+" vimshell
+nnoremap <Space>vs :VimShell<CR>
+nnoremap <Space>vsc :VimShellBufferDir<CR>
+nnoremap <Space>vp :VimShellPop<CR>
 "}}}
 
 " Dectionary "{{{
@@ -427,123 +583,6 @@ hi EasyMotionTarget ctermbg=none ctermfg=red
 hi EasyMotionShade  ctermbg=none ctermfg=blue
 "}}}
 
-" unite.vim {{{
-"
-" start in insert mode so any typing will filter the candidate list
-nnoremap <leader>f :<C-u>Unite -start-insert file<CR>
-
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-nnoremap <leader>r :<C-u>Unite -start-insert file_rec<CR>
-" nnoremap <leader>r :<C-u>Unite -start-insert file_rec/async:!<CR>
-
-" Most recently used files
-noremap <leader>m :<C-u>Unite file_mru<CR>
-
-" Search through yank history. First, this must be enabled to track yank history, then the mapping set.
-let g:unite_source_history_yank_enable = 1
-nnoremap <leader>y :<C-u>Unite history/yank<CR>
-
-" The prefix key.
-nnoremap    [unite]   <Nop>
-nmap    <Space> [unite]
-
-nnoremap <silent> [unite]c  :<C-u>UniteWithCurrentDir
-      \ -buffer-name=files buffer file_mru bookmark file<CR>
-" nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir
-"       \ -buffer-name=files -prompt=%\  buffer file_mru bookmark file<CR>
-nnoremap <silent> [unite]b  :<C-u>Unite buffer<CR>
-nnoremap <silent> [unite]r  :<C-u>Unite
-      \ -buffer-name=register register<CR>
-nnoremap <silent> [unite]o  :<C-u>Unite outline<CR>
-nnoremap <silent> [unite]f
-      \ :<C-u>Unite -buffer-name=resume resume<CR>
-nnoremap <silent> [unite]d
-      \ :<C-u>Unite -buffer-name=files -default-action=lcd directory_mru<CR>
-nnoremap <silent> [unite]ma
-      \ :<C-u>Unite mapping<CR>
-nnoremap <silent> [unite]me
-      \ :<C-u>Unite output:message<CR>
-nnoremap  [unite]f  :<C-u>Unite source<CR>
-
-nnoremap <silent> [unite]s
-      \ :<C-u>Unite -buffer-name=files -no-split
-      \ jump_point file_point buffer_tab
-      \ file_rec:! file file/new file_mru<CR>
-
-" Start insert.
-let g:unite_enable_start_insert = 1
-"let g:unite_enable_short_source_names = 1
-
-" To track long mru history.
-"let g:unite_source_file_mru_long_limit = 3000
-"let g:unite_source_directory_mru_long_limit = 3000
-
-" Like ctrlp.vim settings.
-"let g:unite_enable_start_insert = 1
-"let g:unite_winheight = 10
-"let g:unite_split_rule = 'botright'
-
-" Prompt choices.
-"let g:unite_prompt = '❫ '
-"let g:unite_prompt = '» '
-
-autocmd FileType unite call s:unite_my_settings()
-function! s:unite_my_settings()"{{{
-  " Overwrite settings.
-
-  nmap <buffer> <ESC>      <Plug>(unite_exit)
-  imap <buffer> jj      <Plug>(unite_insert_leave)
-  "imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
-
-  imap <buffer><expr> j unite#smart_map('j', '')
-  imap <buffer> <TAB>   <Plug>(unite_select_next_line)
-  imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
-  imap <buffer> '     <Plug>(unite_quick_match_default_action)
-  nmap <buffer> '     <Plug>(unite_quick_match_default_action)
-  imap <buffer><expr> x
-        \ unite#smart_map('x', "\<Plug>(unite_quick_match_choose_action)")
-  nmap <buffer> x     <Plug>(unite_quick_match_choose_action)
-  nmap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
-  imap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
-  imap <buffer> <C-y>     <Plug>(unite_narrowing_path)
-  nmap <buffer> <C-y>     <Plug>(unite_narrowing_path)
-  nmap <buffer> <C-j>     <Plug>(unite_toggle_auto_preview)
-  nmap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
-  imap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
-  nnoremap <silent><buffer><expr> l
-        \ unite#smart_map('l', unite#do_action('default'))
-
-  let unite = unite#get_current_unite()
-  if unite.profile_name ==# 'search'
-    nnoremap <silent><buffer><expr> r     unite#do_action('replace')
-  else
-    nnoremap <silent><buffer><expr> r     unite#do_action('rename')
-  endif
-
-  nnoremap <silent><buffer><expr> cd     unite#do_action('lcd')
-  nnoremap <buffer><expr> S      unite#mappings#set_current_filters(
-        \ empty(unite#mappings#get_current_filters()) ?
-        \ ['sorter_reverse'] : [])
-
-  " Runs "split" action by <C-s>.
-  imap <silent><buffer><expr> <C-s>     unite#do_action('split')
-endfunction"}}}
-
-"" }}}
-
-" vimshell.vim"{{{
-" https://github.com/Shougo/shougo-s-github/blob/master/vim/.vimrc
-" Display command history <C-l> in insert mode.
-
-" vimshell map
-nnoremap <Space>vs :VimShell<CR>
-nnoremap <Space>vsc :VimShellBufferDir<CR>
-nnoremap <Space>vp :VimShellPop<CR>
-
-let g:vimshell_prompt_expr = 'getcwd()." > "'
-let g:vimshell_prompt_pattern = '^\f\+ > '
-"}}}
-
 " neocomplete "{{{
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
@@ -707,29 +746,6 @@ let g:user_emmet_settings = {
   \}
 ""}}}
 
-" Vimfiler"{{{
-" https://github.com/Shougo/vimfiler.vim
-"
-" :e. で起動
-let g:vimfiler_as_default_explorer = 1
-" セーフモードをデフォルトで解除
-let g:vimfiler_safe_mode_by_default = 0
-
-noremap <Space>vf :VimFiler <CR>
-" To open a vimfiler tree automatically when Vim starts up
-" autocmd VimEnter * VimFiler
-
-" Edit file by tabedit.
-let g:vimfiler_edit_action = 'open'
-"
-" Like Textmate icons.
-let g:vimfiler_tree_leaf_icon = ' '
-let g:vimfiler_tree_opened_icon = '▾'
-let g:vimfiler_tree_closed_icon = '▸'
-let g:vimfiler_file_icon = '-'
-let g:vimfiler_marked_file_icon = '*'
-"}}}
-
 " vim-auto-save"{{{
 
 " let g:auto_save = 1  " enable AutoSave on Vim startup
@@ -842,3 +858,4 @@ let g:quickrun_config = {
 \   "command": "html2slim"
 \ },
 \}"}}}
+
