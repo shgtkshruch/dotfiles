@@ -332,9 +332,13 @@ nnoremap <Space>vsc :VimShellBufferDir<CR>
 nnoremap <Space>vp :VimShellPop<CR>
 "}}}
 
-" Dectionary "{{{
-autocmd FileType php :set dictionary=~/.vim/dict/vim-dict-wordpress/*.dict
-autocmd FileType javascript :set dictionary=~/.vim/dict/javascript.dict
+" Dectionary  "{{{
+augroup my_dictionary
+  autocmd!
+  autocmd FileType php :set dictionary=~/.vim/dict/vim-dict-wordpress/*.dict
+  autocmd FileType javascript :set dictionary=~/.vim/dict/javascript.dict
+augroup END
+
 "}}}
 
 " syntax highlighting"{{{
@@ -444,13 +448,16 @@ set noerrorbells "エラーメッセージの表示時にビープを鳴らさ�
 set helplang=ja,en
 " 英語ヘルプを読みたい場合は以下のようにします
 " :help @en
-" 編集するファイルの種類を自動判別し、それに応じた便利な設定やインデントが行われるようにする
-filetype plugin indent on
+
 "}}}
 
-" autocmd"{{{
+" autocmd  "{{{
 
-autocmd InsertLeave * set nopaste "leave paste mode
+augroup leav_paste_mode
+  autocmd!
+  autocmd InsertLeave * set nopaste "leave paste mode
+augroup END
+
 " 自動的にコメント文字列が挿入されるのをやめる
 " https://gist.github.com/rbtnn/8540338
 augroup auto_comment_off
@@ -459,23 +466,6 @@ augroup auto_comment_off
 augroup END
 
 "}}}
-
-" スペルチェック "{{{
-" set spell
-"
-" fun! s:SpellConf()
-" set spell
-"   syntax spell notoplevel
-"   syntax match SpellNotAscii /\<\A\+\>/ contains=@NoSpell transparent
-"   syntax match SpellMaybeCode /\<\h\l*[_A-Z]\h\{-}\>/ contains=@NoSpell transparent
-"   syntax cluster Spell add=SpellNotAscii,SpellMaybeCode
-" endfunc
-"
-" augroup spell_check
-"   autocmd!
-"   autocmd BufReadPost,BufNewFile,Syntax * call s:SpellConf()
-" augroup END
-" }}}
 
 " ステータスバー "{{{
 " ステータス行を表示
@@ -650,11 +640,14 @@ inoremap <expr><C-e]] >   neocomplete#cancel_popup()
 "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
 
 " Enable omni completion.
-autocmd FileType css,scss,sass setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown,slim setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+augroup omni_filetype
+  autocmd!
+  autocmd FileType css,scss,sass setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown,slim setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+augroup END
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
@@ -695,8 +688,12 @@ let g:neosnippet#enable_snipmate_compatibility = 1
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 "}}}
 
-" emmet "{{{
-autocmd BufRead,BufNewFile *.styl set filetype=sass
+" emmet  "{{{
+
+augroup emmet_stylus
+  autocmd BufRead,BufNewFile *.styl set filetype=sass
+augroup END
+
 let g:user_emmet_settings = {
   \ 'lang' : 'ja',
   \ 'html' : {
