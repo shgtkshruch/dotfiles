@@ -1,10 +1,10 @@
-" Neobundle "{{{
+" Neobundle  "{{{
 if has('vim_starting')
    set nocompatible               " Be iMproved
    set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
- call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#rc(expand('~/.vim/bundle/'))
 
 NeoBundle 'Shougo/neobundle.vim'
 
@@ -85,7 +85,7 @@ NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'vim-scripts/taglist.vim'
 NeoBundle 'tpope/vim-surround'
 
-" syntax
+" syntax  "{{{
 NeoBundle 'scrooloose/syntastic.git'
 
 " html5.vim  "{{{
@@ -207,13 +207,63 @@ NeoBundleLazy 'vim-ruby/vim-ruby', {
       \ }
       \}
 "}}}
-"
+"}}}
+
 " NeoBundle 'vim-scripts/YankRing.vim'
 NeoBundle 'LeafCage/yankround.vim'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'osyo-manga/vim-over'
 NeoBundle 'troydm/easybuffer.vim'
-NeoBundle 'Lokaltog/vim-easymotion'
+
+" vim-easymotion  "{{{
+" https://github.com/Lokaltog/vim-easymotion
+" http://blog.remora.cx/2012/08/vim-easymotion.html
+
+NeoBundleLazy 'Lokaltog/vim-easymotion', {
+      \ 'autoload' : {
+      \   'mappings' : [
+      \     '<Plug>(easymotion-prefix)',
+      \     '<Plug>(easymotion-s2)',
+      \     '<Plug>(easymotion-t2)',
+      \     '<Plug>(easymotion-tn)',
+      \     '<Plug>(easymotion-sn)',
+      \     '<Plug>(easymotion-next)',
+      \     '<Plug>(easymotion-prev)'
+      \   ]
+      \ }
+      \}
+
+map [easymotion] <Nop>
+map <Space>m [easymotion]
+map [easymotion] <Plug>(easymotion-prefix)
+
+" 2-character search motion
+nmap [easymotion]s <Plug>(easymotion-s2)
+nmap [easymotion]t <Plug>(easymotion-t2)
+
+" n-character search motion
+map  [easymotion]/ <Plug>(easymotion-sn)
+omap [easymotion]/ <Plug>(easymotion-tn)
+map  [easymotion]n <Plug>(easymotion-next)
+map  [easymotion]N <Plug>(easymotion-prev)
+
+let s:bundle = neobundle#get('vim-easymotion')
+function! s:bundle.hooks.on_source(bundle)
+  " ホームポジションに近いキーを使う
+  let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB'
+  " 「;」 + 何かにマッピング
+  let g:EasyMotion_leader_key=";"
+  " 1 ストローク選択を優先する
+  let g:EasyMotion_grouping=1
+  " v will match both v and V, but V will match V only
+  let g:EasyMotion_use_smartsign_us = 1 " US layout
+  " match multibyte Japanese characters with alphabetical input
+  let g:EasyMotion_use_migemo = 1
+endfunction
+unlet s:bundle
+
+"}}}
+
 NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet.vim'
@@ -389,7 +439,7 @@ NeoBundle 'Shougo/vimproc', {
 \ }
 "}}}
 
-"text-object
+"text-object  "{{{
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kana/vim-textobj-fold'
 NeoBundle 'thinca/vim-textobj-between'
@@ -407,11 +457,11 @@ NeoBundle 'akiyan/vim-textobj-php'
 NeoBundle 'bps/vim-textobj-python'
 NeoBundle 'nelstrom/vim-textobj-rubyblock'
 NeoBundle 'vimtaku/vim-textobj-sigil'
+"}}}
 
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'vim-scripts/vim-auto-save'
 NeoBundle 'jiangmiao/auto-pairs'
-" NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'tpope/vim-fugitive'
 
 " open-browser  "{{{
@@ -480,10 +530,51 @@ unlet s:bundle
 "}}}
 
 NeoBundle 't9md/vim-choosewin'
-NeoBundle 'AndrewRadev/switch.vim'
+
+" switch.vim  "{{{
+" https://github.com/AndrewRadev/switch.vim
+" http://deris.hatenablog.jp/entry/2013/12/15/235606
+
+NeoBundleLazy 'AndrewRadev/switch.vim', {
+      \ 'autoload' : {
+      \   'mappings' : '<C-u>Switch<CR>' 
+      \ }
+      \}
+
+nnoremap <Space>c :<C-u>Switch<CR>
+let s:bundle = neobundle#get('switch.vim')
+function! s:bundle.hooks.on_source(bundle)
+  let g:switch_custom_definitions =
+      \ [
+      \   ['left', 'right'],
+      \   ['top', 'bottom'],
+      \   ['yes', 'no'],
+      \   ['jpg', 'png', 'gif'],
+      \   ['off', 'off'],
+      \ ]
+endfunction
+unlet s:bundle
+
+"}}}
+
 NeoBundle 'thinca/vim-quickrun'
 
-NeoBundle 'itchyny/calendar.vim'
+" calender.vim  "{{{
+" https://github.com/itchyny/calendar.vim
+
+NeoBundleLazy 'itchyny/calendar.vim', {
+      \ 'autoload' : {
+      \   'commands' : 'Calendar'
+      \ }
+      \}
+
+let s:bundle = neobundle#get('calendar.vim')
+function! s:bundle.hooks.on_source(bundle)
+  let g:calendar_google_calendar = 1
+  let g:calendar_google_task = 1
+endfunction
+unlet s:bundle
+"}}}
 
 NeoBundle 'koron/codic-vim'
 NeoBundle 'rhysd/unite-codic.vim'
@@ -510,6 +601,8 @@ noremap <Space>h  ^
 noremap <Space>l  $
 nnoremap <Space>/  *
 " noremap <Space>m  %
+nnoremap ZZ <Nop>
+nnoremap ZQ <Nop>
 
 " insert breack
 nnoremap br Ea<br /><ESC>J
@@ -801,20 +894,6 @@ let g:yankround_max_history = 50
 nnoremap <silent>g<C-p> :<C-u>CtrlPYankRound<CR>
 " }}}
 
-" vim-easymotion "{{{
-" Lokaltog/vim-easymotion
-" http://blog.remora.cx/2012/08/vim-easymotion.html
-" ホームポジションに近いキーを使う
-let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB'
-" 「;」 + 何かにマッピング
-let g:EasyMotion_leader_key=";"
-" 1 ストローク選択を優先する
-let g:EasyMotion_grouping=1
-" カラー設定変更
-hi EasyMotionTarget ctermbg=none ctermfg=red
-hi EasyMotionShade  ctermbg=none ctermfg=blue
-"}}}
-
 " neocomplete "{{{
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
@@ -952,10 +1031,6 @@ nnoremap <silent><Leader>m :OverCommandLine<CR>%s/
 nnoremap <silent> <F6> :PrevimOpen<CR>
 "}}}
 
-" calendar"{{{
-let g:calendar_google_calendar = 1
-let g:calendar_google_task = 1"}}}
-
 " unite-codic-vim"{{{
 nnoremap <silent> [unite]co :Unite codic<CR>
 "}}}
@@ -963,22 +1038,6 @@ nnoremap <silent> [unite]co :Unite codic<CR>
 " vim-unite-giti"{{{
 nnoremap <silent>gl :Unite giti/log -no-start-insert -horizontal<CR>
 nnoremap <silent>gs :Unite giti/status -no-start-insert -horizontal<CR>
-"}}}
-
-" switch.vim"{{{
-" https://github.com/AndrewRadev/switch.vim
-" http://deris.hatenablog.jp/entry/2013/12/15/235606
-"
-nnoremap <Space>m  :<C-u>Switch<CR>
-
-let g:switch_custom_definitions =
-    \ [
-    \   ['left', 'right'],
-    \   ['top', 'bottom'],
-    \   ['yes', 'no'],
-    \   ['jpg', 'png', 'gif'],
-    \   ['on', 'off'],
-    \ ]
 "}}}
 
 " vim-easy-align"{{{
@@ -996,4 +1055,3 @@ let g:quickrun_config = {
 \   "command": "html2slim"
 \ },
 \}"}}}
-
