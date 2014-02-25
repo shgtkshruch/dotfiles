@@ -6,9 +6,76 @@ endif
 
  call neobundle#rc(expand('~/.vim/bundle/'))
 
-NeoBundle 'Shougo/neobundle.vim.git'
-" NeoBundle 'scrooloose/nerdtree.git'
-NeoBundle 'mattn/emmet-vim'
+NeoBundle 'Shougo/neobundle.vim'
+
+" emmet  "{{{
+" https://github.com/mattn/emmet-vim
+
+NeoBundleLazy 'mattn/emmet-vim', {
+      \ 'autoload' : {
+      \   'filetypes' : ['html', 'css', 'slim', 'haml', 'jade', 'scss', 'sass', 'less', 'styl']
+      \ }
+      \}
+
+let s:bundle = neobundle#get('emmet-vim')
+function! s:bundle.hooks.on_source(bundle)
+
+  augroup emmet_stylus
+    autocmd BufRead,BufNewFile *.styl set filetype=sass
+  augroup END
+
+  let g:user_emmet_settings = {
+    \ 'lang' : 'ja',
+    \ 'html' : {
+    \ 'filters' : 'html',
+    \ 'indentation' : ' '
+    \ },
+    \ 'perl' : {
+    \ 'indentation' : ' ',
+    \ 'aliases' : {
+    \ 'req' : "require '|'"
+    \ },
+    \ 'snippets' : {
+    \ 'use' : "use strict\nuse warnings\n\n",
+    \ 'w' : "warn \"${cursor}\";",
+    \ },
+    \ },
+    \ 'php' : {
+    \ 'extends' : 'html',
+    \ 'filters' : 'html,c',
+    \ },
+    \ 'css' : {
+    \ 'filters' : 'fc',
+    \ },
+    \ 'styl' : {
+    \ 'filters' : 'fc',
+    \ },
+    \ 'slim': {
+    \ 'extends' : 'html',
+    \ 'filters' : 'c',
+    \ },
+    \ 'javascript' : {
+    \ 'snippets' : {
+    \ 'jq' : "$(function() {\n\t${cursor}${child}\n});",
+    \ 'jq:each' : "$.each(arr, function(index, item)\n\t${child}\n});",
+    \ 'fn' : "(function() {\n\t${cursor}\n})();",
+    \ 'tm' : "setTimeout(function() {\n\t${cursor}\n}, 100);",
+    \ },
+    \ },
+    \ 'java' : {
+    \ 'indentation' : ' ',
+    \ 'snippets' : {
+    \ 'main': "public static void main(String[] args) {\n\t|\n}",
+    \ 'println': "System.out.println(\"|\");",
+    \ 'class': "public class | {\n}\n",
+    \ },
+    \ },
+    \}
+endfunction
+unlet s:bundle
+
+"}}}
+
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'itchyny/lightline.vim'
@@ -20,19 +87,127 @@ NeoBundle 'tpope/vim-surround'
 
 " syntax
 NeoBundle 'scrooloose/syntastic.git'
-NeoBundle 'othree/html5.vim'
-NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'cakebaker/scss-syntax.vim'
-NeoBundle 'wavded/vim-stylus'
-NeoBundle 'digitaltoad/vim-jade'
-NeoBundle 'tpope/vim-haml'
-NeoBundle 'slim-template/vim-slim'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'nono/vim-handlebars'
-NeoBundle 'tpope/vim-markdown'
-NeoBundle 'tpope/vim-rails'
-NeoBundle 'vim-ruby/vim-ruby'
 
+" html5.vim  "{{{
+" https://github.com/othree/html5.vim
+NeoBundleLazy 'othree/html5.vim', {
+      \ 'autoload' : {
+      \   'filetypes' : 'html' 
+      \ }
+      \}
+"}}}
+
+" vim-css3-syntax  "{{{
+" https://github.com/hail2u/vim-css3-syntax
+NeoBundleLazy 'hail2u/vim-css3-syntax', {
+      \ 'autoload' : {
+      \   'filetypes' : ['css', 'sass', 'scss', 'less', 'styl']
+      \ }
+      \}
+"}}}
+
+" scss-syntax.vim  "{{{
+" https://github.com/cakebaker/scss-syntax.vim
+NeoBundleLazy 'cakebaker/scss-syntax.vim', {
+      \ 'autoload' : {
+      \   'filetypes' : ['sass', 'scss']
+      \ }
+      \}
+"}}}
+
+" vim-stylus  "{{{
+" https://github.com/wavded/vim-stylus
+
+NeoBundleLazy 'wavded/vim-stylus', {
+      \ 'autoload' : {
+      \   'filetypes' : 'styl'
+      \ }
+      \}
+"}}}
+
+" vim-jade  "{{{
+" https://github.com/digitaltoad/vim-jade
+
+NeoBundleLazy 'digitaltoad/vim-jade', {
+      \ 'autoload' : {
+      \   'filetypes' : 'jade'
+      \ }
+      \}
+"}}}
+
+" vim-haml  "{{{
+" https://github.com/tpope/vim-haml
+
+NeoBundleLazy 'tpope/vim-haml', {
+      \ 'autoload' : {
+      \   'filetypes' : 'haml'
+      \ }
+      \}
+"}}}
+
+" vim-slim  "{{{
+" https://github.com/slim-template/vim-slim
+
+NeoBundleLazy 'slim-template/vim-slim', {
+      \ 'autoload' : {
+      \   'filetypes' : 'slim'
+      \ }
+      \}
+"}}}
+
+" vim-coffee-script  "{{{
+" https://github.com/kchmck/vim-coffee-script
+
+NeoBundleLazy 'kchmck/vim-coffee-script', {
+      \ 'autoload' : {
+      \   'filetypes' : 'coffee'
+      \ }
+      \}
+
+" *.coffeeファイルを保存する度に自動で-cbオプションでコンパイル
+" autocmd BufWritePost *.coffee silent CoffeeMake! -cb | cwindow | redraw!
+
+" Ctrl+Cで右側にコンパイルされたJSのプレビューを表示
+nnoremap <silent><C-C> :CoffeeCompile vert <CR><C-w>h
+
+"}}}
+
+" vim-handlebars  "{{{
+" https://github.com/nono/vim-handlebars
+
+NeoBundleLazy 'nono/vim-handlebars', {
+      \ 'autoload' : {
+      \   'filetypes' : 'hbs'
+      \ }
+      \}
+"}}}
+
+" vim-markdown  "{{{
+" https://github.com/tpope/vim-markdown
+
+NeoBundleLazy 'tpope/vim-markdown', {
+      \ 'autoload' : {
+      \   'filetypes' : 'md'
+      \ }
+      \}
+"}}}
+
+" vim-rails  "{{{
+" https://github.com/tpope/vim-rails
+
+NeoBundle 'tpope/vim-rails'
+"}}}
+
+" vim-ruby"{{{
+" https://github.com/vim-ruby/vim-ruby
+
+NeoBundleLazy 'vim-ruby/vim-ruby', {
+      \ 'autoload' : {
+      \   'filetypes' : 'rb'
+      \ }
+      \}
+"}}}
+"
 " NeoBundle 'vim-scripts/YankRing.vim'
 NeoBundle 'LeafCage/yankround.vim'
 NeoBundle 'kien/ctrlp.vim'
@@ -52,195 +227,7 @@ NeoBundleLazy 'Shougo/unite.vim', {
       \ }
       \}
 
-let s:bundle = neobundle#get('unite.vim')
-function! s:bundle.hooks.on_source(bundle)
-  call unite#filters#matcher_default#use(['matcher_fuzzy'])
-  let g:unite_source_history_yank_enable = 1
-endfunction
-
-"}}}
-
-" Vimfiler  "{{{
-" https://github.com/Shougo/vimfiler.vim
-NeoBundleLazy 'Shougo/vimfiler', {
-      \ 'depends' : ['Shougo/unite.vim'],
-      \ 'autoload' : {
-      \   'commands' : ['VimFiler']
-      \ }
-      \}
-
-let s:bundle = neobundle#get('vimfiler')
-function! s:bundle.hooks.on_source(bundle)
-  " :e. で起動
-  let g:vimfiler_as_default_explorer = 1
-  " セーフモードをデフォルトで解除
-  let g:vimfiler_safe_mode_by_default = 0
-
-  " To open a vimfiler tree automatically when Vim starts up
-  " autocmd VimEnter * VimFiler
-
-  " Edit file by tabedit.
-  let g:vimfiler_edit_action = 'open'
-  "
-  " Like Textmate icons.
-  let g:vimfiler_tree_leaf_icon = ' '
-  let g:vimfiler_tree_opened_icon = '▾'
-  let g:vimfiler_tree_closed_icon = '▸'
-  let g:vimfiler_file_icon = '-'
-  let g:vimfiler_marked_file_icon = '*'
-endfunction
-
-"}}}
-
-" vimshell  "{{{
-" https://github.com/Shougo/vimshell.vim
-NeoBundleLazy 'Shougo/vimshell', {
-      \ 'depends' : ['Shougo/vimproc'],
-      \ 'autoload' : {
-      \   'commands' : ['vimshell', 'VimShellBufferDir', 'VimShellPop']
-      \ }
-      \}
-
-let s:bundle = neobundle#get('vimshell')
-function! s:bundle.hooks.on_source(bundle)
-  " Display command history <C-l> in insert mode.
-  let g:vimshell_prompt_expr = 'getcwd()." > "'
-  let g:vimshell_prompt_pattern = '^\f\+ > '
-endfunction
-
-"}}}
-
-NeoBundle 'Shougo/vimproc', {
-  \ 'build' : {
-  \ 'windows' : 'make -f make_mingw32.mak',
-  \ 'cygwin' : 'make -f make_cygwin.mak',
-  \ 'mac' : 'make -f make_mac.mak',
-  \ 'unix' : 'make -f make_unix.mak',
-  \ },
-\ }
-
-"text-object
-NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'kana/vim-textobj-fold'
-NeoBundle 'thinca/vim-textobj-between'
-NeoBundle 'glts/vim-textobj-comment'
-" NeoBundle 'kanavim-textobj-datetime'
-NeoBundle 'kana/vim-textobj-function'
-NeoBundle 'Julian/vim-textobj-brace'
-NeoBundle 'kana/vim-textobj-line'
-NeoBundle 'saihoooooooo/vim-textobj-space'
-NeoBundle 'kana/vim-textobj-syntax'
-NeoBundle 'lucapette/vim-textobj-underscore'
-NeoBundle 'kana/vim-textobj-indent'
-NeoBundle 'mattn/vim-textobj-url'
-NeoBundle 'akiyan/vim-textobj-php'
-NeoBundle 'bps/vim-textobj-python'
-NeoBundle 'nelstrom/vim-textobj-rubyblock'
-NeoBundle 'vimtaku/vim-textobj-sigil'
-
-NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'vim-scripts/vim-auto-save'
-NeoBundle 'jiangmiao/auto-pairs'
-" NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tyru/open-browser.vim'
-NeoBundle 'kannokanno/previm'
-NeoBundle 't9md/vim-choosewin'
-NeoBundle 'AndrewRadev/switch.vim'
-NeoBundle 'thinca/vim-quickrun'
-
-NeoBundle 'itchyny/calendar.vim'
-
-NeoBundle 'koron/codic-vim'
-NeoBundle 'rhysd/unite-codic.vim'
-NeoBundle 'kmnk/vim-unite-giti'
-
-filetype plugin indent on
-NeoBundleCheck
-"}}}
-
-" source "{{{
-source $VIMRUNTIME/macros/matchit.vim
-"}}}
-
-" key mapping "{{{
-" NORMAL MODE
-nnoremap <Space>s. :<C-u>source $MYVIMRC<Enter>
-nnoremap <Space>. :<C-u>edit $MYVIMRC<Enter>
-nnoremap j gj
-nnoremap k gk
-nnoremap gj j
-nnoremap gk k
-noremap <Space>h  ^
-noremap <Space>l  $
-nnoremap <Space>/  *
-" noremap <Space>m  %
-
-" insert breack
-nnoremap br Ea<br /><ESC>J
-nnoremap ibr Ea<CR><ESC>
-
-" CSS comment
-noremap ct I/* <Esc>50a=<Esc>o<CR><Esc>a <Esc>50a=<Esc>a */<Esc>ka 
-noremap <Space>cs I/*<CR><Esc>a <Esc>50a=<Esc>a */<Esc>ka 
-noremap cc I/**<CR>/<Esc>O 
-
-" Sass
-nnoremap <Space>e A<CR>@extend %
-
-" F5でファイルを Chrome で開く
-nnoremap <F5> :!open -a Google\ Chrome %<CR><CR>
-" watchmedo shell-command -c "osascript ~/bin/creload.scpt" ~/blog/
-
-" タブ
-nnoremap <silent> tc :tablast <bar> tabnew<CR> " tc 新しいタブを一番右に作る
-nnoremap <silent> tx :tabclose<CR> " tx タブを閉じる
-
-" Insert Mode
-inoremap <C-e> <Esc>$a
-inoremap <C-a> <Esc>^i
-inoremap <C-w> <Esc>Wi
-inoremap <C-b> <Esc>Bi
-
-" Emmet comment for slim
-" inoremap <C-y>, <Esc>yypI/! <Esc>A end<Esc><<O
-
-" insertモードから抜ける
-inoremap <silent> jj <ESC>
-" inoremap <silent> <C-j> j
-inoremap <silent> kk <ESC>
-" inoremap <silent> <C-k> k
-
-" 行頭・行末移動方向をキーの相対位置にあわせる
-" nnoremap 0 $
-" nnoremap 1 0
-
-" 挿入モードでのカーソル移動
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-h> <Left>
-inoremap <C-l> <Right>
-
-" 引用符, 括弧の設定
-" inoremap { {}<Left>
-" inoremap [ []<Left>
-" inoremap ( ()<Left>
-" inoremap " ""<Left>
-" inoremap ' ''<Left>
-" inoremap <> <><Left>
-
-" VISUAL MODE
-vnoremap <silent> > >gv
-vnoremap <silent> < <gv
-" 連番を入力
-nnoremap <silent> co :ContinuousNumber <C-a><CR>
-vnoremap <silent> co :ContinuousNumber <C-a><CR>
-command! -count -nargs=1 ContinuousNumber let c = col('.')|for n in range(1, <count>?<count>-line('.'):1)|exec 'normal! j' . n . <q-args>|call cursor('.', c)|endfor
-"}}}
-
-" plugin keymapping  "{{{
-
-" Unite"{{{
+" unite  "{{{
 " start in insert mode so any typing will filter the candidate list
 nnoremap <leader>f :<C-u>Unite -start-insert file<CR>
 
@@ -323,13 +310,267 @@ endfunction
 "}}}
 "}}}
 
-" vimFiler
+let s:bundle = neobundle#get('unite.vim')
+function! s:bundle.hooks.on_source(bundle)
+  call unite#filters#matcher_default#use(['matcher_fuzzy'])
+  let g:unite_source_history_yank_enable = 1
+endfunction
+unlet s:bundle
+
+"}}}
+
+" Vimfiler  "{{{
+" https://github.com/Shougo/vimfiler.vim
+
+NeoBundleLazy 'Shougo/vimfiler', {
+      \ 'depends' : ['Shougo/unite.vim'],
+      \ 'autoload' : {
+      \   'commands' : ['VimFiler']
+      \ }
+      \}
+
 noremap <Space>vf :VimFiler <CR>
 
-" vimshell
+let s:bundle = neobundle#get('vimfiler')
+function! s:bundle.hooks.on_source(bundle)
+  " :e. で起動
+  let g:vimfiler_as_default_explorer = 1
+  " セーフモードをデフォルトで解除
+  let g:vimfiler_safe_mode_by_default = 0
+
+  " To open a vimfiler tree automatically when Vim starts up
+  " autocmd VimEnter * VimFiler
+
+  " Edit file by tabedit.
+  let g:vimfiler_edit_action = 'open'
+  "
+  " Like Textmate icons.
+  let g:vimfiler_tree_leaf_icon = ' '
+  let g:vimfiler_tree_opened_icon = '▾'
+  let g:vimfiler_tree_closed_icon = '▸'
+  let g:vimfiler_file_icon = '-'
+  let g:vimfiler_marked_file_icon = '*'
+endfunction
+unlet s:bundle
+
+"}}}
+
+" vimshell  "{{{
+" https://github.com/Shougo/vimshell.vim
+NeoBundleLazy 'Shougo/vimshell', {
+      \ 'depends' : ['Shougo/vimproc'],
+      \ 'autoload' : {
+      \   'commands' : ['vimshell', 'VimShellBufferDir', 'VimShellPop']
+      \ }
+      \}
+
 nnoremap <Space>vs :VimShell<CR>
 nnoremap <Space>vsc :VimShellBufferDir<CR>
 nnoremap <Space>vp :VimShellPop<CR>
+
+let s:bundle = neobundle#get('vimshell')
+function! s:bundle.hooks.on_source(bundle)
+  " Display command history <C-l> in insert mode.
+  let g:vimshell_prompt_expr = 'getcwd()." > "'
+  let g:vimshell_prompt_pattern = '^\f\+ > '
+endfunction
+unlet s:bundle
+
+"}}}
+
+" vimproc  "{{{
+NeoBundle 'Shougo/vimproc', {
+  \ 'build' : {
+  \ 'windows' : 'make -f make_mingw32.mak',
+  \ 'cygwin' : 'make -f make_cygwin.mak',
+  \ 'mac' : 'make -f make_mac.mak',
+  \ 'unix' : 'make -f make_unix.mak',
+  \ },
+\ }
+"}}}
+
+"text-object
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'kana/vim-textobj-fold'
+NeoBundle 'thinca/vim-textobj-between'
+NeoBundle 'glts/vim-textobj-comment'
+" NeoBundle 'kanavim-textobj-datetime'
+NeoBundle 'kana/vim-textobj-function'
+NeoBundle 'Julian/vim-textobj-brace'
+NeoBundle 'kana/vim-textobj-line'
+NeoBundle 'saihoooooooo/vim-textobj-space'
+NeoBundle 'kana/vim-textobj-syntax'
+NeoBundle 'lucapette/vim-textobj-underscore'
+NeoBundle 'kana/vim-textobj-indent'
+NeoBundle 'mattn/vim-textobj-url'
+NeoBundle 'akiyan/vim-textobj-php'
+NeoBundle 'bps/vim-textobj-python'
+NeoBundle 'nelstrom/vim-textobj-rubyblock'
+NeoBundle 'vimtaku/vim-textobj-sigil'
+
+NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'vim-scripts/vim-auto-save'
+NeoBundle 'jiangmiao/auto-pairs'
+" NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'tpope/vim-fugitive'
+
+" open-browser  "{{{
+" https://github.com/tyru/open-browser.vim/blob/master/doc/openbrowser.txt
+
+NeoBundleLazy 'tyru/open-browser.vim', {
+      \ 'autoload' : {
+      \   'mappings' : ['<Plug>(openbrowser-smart-search)', '<Plug>(openbrowser-search)']
+      \ }
+      \}
+
+" Open URI under cursor.
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
+" Search word under cursor.
+nmap gw <Plug>(openbrowser-search)
+vmap gw <Plug>(openbrowser-search)
+
+let s:bundle = neobundle#get('open-browser.vim')
+function! s:bundle.hooks.on_source(bundle)
+  let g:netrw_nogx = 1 " disable netrw's gx mapping.
+endfunction
+unlet s:bundle
+
+"}}}
+
+NeoBundle 'kannokanno/previm'
+
+" vim-choosewin  "{{{
+" https://github.com/t9md/vim-choosewin
+
+NeoBundleLazy 't9md/vim-choosewin', {
+      \ 'autoload' : {
+      \   'commands' : '<Plug>(choosewin)'
+      \ }}
+
+nmap - <Plug>(choosewin)
+
+let s:bundle = neobundle#get('vim-choosewin')
+function! s:bundle.hooks.on_source(bundle)
+
+  " オーバーレイを使う
+  let g:choosewin_overlay_enable = 1
+
+  " マルチバイトバッファでオーバーレイフォントを崩さないように
+  let g:choosewin_overlay_clear_multibyte = 1
+
+  " tmux の色に雰囲気を合わせる。
+  let g:choosewin_color_overlay = {
+        \ 'gui': ['DodgerBlue3', 'DodgerBlue3' ],
+        \ 'cterm': [ 25, 25 ]
+        \ }
+  let g:choosewin_color_overlay_current = {
+        \ 'gui': ['firebrick1', 'firebrick1' ],
+        \ 'cterm': [ 124, 124 ]
+        \ }
+
+  " 着地時にカーソル点滅をさせない
+  let g:choosewin_blink_on_land = 0
+  " ステータスラインに表示させない
+  let g:choosewin_statusline_replace = 0
+
+endfunction
+unlet s:bundle
+
+"}}}
+
+NeoBundle 't9md/vim-choosewin'
+NeoBundle 'AndrewRadev/switch.vim'
+NeoBundle 'thinca/vim-quickrun'
+
+NeoBundle 'itchyny/calendar.vim'
+
+NeoBundle 'koron/codic-vim'
+NeoBundle 'rhysd/unite-codic.vim'
+NeoBundle 'kmnk/vim-unite-giti'
+
+filetype plugin indent on
+NeoBundleCheck
+
+"}}}
+
+" source "{{{
+source $VIMRUNTIME/macros/matchit.vim
+"}}}
+
+" key mapping "{{{
+" NORMAL MODE
+nnoremap <Space>s. :<C-u>source $MYVIMRC<Enter>
+nnoremap <Space>. :<C-u>edit $MYVIMRC<Enter>
+nnoremap j gj
+nnoremap k gk
+nnoremap gj j
+nnoremap gk k
+noremap <Space>h  ^
+noremap <Space>l  $
+nnoremap <Space>/  *
+" noremap <Space>m  %
+
+" insert breack
+nnoremap br Ea<br /><ESC>J
+nnoremap ibr Ea<CR><ESC>
+
+" CSS comment
+noremap ct I/* <Esc>50a=<Esc>o<CR><Esc>a <Esc>50a=<Esc>a */<Esc>ka 
+noremap <Space>cs I/*<CR><Esc>a <Esc>50a=<Esc>a */<Esc>ka 
+noremap cc I/**<CR>/<Esc>O 
+
+" Sass
+nnoremap <Space>e A<CR>@extend %
+
+" F5でファイルを Chrome で開く
+nnoremap <F5> :!open -a Google\ Chrome %<CR><CR>
+" watchmedo shell-command -c "osascript ~/bin/creload.scpt" ~/blog/
+
+" タブ
+nnoremap <silent> tc :tablast <bar> tabnew<CR> " tc 新しいタブを一番右に作る
+nnoremap <silent> tx :tabclose<CR> " tx タブを閉じる
+
+" Insert Mode
+inoremap <C-e> <Esc>$a
+inoremap <C-a> <Esc>^i
+inoremap <C-w> <Esc>Wi
+inoremap <C-b> <Esc>Bi
+
+" Emmet comment for slim
+" inoremap <C-y>, <Esc>yypI/! <Esc>A end<Esc><<O
+
+" insertモードから抜ける
+inoremap <silent> jj <ESC>
+" inoremap <silent> <C-j> j
+inoremap <silent> kk <ESC>
+" inoremap <silent> <C-k> k
+
+" 行頭・行末移動方向をキーの相対位置にあわせる
+" nnoremap 0 $
+" nnoremap 1 0
+
+" 挿入モードでのカーソル移動
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+
+" 引用符, 括弧の設定
+" inoremap { {}<Left>
+" inoremap [ []<Left>
+" inoremap ( ()<Left>
+" inoremap " ""<Left>
+" inoremap ' ''<Left>
+" inoremap <> <><Left>
+
+" VISUAL MODE
+vnoremap <silent> > >gv
+vnoremap <silent> < <gv
+" 連番を入力
+nnoremap <silent> co :ContinuousNumber <C-a><CR>
+vnoremap <silent> co :ContinuousNumber <C-a><CR>
+command! -count -nargs=1 ContinuousNumber let c = col('.')|for n in range(1, <count>?<count>-line('.'):1)|exec 'normal! j' . n . <q-args>|call cursor('.', c)|endfor
 "}}}
 
 " Dectionary  "{{{
@@ -373,13 +614,14 @@ colorscheme solarized
 set number         " 行番号を表示する
 " set cursorline     " カーソル行の背景色を変える
 " set cursorcolumn   " カーソル位置のカラムの背景色を変える
-" set laststatus=2   " ステータス行を常に表示
+set laststatus=2   " ステータス行を常に表示
 set cmdheight=1    " メッセージ表示欄を2行確保
 set showmatch      " 対応する括弧を強調表示
 set helpheight=999 " ヘルプを画面いっぱいに開く
 " set list           " 不可視文字を表示
 " set listchars=tab:▸\ ,eol:↲,extends:❯,precedes:❮ " 不可視文字の表示記号指定
 set foldmethod=marker " {{{}}}でフォールディング（折りたたみ）を有効
+set showcmd   " 入力途中のコマンドをウィンドウの右下に表示
 
 " タブ/インデントの設定
 
@@ -688,73 +930,10 @@ let g:neosnippet#enable_snipmate_compatibility = 1
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 "}}}
 
-" emmet  "{{{
-
-augroup emmet_stylus
-  autocmd BufRead,BufNewFile *.styl set filetype=sass
-augroup END
-
-let g:user_emmet_settings = {
-  \ 'lang' : 'ja',
-  \ 'html' : {
-  \ 'filters' : 'html',
-  \ 'indentation' : ' '
-  \ },
-  \ 'perl' : {
-  \ 'indentation' : ' ',
-  \ 'aliases' : {
-  \ 'req' : "require '|'"
-  \ },
-  \ 'snippets' : {
-  \ 'use' : "use strict\nuse warnings\n\n",
-  \ 'w' : "warn \"${cursor}\";",
-  \ },
-  \ },
-  \ 'php' : {
-  \ 'extends' : 'html',
-  \ 'filters' : 'html,c',
-  \ },
-  \ 'css' : {
-  \ 'filters' : 'fc',
-  \ },
-  \ 'styl' : {
-  \ 'filters' : 'fc',
-  \ },
-  \ 'slim': {
-  \ 'extends' : 'html',
-  \ 'filters' : 'c',
-  \ },
-  \ 'javascript' : {
-  \ 'snippets' : {
-  \ 'jq' : "$(function() {\n\t${cursor}${child}\n});",
-  \ 'jq:each' : "$.each(arr, function(index, item)\n\t${child}\n});",
-  \ 'fn' : "(function() {\n\t${cursor}\n})();",
-  \ 'tm' : "setTimeout(function() {\n\t${cursor}\n}, 100);",
-  \ },
-  \ },
-  \ 'java' : {
-  \ 'indentation' : ' ',
-  \ 'snippets' : {
-  \ 'main': "public static void main(String[] args) {\n\t|\n}",
-  \ 'println': "System.out.println(\"|\");",
-  \ 'class': "public class | {\n}\n",
-  \ },
-  \ },
-  \}
-""}}}
-
 " vim-auto-save"{{{
 
 " let g:auto_save = 1  " enable AutoSave on Vim startup
 "}}}
-
-" coffee Script"{{{
-
-" *.coffeeファイルを保存する度に自動で-cbオプションでコンパイル
-" autocmd BufWritePost *.coffee silent CoffeeMake! -cb | cwindow | redraw!
-
-" Ctrl+Cで右側にコンパイルされたJSのプレビューを表示
-nnoremap <silent> <C-C> :CoffeeCompile vert <CR><C-w>h"}}}
 
 " vim-easy-script"{{{
 
@@ -762,18 +941,7 @@ vnoremap <silent> <Enter> :EasyAlign<Enter>"}}}
 
 " vim-over"{{{
 
-nnoremap <silent> <Leader>m :OverCommandLine<CR>%s/
-"}}}
-
-" open-browser"{{{
-" https://github.com/tyru/open-browser.vim/blob/master/doc/openbrowser.txt
-"
-" http://vim-users.jp/2011/08/hack225/
-" URLの上にカーソルをのせてgxをタイプするとURLをブラウザで開けます。
-" またgxが思った通りのURLを開いてくれない場合、ヴィジュアルモードでそのURLを選択してからgxをタイプすると選択した通りのURLが開けます。
-let g:netrw_nogx = 1 " disable netrw's gx mapping.
-nmap gx <Plug>(openbrowser-smart-search)
-vmap gx <Plug>(openbrowser-smart-search)
+nnoremap <silent><Leader>m :OverCommandLine<CR>%s/
 "}}}
 
 " previm"{{{
@@ -795,33 +963,6 @@ nnoremap <silent> [unite]co :Unite codic<CR>
 " vim-unite-giti"{{{
 nnoremap <silent>gl :Unite giti/log -no-start-insert -horizontal<CR>
 nnoremap <silent>gs :Unite giti/status -no-start-insert -horizontal<CR>
-"}}}
-
-" vim-choosewin"{{{
-" https://github.com/t9md/vim-choosewin
-
-nmap - <Plug>(choosewin)
-
-" オーバーレイを使う
-let g:choosewin_overlay_enable = 1
-
-" マルチバイトバッファでオーバーレイフォントを崩さないように
-let g:choosewin_overlay_clear_multibyte = 1
-
-" tmux の色に雰囲気を合わせる。
-let g:choosewin_color_overlay = {
-      \ 'gui': ['DodgerBlue3', 'DodgerBlue3' ],
-      \ 'cterm': [ 25, 25 ]
-      \ }
-let g:choosewin_color_overlay_current = {
-      \ 'gui': ['firebrick1', 'firebrick1' ],
-      \ 'cterm': [ 124, 124 ]
-      \ }
-
-" 着地時にカーソル点滅をさせない
-let g:choosewin_blink_on_land = 0
-" ステータスラインに表示させない
-let g:choosewin_statusline_replace = 0
 "}}}
 
 " switch.vim"{{{
