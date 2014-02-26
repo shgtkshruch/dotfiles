@@ -84,6 +84,52 @@ NeoBundleLazy 'vim-jp/vimdoc-ja', {
       \}
 "}}}
 
+" vim-ref  "{{{
+" https://github.com/thinca/vim-ref
+
+" https://github.com/mojako/ref-sources.vim
+NeoBundle 'mojako/ref-sources.vim'
+NeoBundle 'jquery/api.jquery.com'
+NeoBundleLazy 'thinca/vim-ref', {
+      \ 'autoload' : {
+      \   'commands' : ['Ref']
+      \ }
+      \}
+nnoremap [ref] <Nop>
+nmap <Space>r [ref]
+nnoremap [ref]w :Ref webdict wikipedia 
+nnoremap [ref]e :Ref webdict weblio 
+nnoremap [ref]q :Ref webdict jquery 
+
+let s:bundle = neobundle#get('vim-ref')
+function! s:bundle.hooks.on_source(bundle)
+  let g:ref_jquery_doc_path = $HOME.'/.vim/bundle/api.jquery.com'
+  " let $PATH = $PATH . '/usr/local/bin/'
+  let g:ref_open = ':vsplit'
+  let g:ref_source_webdict_sites = {
+        \ 'wikipedia': {
+        \   'url' : 'http://ja.wikipedia.org/wiki/%s',
+        \ },
+        \ 'weblio': {
+        \   'url' : 'http://ejje.weblio.jp/content/%s',
+        \ },
+        \ 'jquery': {
+        \   'url' : 'http://api.jquery.com/%s/',
+        \ },
+        \}
+
+  " 出力に対するフィルタ。最初の数行を削除
+  function! g:ref_source_webdict_sites.weblio.filter(output)
+    return join(split(a:output, "\n")[60 :], "\n")
+  endfunction
+  function! g:ref_source_webdict_sites.jquery.filter(output)
+    return join(split(a:output, "\n")[43 :], "\n")
+  endfunction
+
+endfunction
+unlet s:bundle
+"}}}
+
 " vim-colors-solarized  "{{{
 " https://github.com/altercation/vim-colors-solarized
 
@@ -541,82 +587,82 @@ NeoBundleLazy 'Shougo/unite.vim', {
 nnoremap [unite] <Nop>
 nmap <Space>u [unite]
 
-" start in insert mode so any typing will filter the candidate list
-nnoremap [unite]f :<C-u>Unite -start-insert file<CR>
+" " start in insert mode so any typing will filter the candidate list
+" " nnoremap [unite]f :<C-u>Unite -start-insert file<CR>
+"
+" nnoremap [unite]r :<C-u>Unite -start-insert file_rec<CR>
+" " nnoremap [unite]r :<C-u>Unite -start-insert file_rec/async:!<CR>
+"
+" " Most recently used files
+" noremap [unite]m :<C-u>Unite file_mru<CR>
+"
+" " Search through yank history. First, this must be enabled to track yank history, then the mapping set.
+nnoremap <silent> [unite]y :<C-u>Unite history/yank<CR>
+"
+" nnoremap <silent> [unite]c  :<C-u>UniteWithCurrentDir
+"       \ -buffer-name=files buffer file_mru bookmark file<CR>
+" " nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir
+" "       \ -buffer-name=files -prompt=%\  buffer file_mru bookmark file<CR>
+" nnoremap <silent> [unite]b  :<C-u>Unite buffer<CR>
+" nnoremap <silent> [unite]r  :<C-u>Unite
+"       \ -buffer-name=register register<CR>
+" nnoremap <silent> [unite]o  :<C-u>Unite outline<CR>
+" " nnoremap <silent> [unite]f
+" "       \ :<C-u>Unite -buffer-name=resume resume<CR>
+" nnoremap <silent> [unite]d
+"       \ :<C-u>Unite -buffer-name=files -default-action=lcd directory_mru<CR>
+" nnoremap <silent> [unite]ma
+"       \ :<C-u>Unite mapping<CR>
+" nnoremap <silent> [unite]me
+"       \ :<C-u>Unite output:message<CR>
+nnoremap <silent> [unite]f :<C-u>Unite source<CR>
 
-nnoremap [unite]r :<C-u>Unite -start-insert file_rec<CR>
-" nnoremap [unite]r :<C-u>Unite -start-insert file_rec/async:!<CR>
+" nnoremap <silent> [unite]s
+"       \ :<C-u>Unite -buffer-name=files -no-split
+"       \ jump_point file_point buffer_tab
+"       \ file_rec:! file file/new file_mru<CR>
 
-" Most recently used files
-noremap [unite]m :<C-u>Unite file_mru<CR>
-
-" Search through yank history. First, this must be enabled to track yank history, then the mapping set.
-nnoremap [unite]y :<C-u>Unite history/yank<CR>
-
-nnoremap <silent> [unite]c  :<C-u>UniteWithCurrentDir
-      \ -buffer-name=files buffer file_mru bookmark file<CR>
-" nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir
-"       \ -buffer-name=files -prompt=%\  buffer file_mru bookmark file<CR>
-nnoremap <silent> [unite]b  :<C-u>Unite buffer<CR>
-nnoremap <silent> [unite]r  :<C-u>Unite
-      \ -buffer-name=register register<CR>
-nnoremap <silent> [unite]o  :<C-u>Unite outline<CR>
-nnoremap <silent> [unite]f
-      \ :<C-u>Unite -buffer-name=resume resume<CR>
-nnoremap <silent> [unite]d
-      \ :<C-u>Unite -buffer-name=files -default-action=lcd directory_mru<CR>
-nnoremap <silent> [unite]ma
-      \ :<C-u>Unite mapping<CR>
-nnoremap <silent> [unite]me
-      \ :<C-u>Unite output:message<CR>
-nnoremap  [unite]f  :<C-u>Unite source<CR>
-
-nnoremap <silent> [unite]s
-      \ :<C-u>Unite -buffer-name=files -no-split
-      \ jump_point file_point buffer_tab
-      \ file_rec:! file file/new file_mru<CR>
-
-function! s:unite_my_settings()"{{{
-  " Overwrite settings.
-
-  nmap <buffer> <ESC>      <Plug>(unite_exit)
-  imap <buffer> jj      <Plug>(unite_insert_leave)
-  "imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
-
-  imap <buffer><expr> j unite#smart_map('j', '')
-  imap <buffer> <TAB>   <Plug>(unite_select_next_line)
-  imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
-  imap <buffer> '     <Plug>(unite_quick_match_default_action)
-  nmap <buffer> '     <Plug>(unite_quick_match_default_action)
-  imap <buffer><expr> x
-        \ unite#smart_map('x', "\<Plug>(unite_quick_match_choose_action)")
-  nmap <buffer> x     <Plug>(unite_quick_match_choose_action)
-  nmap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
-  imap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
-  imap <buffer> <C-y>     <Plug>(unite_narrowing_path)
-  nmap <buffer> <C-y>     <Plug>(unite_narrowing_path)
-  nmap <buffer> <C-j>     <Plug>(unite_toggle_auto_preview)
-  nmap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
-  imap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
-  nnoremap <silent><buffer><expr> l
-        \ unite#smart_map('l', unite#do_action('default'))
-
-  let unite = unite#get_current_unite()
-  if unite.profile_name ==# 'search'
-    nnoremap <silent><buffer><expr> r     unite#do_action('replace')
-  else
-    nnoremap <silent><buffer><expr> r     unite#do_action('rename')
-  endif
-
-  nnoremap <silent><buffer><expr> cd     unite#do_action('lcd')
-  nnoremap <buffer><expr> S      unite#mappings#set_current_filters(
-        \ empty(unite#mappings#get_current_filters()) ?
-        \ ['sorter_reverse'] : [])
-
-  " Runs "split" action by <C-s>.
-  imap <silent><buffer><expr> <C-s>     unite#do_action('split')
-endfunction
-"}}}
+" function! s:unite_my_settings()  "{{{
+"   " Overwrite settings.
+"
+"   nmap <buffer> <ESC>      <Plug>(unite_exit)
+"   imap <buffer> jj      <Plug>(unite_insert_leave)
+"   "imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
+"
+"   imap <buffer><expr> j unite#smart_map('j', '')
+"   imap <buffer> <TAB>   <Plug>(unite_select_next_line)
+"   imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
+"   imap <buffer> '     <Plug>(unite_quick_match_default_action)
+"   nmap <buffer> '     <Plug>(unite_quick_match_default_action)
+"   imap <buffer><expr> x
+"         \ unite#smart_map('x', "\<Plug>(unite_quick_match_choose_action)")
+"   nmap <buffer> x     <Plug>(unite_quick_match_choose_action)
+"   nmap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
+"   imap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
+"   imap <buffer> <C-y>     <Plug>(unite_narrowing_path)
+"   nmap <buffer> <C-y>     <Plug>(unite_narrowing_path)
+"   nmap <buffer> <C-j>     <Plug>(unite_toggle_auto_preview)
+"   nmap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
+"   imap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
+"   nnoremap <silent><buffer><expr> l
+"         \ unite#smart_map('l', unite#do_action('default'))
+"
+"   let unite = unite#get_current_unite()
+"   if unite.profile_name ==# 'search'
+"     nnoremap <silent><buffer><expr> r     unite#do_action('replace')
+"   else
+"     nnoremap <silent><buffer><expr> r     unite#do_action('rename')
+"   endif
+"
+"   nnoremap <silent><buffer><expr> cd     unite#do_action('lcd')
+"   nnoremap <buffer><expr> S      unite#mappings#set_current_filters(
+"         \ empty(unite#mappings#get_current_filters()) ?
+"         \ ['sorter_reverse'] : [])
+"
+"   " Runs "split" action by <C-s>.
+"   imap <silent><buffer><expr> <C-s>     unite#do_action('split')
+" endfunction
+" "}}}
 "}}}
 
 let s:bundle = neobundle#get('unite.vim')
@@ -902,60 +948,56 @@ NeoBundleLazy 'Shougo/neomru.vim', {
       \}
 "}}}
 
-" codic-vim  "{{{
-" https://github.com/koron/codic-vim
+" " unite-codic-vim  "{{{
+" " https://github.com/rhysd/unite-codic.vim
+" " https://github.com/koron/codic-vim
+"
+" NeoBundle 'koron/codic-vim'
+" NeoBundleLazy 'rhysd/unite-codic.vim', {
+"       \ 'depends' : ['Shougo/unite.vim', 'koron/codic-vim'],
+"       \ 'autoload' : {
+"       \   'commands' : ['Unite'],
+"       \ }
+"       \}
+"
+" nnoremap <silent>[unite]c :Unite codic<CR>a
+" "}}}
 
-NeoBundle 'koron/codic-vim'
-"}}}
+" " unite-choosewin-actions  "{{{
+" " http://d.hatena.ne.jp/osyo-manga/20140114/1389711504
+"
+" NeoBundleLazy 'osyo-manga/unite-choosewin-actions', {
+"     \ 'depends' : ['Shougo/unite.vim'],
+"     \ 'autoload' : {
+"     \ 'commands' : ['Unite'],
+"     \ }
+"     \}
+"
+" let s:bundle = neobundle#get('unite-choosewin-actions')
+" function! s:bundle.hooks.on_source(bundle)
+"   " 選択を行わないウィンドウ番号をフィルタリングする関数
+"   function! s:choosewin_is_ignore_window(action, winnr)
+"       if a:action ==# "open"
+"           return index(["unite", "vimfiler", "vimshell"], getbufvar(winbufnr(a:winnr), "&filetype")) >= 0
+"       else
+"           return 0
+"       endif
+"   endfunction
+"   let g:Unite_kinds_choosewin_is_ignore_window_func = function("s:choosewin_is_ignore_window")
+"
+"   " ファイルを開く場合のデフォルトアクションを choosewin にする
+"   call unite#custom#default_action('file' , 'choosewin/open')
+" endfunction
+" unlet s:bundle
+"
+" "}}}
 
-" unite-codic-vim  "{{{
-" https://github.com/rhysd/unite-codic.vim
-
-NeoBundleLazy 'rhysd/unite-codic.vim', {
-      \ 'depends' : ['Shougo/unite.vim', 'koron/codic-vim'],
-      \ 'autoload' : {
-      \   'commands' : ['Unite'],
-      \ }
-      \}
-
-nnoremap <silent>[unite]co :Unite codic<CR>a
-"}}}
-
-" unite-choosewin-actions  "{{{
-" http://d.hatena.ne.jp/osyo-manga/20140114/1389711504
-
-NeoBundleLazy 'osyo-manga/unite-choosewin-actions', {
-    \ 'depends' : ['Shougo/unite.vim'],
-    \ 'autoload' : {
-    \ 'commands' : ['Unite'],
-    \ }
-    \}
-
-let s:bundle = neobundle#get('unite-choosewin-actions')
-function! s:bundle.hooks.on_source(bundle)
-  " 選択を行わないウィンドウ番号をフィルタリングする関数
-  function! s:choosewin_is_ignore_window(action, winnr)
-      if a:action ==# "open"
-          return index(["unite", "vimfiler", "vimshell"], getbufvar(winbufnr(a:winnr), "&filetype")) >= 0
-      else
-          return 0
-      endif
-  endfunction
-  let g:Unite_kinds_choosewin_is_ignore_window_func = function("s:choosewin_is_ignore_window")
-
-  " ファイルを開く場合のデフォルトアクションを choosewin にする
-  call unite#custom#default_action('file' , 'choosewin/open')
-endfunction
-unlet s:bundle
-
-"}}}
-
-" vim-unite-giti  "{{{
+" " vim-unite-giti  "{{{
 NeoBundle 'kmnk/vim-unite-giti'
-
-nnoremap <silent>gl :Unite giti/log -no-start-insert -horizontal<CR>
-nnoremap <silent>gs :Unite giti/status -no-start-insert -horizontal<CR>
-"}}}
+"
+" nnoremap <silent>gl :Unite giti/log -no-start-insert -horizontal<CR>
+" nnoremap <silent>gs :Unite giti/status -no-start-insert -horizontal<CR>
+" "}}}
 
 filetype plugin indent on
 NeoBundleCheck
