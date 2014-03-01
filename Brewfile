@@ -18,6 +18,8 @@ install vim
 install zsh
 install git
 install gitsh
+install rbenv
+install ruby-build
 install hub
 install wget
 install markdown
