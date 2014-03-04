@@ -1,7 +1,7 @@
 " Neobundle  "{{{
 if has('vim_starting')
-   set nocompatible               " Be iMproved
-   set runtimepath+=~/.vim/bundle/neobundle.vim/
+  set nocompatible               " Be iMproved
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
 call neobundle#rc(expand('~/.vim/bundle/'))
@@ -100,6 +100,7 @@ nmap <Space>r [ref]
 nnoremap [ref]w :Ref webdict wikipedia 
 nnoremap [ref]e :Ref webdict weblio 
 nnoremap [ref]q :Ref webdict jquery 
+nnoremap [ref]r :Ref webdict ruby 
 
 let s:bundle = neobundle#get('vim-ref')
 function! s:bundle.hooks.on_source(bundle)
@@ -115,6 +116,9 @@ function! s:bundle.hooks.on_source(bundle)
         \ },
         \ 'jquery': {
         \   'url' : 'http://api.jquery.com/%s/',
+        \ },
+        \ 'ruby': {
+        \   'url': 'http://www.ruby-doc.org/core-2.1.1/%s'
         \ },
         \}
 
@@ -165,7 +169,15 @@ let g:lightline = {
         \ 'colorscheme': 'wombat',
         \ 'mode_map': {'c': 'NORMAL'},
         \ 'active': {
-        \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+        \   'left': [ 
+        \     ['mode', 'paste'],
+        \     ['readonly', 'fugitive', 'filename'] 
+        \   ],
+        \   'right': [
+        \     ['lineinfo'],
+        \     ['percent'],
+        \     ['fileformat', 'fileencoding']
+        \   ]
         \ },
         \ 'component_function': {
         \   'modified': 'MyModified',
@@ -177,7 +189,7 @@ let g:lightline = {
         \   'fileencoding': 'MyFileencoding',
         \   'mode': 'MyMode'
         \ }
-        \ }
+        \}
 
 function! MyModified()
   return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
@@ -1087,6 +1099,7 @@ augroup END
 "}}}
 
 " set"{{{
+
 " 画面表示の設定
 
 set number         " 行番号を表示する
@@ -1169,6 +1182,8 @@ set helplang=ja,en
 " 英語ヘルプを読みたい場合は以下のようにします
 " :help @en
 
+" 色
+
 "}}}
 
 " autocmd  "{{{
@@ -1183,6 +1198,12 @@ augroup END
 augroup auto_comment_off
 	autocmd!
 	autocmd BufEnter * setlocal formatoptions-=ro
+augroup END
+
+" 行番号の左側に余白を追加する
+augroup numberwidth
+    autocmd!
+    autocmd BufEnter,WinEnter,BufWinEnter * let &l:numberwidth = len(line("$")) + 2
 augroup END
 
 "}}}
