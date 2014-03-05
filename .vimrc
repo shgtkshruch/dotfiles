@@ -756,6 +756,15 @@ NeoBundle 'Shougo/vimproc', {
 \ }
 "}}}
 
+" wildfire.vim  "{{{
+" https://github.com/gcmt/wildfire.vim
+NeoBundle 'gcmt/wildfire.vim'
+
+let g:wildfire_fuel_map = '<Enter>'
+let g:wildfire_water_map = '<BS>'
+
+"}}}
+
 "text-object  "{{{
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kana/vim-textobj-fold'
