@@ -12,12 +12,12 @@ alias hi TabOpenNew chrome://history
 
 nmap <Space>am :TabOpenNew http://www.amazon.co.jp/
 nmap <Space>ba :TabOpenNew http://www.ballball.com/en-gb/
+nmap <Space>do :TabOpenNew http://dotinstall.com
 nmap <Space>fe  :TabOpenNew http://feedly.com/#my
 nmap <Space>ha :TabOpenNew http://b.hatena.ne.jp/
 nmap <Space>ho :TabOpenNew http://www.1101.com/home.html
 nmap <Space>gi :TabOpenNew https://github.com/
 nmap <Space>ma  :TabOpenNew https://mail.google.com/mail/#inbox
-nmap <Space>qi  :TabOpenNew http://qiita.com/
 nmap <Space>st :TabOpenNew http://studyplus.jp/home
 nmap <Space>sc :TabOpenNew http://schoo.jp/
 nmap <Space>tw :TabOpenNew http://www.twitter.com
