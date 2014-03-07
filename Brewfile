@@ -25,6 +25,8 @@ install wget
 install markdown
 install tree
 install massren
+install imagemagick
+install unrar
 install brew-cask
 
 # .dmg
