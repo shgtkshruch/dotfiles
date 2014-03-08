@@ -27,6 +27,7 @@ install tree
 install massren
 install imagemagick
 install unrar
+install ansible
 install brew-cask
 
 # .dmg
