@@ -28,6 +28,7 @@ install massren
 install imagemagick
 install unrar
 install ansible
+install jq
 install brew-cask
 
 # .dmg
