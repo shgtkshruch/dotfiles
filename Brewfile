@@ -18,6 +18,7 @@ install vim
 install zsh
 install git
 install gitsh
+install node
 install rbenv
 install ruby-build
 install hub
