@@ -381,6 +381,22 @@ NeoBundleLazy 'vim-ruby/vim-ruby', {
 "}}}
 "}}}
 
+" vim-json"{{{
+" https://github.com/elzr/vim-json
+
+NeoBundleLazy 'elzr/vim-json', {
+      \ 'autoload': {
+      \   'filetypes': ['json']
+      \ }
+      \}
+
+let s:bundle = neobundle#get('vim-json')
+function! s:bundle.hooks.on_source(bundle)
+  let g:vim_json_syntax_conceal = 0
+endfunction
+unlet s:bundle
+"}}}
+
 " vim-over  "{{{
 " https://github.com/osyo-manga/vim-over
 
@@ -1214,5 +1230,20 @@ augroup numberwidth
     autocmd!
     autocmd BufEnter,WinEnter,BufWinEnter * let &l:numberwidth = len(line("$")) + 2
 augroup END
+
+"}}}
+
+" command"{{{
+
+" Json format by "Jq" command
+command! -nargs=? Jq call s:Jq(<f-args>)
+function! s:Jq(...)
+    if 0 == a:0
+        let l:arg = "."
+    else
+        let l:arg = a:1
+    endif
+    execute "%! jq \"" . l:arg . "\""
+endfunction
 
 "}}}
