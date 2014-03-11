@@ -44,6 +44,7 @@ cask install vagrant
 cask install github
 cask install iterm2
 cask install sublime-text
+cask install dash
 cask install cyberduck
 cask install imagealpha
 cask install imageoptim
