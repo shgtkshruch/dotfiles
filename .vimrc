@@ -379,7 +379,6 @@ NeoBundleLazy 'vim-ruby/vim-ruby', {
       \ }
       \}
 "}}}
-"}}}
 
 " vim-json"{{{
 " https://github.com/elzr/vim-json
@@ -395,6 +394,8 @@ function! s:bundle.hooks.on_source(bundle)
   let g:vim_json_syntax_conceal = 0
 endfunction
 unlet s:bundle
+"}}}
+
 "}}}
 
 " vim-over  "{{{
@@ -1235,8 +1236,9 @@ augroup END
 
 " command"{{{
 
-" Json format by "Jq" command
-command! -nargs=? Jq call s:Jq(<f-args>)
+" Json format by Jq command  "{{{
+" http://qiita.com/tekkc/items/324d736f68b0f27680b8
+
 function! s:Jq(...)
     if 0 == a:0
         let l:arg = "."
@@ -1245,5 +1247,23 @@ function! s:Jq(...)
     endif
     execute "%! jq \"" . l:arg . "\""
 endfunction
+command! -nargs=? Jq call s:Jq(<f-args>)
+nnoremap <Space>j :Jq<Enter>
+"}}}
+
+" search dash document  "{{{
+" http://qiita.com/yuyuchu3333/items/292e99a521a9653e75fb
+function! s:dash(...)
+  let ft = &filetype
+  if &filetype == 'python'
+    let ft = ft.'3'
+  endif
+  let ft = ft.':'
+  let word = len(a:000) == 0 ? input('Dash search: ', ft.expand('<cword>')) : ft.join(a:000, ' ')
+  call system(printf("open dash://'%s'", word))
+endfunction
+command! -nargs=* Dash call <SID>dash(<f-args>)
+nnoremap <Space>d :Dash 
+"}}}
 
 "}}}
