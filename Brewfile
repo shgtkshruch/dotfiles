@@ -30,6 +30,7 @@ install imagemagick
 install unrar
 install ansible
 install jq
+install gnu-sed
 install brew-cask
 
 # .dmg
