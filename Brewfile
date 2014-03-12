@@ -11,11 +11,15 @@ tap homebrew/binary
 tap thoughtbot/formulae
 tap laurent22/massren
 tap sanemat/font
+tap homebrew/completions
 
 # Ptap sanemat/fontackages
 
 install vim
-install zsh
+install bash
+install bash_completion
+install vagrant-completion
+install rails-completion
 install git
 install gitsh
 install node
