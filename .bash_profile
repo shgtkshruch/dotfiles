@@ -1,0 +1,24 @@
+export PATH=/usr/local/bin:$PATH
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/shims:$PATH"
+
+alias be='bundle exec'
+alias gs='gitsh'
+alias ansiblep='ansible-playbook'
+alias sed='gsed'
+
+# aws-cli
+complete -C aws_completer aws
+
+# bash_completion
+if [ -f /usr/local/etc/bash_completion ]; then
+  . /usr/local/etc/bash_completion
+fi
+if [ -f /usr/local/etc/bash_completion.d/rails.bash ]; then
+    source /usr/local/etc/bash_completion.d/rails.bash
+fi
+
+if [ -f /usr/local/etc/bash_completion.d/vagrant ]; then
+    source /usr/local/etc/bash_completion.d/vagrant
+fi
