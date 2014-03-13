@@ -36,6 +36,7 @@ install unrar
 install ansible
 install jq
 install gnu-sed
+install pv
 install brew-cask
 
 # .dmg
