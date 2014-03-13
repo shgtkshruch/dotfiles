@@ -20,6 +20,7 @@ install bash
 install bash_completion
 install vagrant-completion
 install rails-completion
+install z
 install git
 install gitsh
 install node
