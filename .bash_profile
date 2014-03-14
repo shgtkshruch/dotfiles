@@ -15,10 +15,22 @@ complete -C aws_completer aws
 if [ -f /usr/local/etc/bash_completion ]; then
   . /usr/local/etc/bash_completion
 fi
+
+if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
+  source /usr/local/etc/bash_completion.d/git-completion.bash
+fi
+
 if [ -f /usr/local/etc/bash_completion.d/rails.bash ]; then
-    source /usr/local/etc/bash_completion.d/rails.bash
+  source /usr/local/etc/bash_completion.d/rails.bash
 fi
 
 if [ -f /usr/local/etc/bash_completion.d/vagrant ]; then
-    source /usr/local/etc/bash_completion.d/vagrant
+  source /usr/local/etc/bash_completion.d/vagrant
 fi
+
+if [ -f /usr/local/etc/bash_completion.d/hub.bash_completion.sh ]; then
+  source /usr/local/etc/bash_completion.d/hub.bash_completion.sh
+fi
+
+# hub
+eval "$(hub alias -s)"

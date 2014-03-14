@@ -21,12 +21,13 @@ install bash_completion
 install vagrant-completion
 install rails-completion
 install z
+install rename
 install git
 install gitsh
+install hub
 install node
 install rbenv
 install ruby-build
-install hub
 install wget
 install markdown
 install tree
