@@ -26,6 +26,7 @@ install git
 install gitsh
 install hub
 install node
+install lua
 install rbenv
 install ruby-build
 install wget
@@ -34,10 +35,13 @@ install tree
 install massren
 install imagemagick
 install unrar
+install unar
 install ansible
 install jq
 install gnu-sed
 install pv
+install tag
+install webkit2png
 install brew-cask
 
 # .dmg
