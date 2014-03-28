@@ -1,13 +1,24 @@
+# Path
 export PATH=/usr/local/bin:$PATH
+
+# rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/shims:$PATH"
 
+
+
+# Alias
 alias be='bundle exec'
 alias gs='gitsh'
 alias ansiblep='ansible-playbook'
 alias sed='gsed'
+alias slide="$HOME/bin/slide.sh"
+alias amz="$HOME/bin/aws.sh"
+alias diary="$HOME/bin/diary.sh"
 
+
+# Application
 # aws-cli
 complete -C aws_completer aws
 
