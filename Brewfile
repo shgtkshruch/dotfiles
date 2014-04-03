@@ -42,6 +42,8 @@ install gnu-sed
 install pv
 install tag
 install webkit2png
+install googlecl
+install cliclick
 install brew-cask
 
 # .dmg
@@ -71,6 +73,7 @@ cask install onyx
 cask install hyperswitch
 cask install bettertouchtool
 cask install adobe-air
+cask install tinkertool
 cask install alfred
 cask alfred link
 
