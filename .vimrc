@@ -819,6 +819,12 @@ NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'jiangmiao/auto-pairs'
 "}}}
 
+" vim-endwise "{{{
+" https://github.com/tpope/vim-endwise
+
+NeoBundle 'tpope/vim-endwise'
+"}}}
+
 " vim-fugitive  "{{{
 " https://github.com/tpope/vim-fugitive
 NeoBundle 'tpope/vim-fugitive'
