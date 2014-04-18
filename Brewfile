@@ -74,6 +74,7 @@ cask install hyperswitch
 cask install bettertouchtool
 cask install adobe-air
 cask install tinkertool
+cask install simple-comic
 cask install alfred
 cask alfred link
 
