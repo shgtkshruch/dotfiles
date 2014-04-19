@@ -935,7 +935,21 @@ function! s:bundle.hooks.on_source(bundle)
       \   ['top', 'bottom'],
       \   ['yes', 'no'],
       \   ['jpg', 'png', 'gif'],
-      \   ['off', 'off'],
+      \   ['on', 'off'],
+      \ ]
+
+  autocmd FileType css,scss,sass,less,styl let b:switch_custom_definitions =
+      \ [
+      \   ['px', 'em', 'rem'],
+      \   ['italic', 'oblique'],
+      \   ['bold', 'lighter', 'bolder'],
+      \   ['block', 'inline', 'inline-block'],
+      \   ['static', 'relative', 'absolute', 'fixed'],
+      \   ['visible', 'scroll', 'hidden'],
+      \   ['solid', 'double', 'ridge', 'inset', 'outset', 'dashed', 'dotted'],
+      \   ['outside', 'inside'],
+      \   ['disc', 'circle', 'square', 'lower-roman', 'upper-roman', 'lower-greek', 'decimal', 'decimal-deading-zero', 'lower-latin', 'lower-alpha', 'upper-latin', 'upper-aplpha', 'cjk-ideographic', 'hiragana', 'katakana', 'hiragana-iroha', 'katakana-iroha', 'hebrew', 'armenian', 'georgian'],
+      \   ['pointer', 'crosshair', 'move', 'text', 'wait', 'help', 'progress'],
       \ ]
 endfunction
 unlet s:bundle
