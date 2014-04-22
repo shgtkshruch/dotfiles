@@ -2,9 +2,13 @@
 	name = shgtkshruch
 	email = shgtk.shruch@gmail.com
 [color]
+  diff = auto
+  status = auto
+  branch = auto
 	ui = auto
 [core]
-	editor = vim
+  editor = vim
+  precomposeunicode = true
 [push]
 	default = matching
 [alias]
