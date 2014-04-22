@@ -1,6 +1,8 @@
 [user]
 	name = shgtkshruch
 	email = shgtk.shruch@gmail.com
+[github]
+  user = shgtkshruch
 [color]
   diff = auto
   status = auto
@@ -10,7 +12,14 @@
   editor = vim
   precomposeunicode = true
 [push]
-	default = matching
+	default = simple
 [alias]
   l = log --pretty=oneline -n 20 --graph --abbrev-commit
-  s = status -s
+  lp = log --decorate --stat --patch
+  ls = ls-files
+  s = status --branch --short
+  m = checkout master
+  d = diff
+  co = checkout
+  ad = add
+  br = branch --verbose --verbose --color
