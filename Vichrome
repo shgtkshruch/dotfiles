@@ -21,10 +21,11 @@ nmap <Space>ma  :TabOpenNew https://mail.google.com/mail/#inbox
 nmap <Space>st :TabOpenNew http://studyplus.jp/home
 nmap <Space>sc :TabOpenNew http://schoo.jp/
 nmap <Space>tw :TabOpenNew http://www.twitter.com
-nmap <Space>x :TabOpenNew chrome-extension://gghkfhpblkcmlkmpcpgaajbbiikbhpdi/options.html
 nmap <Space>vi :TabOpenNew http://www.videonews.com/
+nmap <Space>vm :TabOpenNew chrome-extension://gghkfhpblkcmlkmpcpgaajbbiikbhpdi/options.html
 nmap <Space>yu :TabOpenNew https://www.youtube.com/?gl=JP&hl=ja
 nmap <Space>ya :TabOpenNew http://www.yahoo.co.jp
+nmap <Space>za:TabOpenNew https://zaim.net/home
 
 # F for continuous f-Mode
 # this is recomended setting but commented out by default.
