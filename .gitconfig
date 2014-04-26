@@ -14,12 +14,17 @@
 [push]
 	default = simple
 [alias]
-  l = log --pretty=oneline -n 20 --graph --abbrev-commit
+  ad = add
+  al = config --global --get-regexp alias
+  br = branch --verbose --verbose --color
+  co = checkout
+  m = checkout master
+  cm = commit
+  cf = config --global --edit
+  d = diff
+  l = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   lp = log --decorate --stat --patch
   ls = ls-files
+  p = push
   s = status --branch --short
-  m = checkout master
-  d = diff
-  co = checkout
-  ad = add
-  br = branch --verbose --verbose --color
+  remotes = remote -v
