@@ -75,6 +75,7 @@ cask install bettertouchtool
 cask install adobe-air
 cask install tinkertool
 cask install simple-comic
+cask install keyremap4macbook
 cask install alfred
 cask alfred link
 
