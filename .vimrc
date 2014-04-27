@@ -966,22 +966,39 @@ unlet s:bundle
 
 NeoBundleLazy 'thinca/vim-quickrun', {
       \ 'autoload' : {
-      \   'commands' : ['Quickrun'],
+      \   'commands' : ['QuickRun'],
       \ }
       \}
 
 let s:bundle = neobundle#get('vim-quickrun')
 function! s:bundle.hooks.on_source(bundle)
   let g:quickrun_config = {
+      \ '_': {
+      \   'runner': 'vimproc',
+      \   'runner/vimproc/updatetime': 60,
+      \   'outputter/buffer/split': ':vsplit',
+      \   'outputter/buffer/close_on_empty': 1
+      \ },
       \ 'html': {
-      \  "type": "html/slim"
+      \   'type': 'html/slim'
       \ },
       \ 'html/slim': {
-      \   "command": "html2slim"
+      \   'command': 'html2slim'
       \ },
+      \ 'ruby.rspec' : {
+      \   'command': 'rspec',
+      \   'cmdopt': 'bundle exec',
+      \   'args': '--color',
+      \   'exec': '%o %c %s %a'
+      \ }
       \}
 endfunction
 unlet s:bundle
+
+augroup RSpec
+  autocmd!
+  autocmd BufWinEnter,BufNewFile *_spec.rb set filetype=ruby.rspec
+augroup END 
 "}}}
 
 " calender.vim  "{{{
