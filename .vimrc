@@ -407,11 +407,17 @@ unlet s:bundle
 
 NeoBundleLazy 'osyo-manga/vim-over', {
       \ 'autoload' : {
-      \   'commands' : 'OverCommandLine'
+      \   'commands' : ['OverCommandLine']
       \ }
       \}
 
-nnoremap <silent><Leader>mo :OverCommandLine<CR>%s/
+" http://qiita.com/syui/items/3a1af1301ee197b32a8a
+" vim-overを起動
+nnoremap <Space>oc :OverCommandLine<CR>%s/
+" カーソル下の単語をハイライト付きで置換
+nnoremap <Space>ss :OverCommandLine<CR>%s/<C-r><C-w>//gI<Left><Left><Left>
+" コピーした文字列をハイライト付きで置換
+nnoremap <Space>sp y:OverCommandLine<CR>%s!<C-r>=substitute(@0, '!', '\\!', 'g')<CR>!!gI<Left><Left><Left>
 
 "}}}
 
