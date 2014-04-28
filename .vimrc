@@ -97,10 +97,10 @@ NeoBundleLazy 'thinca/vim-ref', {
       \}
 nnoremap [ref] <Nop>
 nmap <Space>r [ref]
-nnoremap [ref]w :Ref webdict wikipedia 
-nnoremap [ref]e :Ref webdict weblio 
-nnoremap [ref]q :Ref webdict jquery 
-nnoremap [ref]r :Ref webdict ruby 
+nnoremap [ref]w :Ref webdict wikipedia
+nnoremap [ref]e :Ref webdict weblio
+nnoremap [ref]q :Ref webdict jquery
+nnoremap [ref]r :Ref webdict ruby
 
 let s:bundle = neobundle#get('vim-ref')
 function! s:bundle.hooks.on_source(bundle)
@@ -169,9 +169,9 @@ let g:lightline = {
         \ 'colorscheme': 'wombat',
         \ 'mode_map': {'c': 'NORMAL'},
         \ 'active': {
-        \   'left': [ 
+        \   'left': [
         \     ['mode', 'paste'],
-        \     ['readonly', 'fugitive', 'filename'] 
+        \     ['readonly', 'fugitive', 'filename']
         \   ],
         \   'right': [
         \     ['lineinfo'],
@@ -264,7 +264,7 @@ NeoBundle 'scrooloose/syntastic.git'
 " https://github.com/othree/html5.vim
 NeoBundleLazy 'othree/html5.vim', {
       \ 'autoload' : {
-      \   'filetypes' : 'html' 
+      \   'filetypes' : 'html'
       \ }
       \}
 "}}}
@@ -577,7 +577,7 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 "}}}
 
 " neosnippet.vim  "{{{
- 
+
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'Shougo/neosnippet.vim'
@@ -817,6 +817,30 @@ NeoBundle 'vimtaku/vim-textobj-sigil'
 NeoBundle 'tomtom/tcomment_vim'
 "}}}
 
+" vim-submodue "{{{
+" https://github.com/kana/vim-submode
+
+NeoBundleLazy 'kana/vim-submode', {
+      \ 'autoload': {
+      \   'functions': 'submode#enter_with'
+      \ }
+      \}
+
+call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
+call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
+call submode#enter_with('bufmove', 'n', '', 's+', '<C-w>+')
+call submode#enter_with('bufmove', 'n', '', 's-', '<C-w>-')
+call submode#enter_with('changetab', 'n', '', 'sn', 'gt')
+call submode#enter_with('changetab', 'n', '', 'sp', 'gT')
+call submode#map('bufmove', 'n', '', '>', '<C-w>>')
+call submode#map('bufmove', 'n', '', '<', '<C-w><')
+call submode#map('bufmove', 'n', '', '+', '<C-w>+')
+call submode#map('bufmove', 'n', '', '-', '<C-w>-')
+call submode#map('changetab', 'n', '', 'n', 'gt')
+call submode#map('changetab', 'n', '', 'p', 'gT')
+
+"}}}
+
 " vim-auto-save  "{{{
 " https://github.com/vim-scripts/vim-auto-save
 " NeoBundle 'vim-scripts/vim-auto-save'
@@ -931,7 +955,7 @@ unlet s:bundle
 
 NeoBundleLazy 'AndrewRadev/switch.vim', {
       \ 'autoload' : {
-      \   'commands' : 'Switch' 
+      \   'commands' : 'Switch'
       \ }
       \}
 
@@ -1004,7 +1028,7 @@ unlet s:bundle
 augroup RSpec
   autocmd!
   autocmd BufWinEnter,BufNewFile *_spec.rb set filetype=ruby.rspec
-augroup END 
+augroup END
 "}}}
 
 " calender.vim  "{{{
@@ -1151,9 +1175,9 @@ nnoremap br Ea<br /><ESC>J
 nnoremap ibr Ea<CR><ESC>
 
 " CSS comment
-noremap ct I/* <Esc>50a=<Esc>o<CR><Esc>a <Esc>50a=<Esc>a */<Esc>ka 
-noremap <Space>cs I/*<CR><Esc>a <Esc>50a=<Esc>a */<Esc>ka 
-noremap cc I/**<CR>/<Esc>O 
+noremap ct I/* <Esc>50a=<Esc>o<CR><Esc>a <Esc>50a=<Esc>a */<Esc>ka
+noremap <Space>cs I/*<CR><Esc>a <Esc>50a=<Esc>a */<Esc>ka
+noremap cc I/**<CR>/<Esc>O
 
 " Sass
 nnoremap <Space>e A<CR>@extend %
@@ -1162,9 +1186,36 @@ nnoremap <Space>e A<CR>@extend %
 nnoremap <F5> :!open -a Google\ Chrome %<CR><CR>
 " watchmedo shell-command -c "osascript ~/bin/creload.scpt" ~/blog/
 
+" ウィンドウ
+" http://qiita.com/tekkc/items/98adcadfa4bdc8b5a6ca
+nnoremap s <Nop> " sキーを無効
+nnoremap sj <C-w>j " 下のウィンドウへ移動
+nnoremap sk <C-w>k " 上のウィンドウへ移動
+nnoremap sl <C-w>l " 右のウィンドウへ移動
+nnoremap sh <C-w>h " 左のウィンドウへ移動
+nnoremap sw <C-w>w " 次のウィンドウへ移動
+nnoremap sJ <C-w>J " ウィンドウを上へ移動
+nnoremap sK <C-w>K " ウィンドウを下へ移動
+nnoremap sL <C-w>L " ウィンドウを右へ移動
+nnoremap sH <C-w>H " ウィンドウを左へ移動
+nnoremap sr <C-w>r " ウィンドウを回転
+nnoremap s= <C-w>= " ウィンドウの大きさを揃える
+nnoremap so <C-w>_<C-w>|
+nnoremap ss :<C-u>sp<CR> " ウィンドウを水平分割
+nnoremap sv :<C-u>vs<CR> " ウィンドウを垂直分割
+nnoremap sq :<C-u>q<CR> " ウィンドウを閉じる
+
+" バッファ
+nnoremap sN :<C-u>bn<CR> " 次のバッファへ移動
+nnoremap sP :<C-u>bp<CR> " 前のバッファへ移動
+nnoremap sQ :<C-u>bd<CR> " バファを閉じる
+
 " タブ
-nnoremap <silent> tc :tablast <bar> tabnew<CR> " tc 新しいタブを一番右に作る
-nnoremap <silent> tx :tabclose<CR> " tx タブを閉じる
+nnoremap st :<C-u>tabnew<CR> " 新しいタブを開く
+nnoremap sx :tabclose<CR> " tx タブを閉じる
+nnoremap sT :<C-u>Unite tab<CR> " タブ一覧を表示
+nnoremap sb :<C-u>Unite buffer_tab -buffer-name=file<CR> " 現在のタブで開いたバッファ一覧を表示
+nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR> " バッファ一覧を表示
 
 " カーソル下のキーワードをバッファ内全体で置換する
 " http://vim-users.jp/2009/08/hack62/
@@ -1353,7 +1404,7 @@ function! s:dash(...)
   call system(printf("open dash://'%s'", word))
 endfunction
 command! -nargs=* Dash call <SID>dash(<f-args>)
-nnoremap <Space>d :Dash 
+nnoremap <Space>d :Dash
 "}}}
 
 "}}}
