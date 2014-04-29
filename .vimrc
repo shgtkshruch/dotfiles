@@ -826,16 +826,19 @@ NeoBundleLazy 'kana/vim-submode', {
       \ }
       \}
 
+" http://d.hatena.ne.jp/thinca/20130131/1359567419
+" ウィンドウサイズ変更
 call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
 call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
 call submode#enter_with('bufmove', 'n', '', 's+', '<C-w>+')
 call submode#enter_with('bufmove', 'n', '', 's-', '<C-w>-')
-call submode#enter_with('changetab', 'n', '', 'sn', 'gt')
-call submode#enter_with('changetab', 'n', '', 'sp', 'gT')
 call submode#map('bufmove', 'n', '', '>', '<C-w>>')
 call submode#map('bufmove', 'n', '', '<', '<C-w><')
 call submode#map('bufmove', 'n', '', '+', '<C-w>+')
 call submode#map('bufmove', 'n', '', '-', '<C-w>-')
+" タブの切り替え
+call submode#enter_with('changetab', 'n', '', 'sn', 'gt')
+call submode#enter_with('changetab', 'n', '', 'sp', 'gT')
 call submode#map('changetab', 'n', '', 'n', 'gt')
 call submode#map('changetab', 'n', '', 'p', 'gT')
 
