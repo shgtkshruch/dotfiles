@@ -8,5 +8,3 @@ function gem(){
     fi
 }
 
-# z.sh
-. `brew --prefix`/etc/profile.d/z.sh

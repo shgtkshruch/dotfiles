@@ -34,6 +34,15 @@ alias sszip="$HOME/bin/zip.sh"
 alias ssrar="$HOME/bin/rar.sh"
 
 
+
+# z.sh
+. `brew --prefix`/etc/profile.d/z.sh
+function precmd () {
+  _z --add "$(pwd -P)"
+}
+
+
+
 # Application
 # aws-cli
 complete -C aws_completer aws
@@ -72,3 +81,4 @@ function u()
 
 # hub
 eval "$(hub alias -s)"
+
