@@ -1,5 +1,6 @@
 # Path
 export PATH=/usr/local/bin:$PATH
+export BUNDLER_EDITOR=vim
 
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
@@ -10,6 +11,19 @@ export PATH="$HOME/.rbenv/shims:$PATH"
 
 # Alias
 alias be='bundle exec'
+alias bi='bundle install --path vendor/bundle'
+alias bl='bundle list'
+alias bo='bundle open'
+alias bs='bundle show'
+alias bri='brew install'
+alias brl='brew list'
+alias brs='brew search'
+alias bru='brew update'
+alias brui='brew uninstall'
+alias brci='brew cask install'
+alias brcl='brew cask list'
+alias brcs='brew cask search'
+alias brcui='brew cask uninstall'
 alias gs='gitsh'
 alias ansiblep='ansible-playbook'
 alias sed='gsed'
