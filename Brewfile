@@ -5,82 +5,82 @@ update
 upgrade
 
 # Add Repository
-tap homebrew/versions
-tap phinze/homebrew-cask
-tap homebrew/binary
-tap thoughtbot/formulae
-tap laurent22/massren
-tap sanemat/font
-tap homebrew/completions
+tap homebrew/versions || true
+tap phinze/homebrew-cask || true
+tap homebrew/binary || true
+tap thoughtbot/formulae || true
+tap laurent22/massren || true
+tap sanemat/font || true
+tap homebrew/completions || true
 
 # Ptap sanemat/fontackages
 
-install vim
-install bash
-install bash_completion
-install vagrant-completion
-install rails-completion
-install z
-install rename
-install git
-install gitsh
-install hub
-install node
-install lua
-install rbenv
-install ruby-build
-install wget
-install markdown
-install tree
-install massren
-install imagemagick
-install unrar
-install unar
-install ansible
-install jq
-install gnu-sed
-install pv
-install tag
-install webkit2png
-install googlecl
-install cliclick
-install brew-cask
+install vim || true
+install bash || true
+install bash_completion || true
+install vagrant-completion || true
+install rails-completion || true
+install z || true
+install rename || true
+install git || true
+install gitsh || true
+install hub || true
+install node || true
+install lua || true
+install rbenv || true
+install ruby-build || true
+install wget || true
+install markdown || true
+install tree || true
+install massren || true
+install imagemagick || true
+install unrar || true
+install unar || true
+install ansible || true
+install jq || true
+install gnu-sed || true
+install pv || true
+install tag || true
+install webkit2png || true
+install googlecl || true
+install cliclick || true
+install brew-cask || true
 
 # .dmg
-cask install google-chrome
-cask install firefox
-cask install opera
-cask install dropbox
-cask install evernote
-cask install virtualbox
-cask install vmware-fusion
-cask install vagrant
-cask install github
-cask install iterm2
-cask install sublime-text
-cask install dash
-cask install cyberduck
-cask install imagealpha
-cask install imageoptim
-cask install nitrous-io
-cask install skype
-cask install vlc
-cask install lastfm
-cask install the-unarchive
-cask install istat-menus
-cask install onepassword
-cask install onyx
-cask install hyperswitch
-cask install bettertouchtool
-cask install adobe-air
-cask install tinkertool
-cask install simple-comic
-cask install keyremap4macbook
-cask install alfred
-cask alfred link
+cask install google-chrome || true
+cask install firefox || true
+cask install opera || true
+cask install dropbox || true
+cask install evernote || true
+cask install virtualbox || true
+cask install vmware-fusion || true
+cask install vagrant || true
+cask install github || true
+cask install iterm2 || true
+cask install sublime-text || true
+cask install dash || true
+cask install cyberduck || true
+cask install imagealpha || true
+cask install imageoptim || true
+cask install nitrous-io || true
+cask install skype || true
+cask install vlc || true
+cask install lastfm || true
+cask install the-unarchive || true
+cask install istat-menus || true
+cask install onepassword || true
+cask install onyx || true
+cask install hyperswitch || true
+cask install bettertouchtool || true
+cask install adobe-air || true
+cask install tinkertool || true
+cask install simple-comic || true
+cask install keyremap4macbook || true
+cask install alfred || true
+cask alfred link || true
 
 # font
-install ricty
+install ricty || true
 
 # Remove outdated versions
 cleanup
