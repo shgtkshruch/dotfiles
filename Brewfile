@@ -18,6 +18,7 @@ tap homebrew/completions || true
 install vim || true
 install bash || true
 install bash_completion || true
+install zsh || true
 install vagrant-completion || true
 install rails-completion || true
 install z || true
