@@ -399,6 +399,21 @@ nnoremap <Space>bv :Bvsplit<CR>
 
 "}}}
 
+" rubyjump"{{{
+" https://github.com/xmisao/rubyjump.vim
+
+NeoBundleLazy 'xmisao/rubyjump.vim', {
+      \ 'autoload' : {
+      \   'filetypes' : ['ruby']
+      \ }
+      \}
+
+nnoremap <Space>j :RubyJump<CR>
+nnoremap <Space>jc :RubyJumpCursor<CR>
+nnoremap <Space>jn :RubyJumpNext<CR>
+
+"}}}
+
 " vroom.vim"{{{
 " https://github.com/skalnik/vim-vroom
 
@@ -407,6 +422,45 @@ NeoBundleLazy 'skalnik/vim-vroom', {
       \   'filetypes' : ['ruby']
       \ }
       \}
+"}}}
+
+" vim-ruby-refactoring"{{{
+" https://github.com/ecomba/vim-ruby-refactoring
+" document: https://www.relishapp.com/despo/vim-ruby-refactoring/docs
+
+NeoBundleLazy 'ecomba/vim-ruby-refactoring', {
+      \ 'depends' : 'tmhedberg/matchit',
+      \ 'autoload' : {
+      \   'filetypes' : ['ruby']
+      \ }
+      \}
+
+" メソッドに引数を追加する
+nnoremap <leader>ap  :RAddParameter<cr>
+
+" 一行で書かれた条件文(e.g. "hoge if fuga?" のようなもの)を伝統的な複数行の形式に変換する
+nnoremap <leader>cc :RConvertPostConditional<cr>
+
+" 選択部分を RSpec の "let(:hoge) { fuga }" の形式に切り出す
+nnoremap <leader>el  :RExtractLet<cr>
+
+" 選択部分を定数として切り出す
+vnoremap <leader>ec  :RExtractConstant<cr>
+
+" 選択部分を変数として切り出す
+vnoremap <leader>elv :RExtractLocalVariable<cr>
+
+" 一時変数を取り除く
+noremap <leader>it  :RInlineTemp<cr>
+
+" ローカル変数をリネームする
+vnoremap <leader>rlv :RRenameLocalVariable<cr>
+
+" インスタンス変数をリネームする
+vnoremap <leader>riv :RRenameInstanceVariable<cr>
+
+" 選択部分をメソッドに切り出す
+vnoremap <leader>em  :RExtractMethod<cr>
 "}}}
 
 " vim-json"{{{
@@ -1136,45 +1190,6 @@ NeoBundle 'kmnk/vim-unite-giti'
 " nnoremap <silent>gs :Unite giti/status -no-start-insert -horizontal<CR>
 " "}}}
 
-" vim-ruby-refactoring"{{{
-" https://github.com/ecomba/vim-ruby-refactoring
-" document: https://www.relishapp.com/despo/vim-ruby-refactoring/docs
-
-NeoBundleLazy 'ecomba/vim-ruby-refactoring', {
-      \ 'depends' : 'tmhedberg/matchit',
-      \ 'autoload' : {
-      \   'filetypes' : ['ruby']
-      \ }
-      \}
-
-" メソッドに引数を追加する
-nnoremap <leader>ap  :RAddParameter<cr>
-
-" 一行で書かれた条件文(e.g. "hoge if fuga?" のようなもの)を伝統的な複数行の形式に変換する
-nnoremap <leader>cc :RConvertPostConditional<cr>
-
-" 選択部分を RSpec の "let(:hoge) { fuga }" の形式に切り出す
-nnoremap <leader>el  :RExtractLet<cr>
-
-" 選択部分を定数として切り出す
-vnoremap <leader>ec  :RExtractConstant<cr>
-
-" 選択部分を変数として切り出す
-vnoremap <leader>elv :RExtractLocalVariable<cr>
-
-" 一時変数を取り除く
-noremap <leader>it  :RInlineTemp<cr>
-
-" ローカル変数をリネームする
-vnoremap <leader>rlv :RRenameLocalVariable<cr>
-
-" インスタンス変数をリネームする
-vnoremap <leader>riv :RRenameInstanceVariable<cr>
-
-" 選択部分をメソッドに切り出す
-vnoremap <leader>em  :RExtractMethod<cr>
-"}}}
-
 filetype plugin indent on
 NeoBundleCheck
 
@@ -1417,7 +1432,7 @@ function! s:Jq(...)
     execute "%! jq \"" . l:arg . "\""
 endfunction
 command! -nargs=? Jq call s:Jq(<f-args>)
-nnoremap <Space>j :Jq<Enter>
+nnoremap <Space>jq :Jq<Enter>
 "}}}
 
 " search dash document  "{{{
