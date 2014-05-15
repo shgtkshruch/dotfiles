@@ -384,6 +384,31 @@ NeoBundleLazy 'vim-ruby/vim-ruby', {
       \}
 "}}}
 
+" vim-bundler"{{{
+" https://github.com/tpope/vim-bundler
+
+NeoBundleLazy 'tpope/vim-bundler', {
+      \ 'autoload' : {
+      \   'filetypes' : ['ruby']
+      \ }
+      \}
+
+nnoremap <Space>bo :Bopen<CR>
+nnoremap <Space>bs :Bsplit<CR>
+nnoremap <Space>bv :Bvsplit<CR>
+
+"}}}
+
+" vroom.vim"{{{
+" https://github.com/skalnik/vim-vroom
+
+NeoBundleLazy 'skalnik/vim-vroom', {
+      \ 'autoload' : {
+      \   'filetypes' : ['ruby']
+      \ }
+      \}
+"}}}
+
 " vim-json"{{{
 " https://github.com/elzr/vim-json
 
