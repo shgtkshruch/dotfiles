@@ -42,6 +42,7 @@ install jq || true
 install gnu-sed || true
 install pv || true
 install tag || true
+install trash || true
 install webkit2png || true
 install googlecl || true
 install cliclick || true

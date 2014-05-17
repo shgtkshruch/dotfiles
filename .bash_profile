@@ -32,6 +32,7 @@ alias amz="$HOME/bin/aws.sh"
 alias diary="$HOME/bin/diary.sh"
 alias sszip="$HOME/bin/zip.sh"
 alias ssrar="$HOME/bin/rar.sh"
+alias t='trash'
 
 
 
