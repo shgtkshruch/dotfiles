@@ -130,6 +130,8 @@ export PATH="$HOME/.rbenv/shims:$PATH"
 
 
 # Alias
+alias amz="$HOME/bin/aws.sh"
+alias ansiblep='ansible-playbook'
 alias be='bundle exec'
 alias bi='bundle install --path vendor/bundle'
 alias bl='bundle list'
@@ -144,12 +146,12 @@ alias brci='brew cask install'
 alias brcl='brew cask list'
 alias brcs='brew cask search'
 alias brcui='brew cask uninstall'
+alias diary="$HOME/bin/diary.sh"
 alias gs='gitsh'
-alias ansiblep='ansible-playbook'
+alias ls="ls -GAF"
+alias ll="ls -l"
 alias sed='gsed'
 alias slide="$HOME/bin/slide.sh"
-alias amz="$HOME/bin/aws.sh"
-alias diary="$HOME/bin/diary.sh"
 alias sszip="$HOME/bin/zip.sh"
 alias ssrar="$HOME/bin/rar.sh"
 alias t='trash'
