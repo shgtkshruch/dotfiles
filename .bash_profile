@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# bash_prompt
+# bash_prompt #{{{
 # Bash prompt customization
 # https://gist.github.com/jmblog/d8f73c00f2705717940a 
 
@@ -115,21 +115,20 @@ PS1+="${style_path}\w" # Working directory
 PS1+="\$(prompt_git)" # Git details
 PS1+="\n" # Newline
 PS1+="${style_chars}\$ \[${RESET}\]" # $ (and reset color)
+#}}}
 
-
-
-# Path
+# Path #{{{
 export PATH=/usr/local/bin:$PATH
 export BUNDLER_EDITOR=vim
+#}}}
 
-# rbenv
+# rbenv #{{{
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/shims:$PATH"
+#}}}
 
-
-
-# Alias
+# Alias #{{{
 alias amz="$HOME/bin/aws.sh"
 alias ansiblep='ansible-playbook'
 alias be='bundle exec'
@@ -155,26 +154,36 @@ alias slide="$HOME/bin/slide.sh"
 alias sszip="$HOME/bin/zip.sh"
 alias ssrar="$HOME/bin/rar.sh"
 alias t='trash'
+#}}}
 
-
-
-# z.sh
+# z.sh#{{{
 . `brew --prefix`/etc/profile.d/z.sh
 function precmd () {
   _z --add "$(pwd -P)"
 }
+#}}}
 
-# cdでtypoしても自動的に正しいパスに移動
+# cdでtypoしても自動的に正しいパスに移動#{{{
 # ex. cd Document => cd Documents
 shopt -s cdspell
+#}}}
 
+# History#{{{
+# 重複するコマンドを履歴に残さない
+export HISTCONTROL=ignoreboth:erasedups
+# 不要なコマンドを履歴に残さない
+export HISTIGNORE="ls:ls *:ll:ll *:cd:cd -:pwd"
+# コマンド履歴を増やす
+export HISTFILESIZE=10000
+export HISTSIZE=10000
+#}}}
 
-
-# Application
+# Application#{{{
 # aws-cli
 complete -C aws_completer aws
+#}}}
 
-# bash_completion
+# bash_completion #{{{
 if [ -f /usr/local/etc/bash_completion ]; then
   . /usr/local/etc/bash_completion
 fi
@@ -194,10 +203,9 @@ fi
 if [ -f /usr/local/etc/bash_completion.d/hub.bash_completion.sh ]; then
   source /usr/local/etc/bash_completion.d/hub.bash_completion.sh
 fi
+#}}}
 
-
-
-# git
+# git#{{{
 function u()
 {
     cd ./$(git rev-parse --show-cdup)
@@ -205,7 +213,8 @@ function u()
         cd $1
     fi
 }
+#}}}
 
-# hub
+# hub#{{{
 eval "$(hub alias -s)"
-
+#}}}
