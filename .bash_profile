@@ -164,6 +164,10 @@ function precmd () {
   _z --add "$(pwd -P)"
 }
 
+# cdでtypoしても自動的に正しいパスに移動
+# ex. cd Document => cd Documents
+shopt -s cdspell
+
 
 
 # Application
