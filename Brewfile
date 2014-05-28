@@ -58,6 +58,7 @@ cask install virtualbox || true
 cask install vmware-fusion || true
 cask install vagrant || true
 cask install github || true
+cask install atom || true
 cask install iterm2 || true
 cask install sublime-text || true
 cask install dash || true
