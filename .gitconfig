@@ -17,7 +17,9 @@
   ad = add
   al = config --global --get-regexp alias
   br = branch --verbose --verbose --color
+  cr = clone --recursive
   co = checkout
+  dmb = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
   m = checkout master
   cm = commit
   cf = config --global --edit
