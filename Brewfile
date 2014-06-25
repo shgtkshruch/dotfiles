@@ -70,6 +70,7 @@ cask install skype || true
 cask install vlc || true
 cask install lastfm || true
 cask install the-unarchive || true
+cask install clamxav || true
 cask install istat-menus || true
 cask install onepassword || true
 cask install onyx || true
