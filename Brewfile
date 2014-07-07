@@ -27,6 +27,8 @@ install git || true
 install gitsh || true
 install hub || true
 install node || true
+install phantomjs || true
+install casperjs --devel || true
 install lua || true
 install rbenv || true
 install ruby-build || true
