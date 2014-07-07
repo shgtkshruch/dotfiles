@@ -5,13 +5,13 @@ update
 upgrade
 
 # Add Repository
-tap homebrew/versions || true
-tap phinze/homebrew-cask || true
-tap homebrew/binary || true
-tap thoughtbot/formulae || true
-tap laurent22/massren || true
-tap sanemat/font || true
-tap homebrew/completions || true
+tap homebrew/versions || true # Versioned formulae
+tap homebrew/completions || true # Shell completion formulae
+tap homebrew/binary || true # Precompiled binary formulae
+tap phinze/homebrew-cask || true # brew cask
+tap thoughtbot/formulae || true # gitsh
+tap laurent22/massren || true # massren
+tap sanemat/font || true # ricty font
 
 # Ptap sanemat/fontackages
 
