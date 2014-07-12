@@ -12,6 +12,8 @@ tap phinze/homebrew-cask || true # brew cask
 tap thoughtbot/formulae || true # gitsh
 tap laurent22/massren || true # massren
 tap sanemat/font || true # ricty font
+tap peco/peco || true # peco
+tap motemen/ghq || true # ghq
 
 # Ptap sanemat/fontackages
 
@@ -26,6 +28,8 @@ install rename || true
 install git || true
 install gitsh || true
 install hub || true
+install peco || true
+install ghq || true
 install node || true
 install phantomjs || true
 install casperjs --devel || true
