@@ -119,8 +119,8 @@ PS1+="${style_chars}\$ \[${RESET}\]" # $ (and reset color)
 
 # Path #{{{
 export PATH=/usr/local/bin:$PATH
-export BUNDLER_EDITOR=vim
-#}}}
+# export BUNDLER_EDITOR=vim
+# #}}}
 
 # rbenv #{{{
 export PATH="$HOME/.rbenv/bin:$PATH"
@@ -149,11 +149,15 @@ alias diary="$HOME/bin/diary.sh"
 alias gs='gitsh'
 alias ls="ls -GAF"
 alias ll="ls -l"
+alias pc='peco_cd'
+alias ph='peco_history'
+alias pg='peco_ghq'
 alias sed='gsed'
 alias slide="$HOME/bin/slide.sh"
 alias sszip="$HOME/bin/zip.sh"
 alias ssrar="$HOME/bin/rar.sh"
 alias t='trash'
+alias vo='vim_open'
 #}}}
 
 # z.sh#{{{
@@ -168,11 +172,11 @@ function precmd () {
 shopt -s cdspell
 #}}}
 
-# History#{{{
+# History #{{{
 # 重複するコマンドを履歴に残さない
-export HISTCONTROL=ignoreboth:erasedups
+export HISTCONTROL=ignoreboth:erasedups #ignoreboth = ignorespace + ignoredups
 # 不要なコマンドを履歴に残さない
-export HISTIGNORE="ls:ls *:ll:ll *:cd:cd -:pwd"
+export HISTIGNORE="ls:ls *:ll:ll *:cd:cd -:pwd:vim:"
 # コマンド履歴を増やす
 export HISTFILESIZE=10000
 export HISTSIZE=10000
@@ -217,4 +221,23 @@ function u()
 
 # hub#{{{
 eval "$(hub alias -s)"
+#}}}
+
+# peco #{{{
+
+function peco_cd () {
+  cd $(ls -a | peco)
+}
+
+function peco_ghq () {
+  cd $(ghq list --full-path | peco)
+}
+
+function peco_history () {
+  history | sed -re 's/^\s+[0-9]+\s{2}//' | peco | bash
+}
+
+function vim_open () {
+  vim $(find . | grep -v "\/\.git"| peco)
+}
 #}}}
