@@ -13,16 +13,16 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundleLazy 'mattn/emmet-vim', {
       \ 'autoload' : {
-      \   'filetypes' : ['html', 'css', 'slim', 'haml', 'jade', 'scss', 'sass', 'less', 'styl']
+      \   'filetypes' : ['css', 'html', 'slim', 'haml', 'jade', 'scss', 'sass', 'less', 'stylus']
       \ }
       \}
 
 let s:bundle = neobundle#get('emmet-vim')
 function! s:bundle.hooks.on_source(bundle)
 
-  augroup emmet_stylus
-    autocmd BufRead,BufNewFile *.styl set filetype=sass
-  augroup END
+  " augroup emmet_stylus
+  "   autocmd BufRead,BufNewFile *.stylus set filetype=sass
+  " augroup END
 
   let g:user_emmet_settings = {
     \ 'lang' : 'ja',
@@ -47,7 +47,7 @@ function! s:bundle.hooks.on_source(bundle)
     \ 'css' : {
     \ 'filters' : 'fc',
     \ },
-    \ 'styl' : {
+    \ 'stylus' : {
     \ 'filters' : 'fc',
     \ },
     \ 'slim': {
@@ -273,7 +273,7 @@ NeoBundleLazy 'othree/html5.vim', {
 " https://github.com/hail2u/vim-css3-syntax
 NeoBundleLazy 'hail2u/vim-css3-syntax', {
       \ 'autoload' : {
-      \   'filetypes' : ['css', 'sass', 'scss', 'less', 'styl']
+      \   'filetypes' : ['sass', 'scss', 'less', 'styl']
       \ }
       \}
 "}}}
@@ -292,7 +292,7 @@ NeoBundleLazy 'cakebaker/scss-syntax.vim', {
 
 NeoBundleLazy 'wavded/vim-stylus', {
       \ 'autoload' : {
-      \   'filetypes' : 'styl'
+      \   'filetypes' : ['stylus']
       \ }
       \}
 "}}}
@@ -668,12 +668,12 @@ smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
-" imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-" \ "\<Plug>(neosnippet_expand_or_jump)"
-" \: pumvisible() ? "\<C-n>" : "\<TAB>"
-" smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-" \ "\<Plug>(neosnippet_expand_or_jump)"
-" \: "\<TAB>"
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
 
 " For snippet_complete marker.
 if has('conceal')
@@ -705,82 +705,15 @@ NeoBundleLazy 'Shougo/unite.vim', {
 nnoremap [unite] <Nop>
 nmap <Space>u [unite]
 
-" " start in insert mode so any typing will filter the candidate list
-" " nnoremap [unite]f :<C-u>Unite -start-insert file<CR>
-"
-" nnoremap [unite]r :<C-u>Unite -start-insert file_rec<CR>
-" " nnoremap [unite]r :<C-u>Unite -start-insert file_rec/async:!<CR>
-"
-" " Most recently used files
-" noremap [unite]m :<C-u>Unite file_mru<CR>
-"
-" " Search through yank history. First, this must be enabled to track yank history, then the mapping set.
+" recursive file search, starting insert automatically
+nnoremap <silent> [unite]f :<C-u>Unite -start-insert file_rec/async:!<CR>
+
+" Search through yank history
 nnoremap <silent> [unite]y :<C-u>Unite history/yank<CR>
-"
-" nnoremap <silent> [unite]c  :<C-u>UniteWithCurrentDir
-"       \ -buffer-name=files buffer file_mru bookmark file<CR>
-" " nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir
-" "       \ -buffer-name=files -prompt=%\  buffer file_mru bookmark file<CR>
-" nnoremap <silent> [unite]b  :<C-u>Unite buffer<CR>
-" nnoremap <silent> [unite]r  :<C-u>Unite
-"       \ -buffer-name=register register<CR>
-" nnoremap <silent> [unite]o  :<C-u>Unite outline<CR>
-" " nnoremap <silent> [unite]f
-" "       \ :<C-u>Unite -buffer-name=resume resume<CR>
-" nnoremap <silent> [unite]d
-"       \ :<C-u>Unite -buffer-name=files -default-action=lcd directory_mru<CR>
-" nnoremap <silent> [unite]ma
-"       \ :<C-u>Unite mapping<CR>
-" nnoremap <silent> [unite]me
-"       \ :<C-u>Unite output:message<CR>
-nnoremap <silent> [unite]f :<C-u>Unite source<CR>
 
-" nnoremap <silent> [unite]s
-"       \ :<C-u>Unite -buffer-name=files -no-split
-"       \ jump_point file_point buffer_tab
-"       \ file_rec:! file file/new file_mru<CR>
+" nominates opend buffers as candidates
+nnoremap <silent> [unite]b :<C-u>Unite buffer<CR>
 
-" function! s:unite_my_settings()  "{{{
-"   " Overwrite settings.
-"
-"   nmap <buffer> <ESC>      <Plug>(unite_exit)
-"   imap <buffer> jj      <Plug>(unite_insert_leave)
-"   "imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
-"
-"   imap <buffer><expr> j unite#smart_map('j', '')
-"   imap <buffer> <TAB>   <Plug>(unite_select_next_line)
-"   imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
-"   imap <buffer> '     <Plug>(unite_quick_match_default_action)
-"   nmap <buffer> '     <Plug>(unite_quick_match_default_action)
-"   imap <buffer><expr> x
-"         \ unite#smart_map('x', "\<Plug>(unite_quick_match_choose_action)")
-"   nmap <buffer> x     <Plug>(unite_quick_match_choose_action)
-"   nmap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
-"   imap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
-"   imap <buffer> <C-y>     <Plug>(unite_narrowing_path)
-"   nmap <buffer> <C-y>     <Plug>(unite_narrowing_path)
-"   nmap <buffer> <C-j>     <Plug>(unite_toggle_auto_preview)
-"   nmap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
-"   imap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
-"   nnoremap <silent><buffer><expr> l
-"         \ unite#smart_map('l', unite#do_action('default'))
-"
-"   let unite = unite#get_current_unite()
-"   if unite.profile_name ==# 'search'
-"     nnoremap <silent><buffer><expr> r     unite#do_action('replace')
-"   else
-"     nnoremap <silent><buffer><expr> r     unite#do_action('rename')
-"   endif
-"
-"   nnoremap <silent><buffer><expr> cd     unite#do_action('lcd')
-"   nnoremap <buffer><expr> S      unite#mappings#set_current_filters(
-"         \ empty(unite#mappings#get_current_filters()) ?
-"         \ ['sorter_reverse'] : [])
-"
-"   " Runs "split" action by <C-s>.
-"   imap <silent><buffer><expr> <C-s>     unite#do_action('split')
-" endfunction
-" "}}}
 "}}}
 
 let s:bundle = neobundle#get('unite.vim')
