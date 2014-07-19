@@ -30,3 +30,5 @@
   p = push
   s = status --branch --short
   remotes = remote -v
+[ghq]
+  root = ~/dev/ghq
