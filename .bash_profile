@@ -157,7 +157,36 @@ alias slide="$HOME/bin/slide.sh"
 alias sszip="$HOME/bin/zip.sh"
 alias ssrar="$HOME/bin/rar.sh"
 alias t='trash'
-alias vo='vim_open'
+alias vo='peco_vim_open'
+alias vg='vagrant'
+alias vgi='peco_vagrant_init'
+alias vgb='vagrant box'
+alias vgba='vagrant box add'
+alias vgbl='vagrant box list'
+alias vgbrm='vagrant box remove'
+alias vgbrp='vagrant box repackage'
+alias vgbup='vagrant box update'
+alias vgd='vagrant destroy'
+alias vggs='vagrant global-status'
+alias vgh='vagrant halt'
+alias vgp='vagrant provision'
+alias vgpi='vagrant plugin install'
+alias vgpl='vagrant plugin list'
+alias vgpu='vagrant plugin update'
+alias vgpui='vagrant plugin uninstall'
+alias vgp='vagrant provision'
+alias vgrs='vagrant resume'
+alias vgrl='vagrant reload'
+alias vgrlp='vagrant reload --provision'
+alias vgsc='vagrant_sandbox_commit'
+alias vgso='vagrant sandbox on'
+alias vgsof='vagrant_sandbox_off'
+alias vgsr='vagrant sandbox rollback'
+alias vgss='vagrant sandbox status'
+alias vgssh='vagrant ssh'
+alias vgs='vagrant status'
+alias vgsu='vagrant suspend'
+alias vgu='vagrant up'
 #}}}
 
 # z.sh#{{{
@@ -223,6 +252,21 @@ function u()
 eval "$(hub alias -s)"
 #}}}
 
+# vagrant#{{{
+
+function vagrant_sandbox_commit {
+  vagrant suspend
+  vagrant sandbox commit
+  vagrant up
+}
+
+function vagrant_sandbox_off {
+  vagrant suspend
+  vagrant sandbox off
+  vagrant up
+}
+#}}}
+
 # peco #{{{
 
 function peco_cd () {
@@ -234,10 +278,15 @@ function peco_ghq () {
 }
 
 function peco_history () {
-  history | sed -re 's/^\s+[0-9]+\s{2}//' | peco | bash
+  # history | sort -r | sed -re 's/^\s+[0-9]+\s{2}//' | peco | bash
+  $(history | sort -r | sed -re 's/^\s+[0-9]+\s{2}//' | peco)
 }
 
-function vim_open () {
+function peco_vim_open () {
   vim $(find . | grep -v "\/\.git"| peco)
+}
+
+function peco_vagrant_init () {
+  vagrant init $(vagrant box list | peco)
 }
 #}}}
