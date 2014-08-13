@@ -8,3 +8,5 @@ function gem(){
     fi
 }
 
+# aws-cli
+complete -C aws_completer aws

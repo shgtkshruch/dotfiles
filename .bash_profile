@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# Source #{{{
+source ~/.awsinit
+#}}}
+
 # bash_prompt #{{{
 # Bash prompt customization
 # https://gist.github.com/jmblog/d8f73c00f2705717940a 
