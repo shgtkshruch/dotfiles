@@ -287,7 +287,7 @@ function peco_history () {
 }
 
 function peco_vim_open () {
-  vim $(find . | grep -v "\/\.git"| peco)
+  vim $(git ls | peco)
 }
 
 function peco_vagrant_init () {
