@@ -293,4 +293,25 @@ function peco_vim_open () {
 function peco_vagrant_init () {
   vagrant init $(vagrant box list | peco)
 }
+
+function get_vpc_id () {
+  aws ec2 describe-vpcs | peco | awk '{print $7}'
+}
+
+function get_subnet_id_from_vpc_id () {
+  aws ec2 describe-subnets | awk -v vpc_id=$(get_vpc_id) '{ if ($9 == vpc_id) print $8 }'
+}
+
+function aws_delete_vpc () {
+  local vpc_id=$(get_vpc_id)
+  aws ec2 delete-vpc --vpc-id $vpc_id
+}
+
+function aws_delete_subnets () {
+  local subent_ids=$(get_subnet_id_from_vpc_id)
+  aws ec2 delete-subnet --subnet-id $subent_ids
+}
+
+alias adv='aws_delete_vpc'
+alias as='get_subnet_id_from_vpc_id'
 #}}}
