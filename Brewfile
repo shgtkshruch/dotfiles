@@ -90,6 +90,17 @@ cask install keyremap4macbook || true
 cask install alfred || true
 cask alfred link || true
 
+# Quick look
+cask install qlcolorcode || true
+cask install qlstephen || true
+cask install qlmarkdown || true
+cask install quicklook-json || true
+cask install qlprettypatch || true
+cask install quicklook-csv || true
+cask install betterzipql || true
+cask install webp-quicklook || true
+cask install provisionql || true
+
 # font
 install ricty || true
 
