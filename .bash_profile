@@ -151,6 +151,7 @@ alias brcs='brew cask search'
 alias brcui='brew cask uninstall'
 alias diary="$HOME/bin/diary.sh"
 alias gs='gitsh'
+alias gi='git_init_create_commit'
 alias ls="ls -GAF"
 alias ll="ls -l"
 alias pc='peco_cd'
@@ -243,12 +244,18 @@ fi
 #}}}
 
 # git#{{{
-function u()
-{
+function u() {
     cd ./$(git rev-parse --show-cdup)
     if [ $# = 1 ]; then
         cd $1
     fi
+}
+
+function git_init_create_commit() {
+  git init
+  git create
+  git add .
+  git commit -m'Initial commit'
 }
 #}}}
 
