@@ -13,7 +13,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundleLazy 'mattn/emmet-vim', {
       \ 'autoload' : {
-      \   'filetypes' : ['css', 'html', 'slim', 'haml', 'jade', 'scss', 'sass', 'less', 'stylus']
+      \   'filetypes' : ['css', 'html', 'slim', 'haml', 'jade', 'scss', 'sass', 'less', 'stylus', 'php']
       \ }
       \}
 
@@ -245,11 +245,11 @@ NeoBundle 'Yggdroot/indentLine'
 
 NeoBundleLazy 'junegunn/vim-easy-align', {
       \ 'autoload' : {
-      \   'commands' : ['EasyAlign']
+      \   'mappings' : ['<Plug>(EasyAlign)']
       \ }
       \}
 
-vmap <Enter> <Plug>(EasyAlign)
+vmap <Space> <Plug>(EasyAlign)
 "}}}
 
 " vim-surround  "{{{
