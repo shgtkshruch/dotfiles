@@ -9,6 +9,7 @@ tap homebrew/versions || true # Versioned formulae
 tap homebrew/completions || true # Shell completion formulae
 tap homebrew/binary || true # Precompiled binary formulae
 tap phinze/homebrew-cask || true # brew cask
+tap caskroom/versions || true # beta versions
 tap thoughtbot/formulae || true # gitsh
 tap laurent22/massren || true # massren
 tap sanemat/font || true # ricty font
@@ -57,6 +58,7 @@ install brew-cask || true
 
 # .dmg
 cask install google-chrome || true
+cask install google-chrome-canary || true
 cask install firefox || true
 cask install opera || true
 cask install dropbox || true
