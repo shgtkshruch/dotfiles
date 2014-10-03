@@ -10,6 +10,7 @@ tap homebrew/completions || true # Shell completion formulae
 tap homebrew/binary || true # Precompiled binary formulae
 tap phinze/homebrew-cask || true # brew cask
 tap caskroom/versions || true # beta versions
+tap caskroom/fonts || true # font
 tap thoughtbot/formulae || true # gitsh
 tap laurent22/massren || true # massren
 tap sanemat/font || true # ricty font
