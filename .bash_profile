@@ -209,9 +209,9 @@ shopt -s cdspell
 
 # History #{{{
 # 重複するコマンドを履歴に残さない
-export HISTCONTROL=ignoreboth:erasedups #ignoreboth = ignorespace + ignoredups
+export HISTCONTROL=erasedups
 # 不要なコマンドを履歴に残さない
-export HISTIGNORE="ls:ls *:ll:ll *:cd:cd -:pwd:vim:"
+export HISTIGNORE="ls:ls *:ll:ll *:cd:cd -:pwd:vim:z *:exit:ph:history:t *"
 # コマンド履歴を増やす
 export HISTFILESIZE=10000
 export HISTSIZE=10000
