@@ -379,21 +379,6 @@ nnoremap <Space>bv :Bvsplit<CR>
 
 "}}}
 
-" rubyjump"{{{
-" https://github.com/xmisao/rubyjump.vim
-
-NeoBundleLazy 'xmisao/rubyjump.vim', {
-      \ 'autoload' : {
-      \   'filetypes' : ['ruby']
-      \ }
-      \}
-
-nnoremap <Space>j :RubyJump<CR>
-nnoremap <Space>jc :RubyJumpCursor<CR>
-nnoremap <Space>jn :RubyJumpNext<CR>
-
-"}}}
-
 " vroom.vim"{{{
 " https://github.com/skalnik/vim-vroom
 
