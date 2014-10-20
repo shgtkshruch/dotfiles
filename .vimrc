@@ -4,7 +4,7 @@ if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
@@ -136,27 +136,7 @@ unlet s:bundle
 
 " vim-colors-solarized  "{{{
 " https://github.com/altercation/vim-colors-solarized
-
 NeoBundle 'altercation/vim-colors-solarized'
-
-" カラー端末の場合のみ構文強調を有効
-if &t_Co > 1
-   syntax enable
-endif
-
-set t_Co=256
-
-" Solarized
-set background=light
-" let g:solarized_termcolors=256
-" let g:solarized_degrade=0
-" let g:solarized_bold=0
-" let g:solarized_underline=1
-" let g:solarized_italic=1
-" let g:solarized_termtrans=0
- let g:solarized_contrast="high"
- let g:solarized_visibility="high"
-colorscheme solarized
 "}}}
 
 " lightline.vim  "{{{
@@ -838,22 +818,6 @@ NeoBundleLazy 'kana/vim-submode', {
       \ }
       \}
 
-" http://d.hatena.ne.jp/thinca/20130131/1359567419
-" ウィンドウサイズ変更
-call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
-call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
-call submode#enter_with('bufmove', 'n', '', 's+', '<C-w>+')
-call submode#enter_with('bufmove', 'n', '', 's-', '<C-w>-')
-call submode#map('bufmove', 'n', '', '>', '<C-w>>')
-call submode#map('bufmove', 'n', '', '<', '<C-w><')
-call submode#map('bufmove', 'n', '', '+', '<C-w>+')
-call submode#map('bufmove', 'n', '', '-', '<C-w>-')
-" タブの切り替え
-call submode#enter_with('changetab', 'n', '', 'sn', 'gt')
-call submode#enter_with('changetab', 'n', '', 'sp', 'gT')
-call submode#map('changetab', 'n', '', 'n', 'gt')
-call submode#map('changetab', 'n', '', 'p', 'gT')
-
 "}}}
 
 " vim-auto-save  "{{{
@@ -1123,9 +1087,49 @@ NeoBundle 'kmnk/vim-unite-giti'
 " nnoremap <silent>gs :Unite giti/status -no-start-insert -horizontal<CR>
 " "}}}
 
+call neobundle#end()
 filetype plugin indent on
 NeoBundleCheck
 
+"}}}
+
+" Color Scheme "{{{
+" Solarized
+" https://github.com/altercation/vim-colors-solarized
+
+" カラー端末の場合のみ構文強調を有効
+if &t_Co > 1
+  syntax enable
+endif
+set background=light
+set t_Co=256
+let g:solarized_termcolors=16
+let g:solarized_termtrans=1
+let g:solarized_bold=1
+let g:solarized_underline=1
+let g:solarized_italic=1
+let g:solarized_contrast="high"
+let g:solarized_visibility="high"
+colorscheme solarized
+"}}}
+
+"Submode"{{{
+
+" http://d.hatena.ne.jp/thinca/20130131/1359567419
+" ウィンドウサイズ変更
+call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
+call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
+call submode#enter_with('bufmove', 'n', '', 's+', '<C-w>+')
+call submode#enter_with('bufmove', 'n', '', 's-', '<C-w>-')
+call submode#map('bufmove', 'n', '', '>', '<C-w>>')
+call submode#map('bufmove', 'n', '', '<', '<C-w><')
+call submode#map('bufmove', 'n', '', '+', '<C-w>+')
+call submode#map('bufmove', 'n', '', '-', '<C-w>-')
+" タブの切り替え
+call submode#enter_with('changetab', 'n', '', 'sn', 'gt')
+call submode#enter_with('changetab', 'n', '', 'sp', 'gT')
+call submode#map('changetab', 'n', '', 'n', 'gt')
+call submode#map('changetab', 'n', '', 'p', 'gT')
 "}}}
 
 " key mapping "{{{
@@ -1384,3 +1388,4 @@ nnoremap <Space>d :Dash
 "}}}
 
 "}}}
+
