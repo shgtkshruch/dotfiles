@@ -668,7 +668,7 @@ NeoBundleLazy 'Shougo/unite.vim', {
 nnoremap [unite] <Nop>
 nmap <Space>u [unite]
 
-nnoremap <silent>[unite] :<C-u>Unite line<CR>
+nnoremap <silent>[unite]/ :<C-u>Unite line<CR>
 nnoremap <silent>[unite]c :<C-u>Unite command<CR>
 nnoremap <silent>[unite]j :<C-u>Unite jump<CR>
 nnoremap <silent>[unite]m :<C-u>Unite mapping<CR>
@@ -1122,9 +1122,12 @@ NeoBundleLazy 'kmnk/vim-unite-giti', {
       \ }
       \}
 
-nnoremap <silent>gl :Unite giti/log -horizontal<CR>
-nnoremap <silent>gs :Unite giti/status -horizontal<CR>
-nnoremap <silent>gh :Unite giti/branch_all -horizontal<CR>
+nnoremap <silent>gl :GitiLog<CR>
+nnoremap <silent>gll :GitiLogLine<CR>
+
+nnoremap <silent>[unite]gl :Unite giti/log<CR>
+nnoremap <silent>[unite]gs :Unite giti/status<CR>
+nnoremap <silent>[unite]gb :Unite giti/branch<CR>
 " "}}}
 
 call neobundle#end()
