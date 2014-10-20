@@ -664,27 +664,51 @@ NeoBundleLazy 'Shougo/unite.vim', {
       \ }
       \}
 
-" unite  "{{{
-
 " The prefix key.
 nnoremap [unite] <Nop>
 nmap <Space>u [unite]
 
+nnoremap <silent>[unite] :<C-u>Unite line<CR>
+nnoremap <silent>[unite]c :<C-u>Unite command<CR>
+nnoremap <silent>[unite]j :<C-u>Unite jump<CR>
+nnoremap <silent>[unite]m :<C-u>Unite mapping<CR>
+
 " recursive file search, starting insert automatically
-nnoremap <silent> [unite]f :<C-u>Unite -start-insert file_rec/async:!<CR>
+nnoremap <silent>[unite]f :<C-u>Unite file_rec/async:!<CR>
+
+" Similar to unite-source-file_rec, but get files by `git ls-files` command. It is faster than file_rec/async source.
+nnoremap <silent>[unite]fg :<C-u>Unite file_rec/git:--cached:--others:--exclude-standard<CR>
 
 " Search through yank history
-nnoremap <silent> [unite]y :<C-u>Unite history/yank<CR>
+nnoremap <silent>[unite]y :<C-u>Unite history/yank<CR>
 
-" nominates opend buffers as candidates
-nnoremap <silent> [unite]b :<C-u>Unite buffer<CR>
+" Nominates opend buffers as candidates
+nnoremap <silent>[unite]b :<C-u>Unite buffer<CR>
 
-"}}}
+" grep
+" http://blog.monochromegane.com/blog/2013/09/18/ag-and-unite/
+nnoremap <silent>[unite]g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+
+" Recoll grep command
+nnoremap <silent>[unite]gr :<C-u>UniteResume search-buffer<CR>
 
 let s:bundle = neobundle#get('unite.vim')
 function! s:bundle.hooks.on_source(bundle)
   call unite#filters#matcher_default#use(['matcher_fuzzy'])
+
+  let g:unite_enable_start_insert=1
+  let g:unite_enable_ignore_case = 1
+  let g:unite_enable_smart_case = 1
   let g:unite_source_history_yank_enable = 1
+  let g:unite_source_file_mru_limit = 200
+  let g:unite_source_rec_async_command = 'ag --follow --nocolor --nogroup --hidden -g ""'
+
+  " Using ag(The Silver Searcher) with unite grep
+  if executable('ag')
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+    let g:unite_source_grep_recursive_opt = ''
+  endif
 endfunction
 unlet s:bundle
 
@@ -1088,11 +1112,19 @@ NeoBundleLazy 'Shougo/neomru.vim', {
 "
 " "}}}
 
-" " vim-unite-giti  "{{{
-NeoBundle 'kmnk/vim-unite-giti'
-"
-" nnoremap <silent>gl :Unite giti/log -no-start-insert -horizontal<CR>
-" nnoremap <silent>gs :Unite giti/status -no-start-insert -horizontal<CR>
+" vim-unite-giti  "{{{
+NeoBundleLazy 'kmnk/vim-unite-giti', {
+      \ 'autoload': {
+      \ 'unite_sources':[
+      \   'giti', 'giti/branch', 'giti/branch/new', 'giti/branch_all',
+      \   'giti/config', 'giti/log', 'giti/remote', 'giti/status'
+      \   ]
+      \ }
+      \}
+
+nnoremap <silent>gl :Unite giti/log -horizontal<CR>
+nnoremap <silent>gs :Unite giti/status -horizontal<CR>
+nnoremap <silent>gh :Unite giti/branch_all -horizontal<CR>
 " "}}}
 
 call neobundle#end()
