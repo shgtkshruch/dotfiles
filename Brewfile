@@ -20,6 +20,7 @@ tap motemen/ghq || true # ghq
 # Ptap sanemat/fontackages
 
 install vim || true
+install ag || true
 install bash || true
 install bash_completion || true
 install zsh || true
