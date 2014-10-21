@@ -531,15 +531,10 @@ NeoBundle 'Shougo/neocomplete.vim'
 
 " neocomplete "{{{
 
-"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
-" Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
-" Use neocomplete.
 let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
 let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#sources#syntax#min_keyword_length = 4
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
 " Define dictionary.
@@ -549,15 +544,9 @@ let g:neocomplete#sources#dictionary#dictionaries = {
     \ 'scheme' : $HOME.'/.gosh_completions'
         \ }
 
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
 " Plugin key-mappings.
-inoremap <expr><C-g]] >     neocomplete#undo_completion()
-inoremap <expr><C-l]] >     neocomplete#complete_common_string()
+inoremap <expr><C-g> neocomplete#undo_completion()
+inoremap <expr><C-l> neocomplete#complete_common_string()
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
@@ -622,15 +611,16 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 " neosnippet.vim  "{{{
 
+NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'honza/vim-snippets'
-NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'chrisgillis/vim-bootstrap3-snippets'
 
 " neosnippet "{{{
  " Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
@@ -650,11 +640,18 @@ let g:neosnippet#disable_runtime_snippets = {
 \   '_' : 1,
 \ }
 " Enable snipMate compatibility feature.
-" let g:neosnippet#enable_snipmate_compatibility = 1
+let g:neosnippet#enable_snipmate_compatibility = 1
 
 " Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+let g:neosnippet#snippets_directory='
+      \~/.vim/bundle/vim-snippets/snippets,
+      \~/.vim/bundle/vim-bootstrap3-snippets/snippets,
+      \~/.vim/snippets/'
 "}}}
+"}}}
+
+" context_filetype.vim"{{{
+NeoBundle'Shougo/context_filetype.vim'
 "}}}
 
 " unite.vim  "{{{
@@ -672,6 +669,7 @@ nnoremap <silent>[unite]/ :<C-u>Unite line<CR>
 nnoremap <silent>[unite]c :<C-u>Unite command<CR>
 nnoremap <silent>[unite]j :<C-u>Unite jump<CR>
 nnoremap <silent>[unite]m :<C-u>Unite mapping<CR>
+nnoremap <silent>[unite]s :<C-u>Unite neosnippet/runtime neosnippet/user<CR>
 
 " recursive file search, starting insert automatically
 nnoremap <silent>[unite]f :<C-u>Unite file_rec/async:!<CR>
@@ -1196,14 +1194,6 @@ nnoremap <Esc><Esc> :nohlsearch<CR>
 " insert breack
 nnoremap br Ea<br /><ESC>J
 nnoremap ibr Ea<CR><ESC>
-
-" CSS comment
-noremap ct I/* <Esc>50a=<Esc>o<CR><Esc>a <Esc>50a=<Esc>a */<Esc>ka
-noremap <Space>cs I/*<CR><Esc>a <Esc>50a=<Esc>a */<Esc>ka
-noremap cc I/**<CR>/<Esc>O
-
-" Sass
-nnoremap <Space>e A<CR>@extend %
 
 " F5でファイルを Chrome で開く
 nnoremap <F5> :!open -a Google\ Chrome %<CR><CR>
