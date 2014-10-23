@@ -34,6 +34,7 @@ install hub || true
 install peco || true
 install ghq || true
 install node || true
+install mongodb || true
 install phantomjs || true
 install casperjs --devel || true
 install lua || true
