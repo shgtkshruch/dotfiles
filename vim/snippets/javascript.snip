@@ -1,0 +1,50 @@
+snippet var
+abbr variable
+options word
+  var ${1:#:variavle name} = ${2:#:contents};
+
+snippet fun
+abbr function
+alias    fu fun func
+options word
+  function ${1:#:function_name}(${2:#:arg}) {
+    ${0:TARGET}
+  }
+
+snippet log
+abbr console.log
+options word
+  console.log(${1});
+
+snippet dir
+abbr console.dir
+options word
+  console.dir(${1});
+
+snippet http#get
+abbr http.get
+alias hget
+options word
+  http.get(${1:#:url}, function (${2:#:arg}) {
+    ${0:TARGET}
+  });
+
+snippet on#event
+alias on
+options word
+  on('${1:#:event}', function (${2:#:arg}) {
+    ${0:TARGET}
+  });
+
+snippet call#forEach
+abbr [].forEach.call
+alias eachc
+options word
+  [].forEach.call(${1:#:array like object}, function (${2:#:arg}) {
+    ${0:TARGET}
+  });
+
+snippet json
+alias js
+options word
+  "${1}": "${2}"

@@ -630,6 +630,9 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)"
 \: "\<TAB>"
 
+" Open vertical split window to edit snippets file
+nnoremap <Space>ns :NeoSnippetEdit -vertical -split<CR>
+
 " For snippet_complete marker.
 if has('conceal')
   set conceallevel=2 concealcursor=i
