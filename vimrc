@@ -1259,6 +1259,10 @@ inoremap <C-k> <Up>
 inoremap <C-h> <Left>
 inoremap <C-l> <Right>
 
+" insert semicolon
+inoremap ;<CR> <end>;
+inoremap ;;<CR> <C-e><down><end>;
+
 " VISUAL MODE
 vnoremap <silent> > >gv
 vnoremap <silent> < <gv
