@@ -150,11 +150,13 @@ alias brci='brew cask install'
 alias brcl='brew cask list'
 alias brcs='brew cask search'
 alias brcui='brew cask uninstall'
+alias cdt='cdrmdir'
 alias diary="$HOME/bin/diary.sh"
 alias gs='gitsh'
 alias gi='git_init_create_commit'
 alias ls="ls -GAF"
 alias ll="ls -l"
+alias mkcd="mkcd"
 alias pc='peco_cd'
 alias ph='peco_history'
 alias pg='peco_ghq'
@@ -193,6 +195,19 @@ alias vgssh='vagrant ssh'
 alias vgs='vagrant status'
 alias vgsu='vagrant suspend'
 alias vgu='vagrant up'
+#}}}
+
+# Function#{{{
+mkcd() {
+  mkdir $1
+  cd $1
+}
+
+cdrmdir() {
+  cwd=$(pwd)
+  cd ..
+  rm -rf $cwd
+}
 #}}}
 
 # z.sh#{{{
