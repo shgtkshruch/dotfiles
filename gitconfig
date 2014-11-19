@@ -16,21 +16,26 @@
 [alias]
   ad = add
   al = config --global --get-regexp alias
-  br = branch --verbose --verbose --color
-  cr = clone --recursive
-  co = checkout
-  dmb = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
-  m = checkout master
-  cm = commit
   amend = commit --amend
+  br = branch --verbose --verbose --color
   cf = config --global --edit
+  cm = commit
+  co = checkout
+  cr = clone --recursive
   d = diff
+  dmb = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
+  fn = fetch origin refs/notes/*:refs/notes/*
   l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   la = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   lp = log --decorate --stat --patch
   ls = ls-files
+  m = checkout master
+  nh = notes --ref html
+  nc = notes --ref css
+  nj = notes --ref js
   p = push
-  s = status --branch --short
+  pn = push origin refs/notes/*
   remotes = remote -v
+  s = status --branch --short
 [ghq]
   root = ~/dev/ghq
