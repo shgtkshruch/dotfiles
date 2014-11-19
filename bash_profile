@@ -2,6 +2,7 @@
 
 # Source #{{{
 source ~/.awsinit
+source ~/.githubinit
 #}}}
 
 # bash_prompt #{{{
@@ -160,6 +161,7 @@ alias mkcd="mkcd"
 alias pc='peco_cd'
 alias ph='peco_history'
 alias pg='peco_ghq'
+alias rlb='source ~/.bash_profile'
 alias sed='gsed'
 alias slide="$HOME/bin/slide.sh"
 alias sszip="$HOME/bin/zip.sh"
