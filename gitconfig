@@ -1,25 +1,28 @@
 [user]
-	name = shgtkshruch
-	email = shgtk.shruch@gmail.com
+  name = shgtkshruch
+  email = shgtk.shruch@gmail.com
 [github]
   user = shgtkshruch
 [color]
   diff = auto
   status = auto
   branch = auto
-	ui = auto
+  ui = auto
 [core]
   editor = vim
   precomposeunicode = true
 [push]
-	default = simple
+  default = simple
 [alias]
   ad = add
   al = config --global --get-regexp alias
-  amend = commit --amend
+  am = commit --amend
+  ama = commit --all --amend
   br = branch --verbose --verbose --color
+  cat = cat-file -p
   cf = config --global --edit
   cm = commit
+  cma = commit --all
   co = checkout
   cr = clone --recursive
   d = diff
@@ -35,6 +38,10 @@
   nj = notes --ref js
   p = push
   pn = push origin refs/notes/*
+  re = rebase -i --root
+  rea = rebase --abort
+  rec = rebase --continue
+  res = rebase --skip
   remotes = remote -v
   s = status --branch --short
 [ghq]
