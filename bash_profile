@@ -158,6 +158,7 @@ alias gi='git_init_create_commit'
 alias ls="ls -GAF"
 alias ll="ls -l"
 alias mkcd="mkcd"
+alias node='node --harmony'
 alias pc='peco_cd'
 alias ph='peco_history'
 alias pg='peco_ghq'
