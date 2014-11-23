@@ -16,7 +16,7 @@
 [alias]
   ad = add
   al = config --global --get-regexp alias
-  am = commit --amend
+  amend = commit --amend
   ama = commit --all --amend
   br = branch --verbose --verbose --color
   cat = cat-file -p
