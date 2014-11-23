@@ -196,6 +196,8 @@ alias vgss='vagrant sandbox status'
 alias vgssh='vagrant ssh'
 alias vgs='vagrant status'
 alias vgsu='vagrant suspend'
+alias vgsy='vagrant rsync'
+alias vgsya='vagrant rsync-auto'
 alias vgu='vagrant up'
 #}}}
 
