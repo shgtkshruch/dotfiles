@@ -1,0 +1,37 @@
+snippet html
+  <!DOCTYPE html>
+  <html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>${1}</title>
+    </head>
+    <body>
+      ${2}
+    </body>
+  </html>
+
+snippet metaauthor
+    <meta name="author" content="${1}">${2}
+
+snippet metakeywords
+    <meta name="keywords" content="${1}">${2}
+
+snippet metadescription
+    <meta name="description" content="${1}">${2}
+
+snippet link
+abbr    link stylesheet css
+alias stylesheet css
+    <link rel="${1:stylesheet}" href="${2}.css" type="text/css" media="${3:screen}" charset="utf-8">${4}
+
+snippet script
+abbr inline script
+    <script type="text/javascript">
+      ${1:TARGET}
+    </script>
+
+snippet scriptsrc
+abbr script src
+alias src
+    <script src="${1:TARGET}"></script>
+
