@@ -612,9 +612,6 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 " neosnippet.vim  "{{{
 
 NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'honza/vim-snippets'
-NeoBundle 'chrisgillis/vim-bootstrap3-snippets'
 
 " neosnippet "{{{
  " Plugin key-mappings.
