@@ -1,0 +1,49 @@
+snippet if
+options word
+  {{#if ${1}}}
+  ${0:TARGET}
+  {{/if}}
+
+snippet unless
+options word
+  {{#unless ${1}}}
+  ${0:TARGET}
+  {{/unless}}
+
+snippet each
+options word
+  {{#each ${1}}}
+  ${0:TARGET}
+  {{/each}}
+
+snippet eachelse
+options word
+  {{#each ${1}}}
+  ${2}
+  {{else}}
+  ${3}
+  {{/each}}
+
+snippet with
+options word
+  {{#with ${1}}}
+  ${0:TARGET}
+  {{/with}}
+
+snippet withelse
+options word
+  {{#with ${1}}}
+  ${2}
+  {{else}}
+  ${3}
+  {{/with}}
+
+snippet lookup
+options word
+  {{lookup ${1}}}
+
+snippet log
+options word
+  {{log ${1}}}
+
+
