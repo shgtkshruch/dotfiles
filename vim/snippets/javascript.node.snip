@@ -1,0 +1,67 @@
+snippet http#get
+abbr http.get
+alias hget
+options word
+  http.get(${1:#:url}, function (${2:#:arg}) {
+    ${3}
+  });
+
+snippet on#event
+alias on
+options word
+  on('${1:#:event}', function (${2:#:arg}) {
+    ${3}
+  });
+
+snippet callforeach
+abbr [].forEach.call
+alias eachc
+options word
+  [].forEach.call(${1:#:array like object}, function (${2:#:arg}) {
+    ${3}
+  });
+
+snippet appget
+  ${1:app}.get('${2}', function (req, res) {
+    ${3}
+  });
+
+snippet appuse
+  ${1:app}.use(function (req, res, next) {
+    ${3}
+  });
+
+snippet appset
+  app.set('${1}', ${2});
+
+snippet appengine
+  app.engine('${1}', ${2});
+
+snippet suite
+  suite('${1}', function () {
+    ${2} 
+  });
+
+snippet test
+  test('${1}', function (done) {
+    ${2}
+  });
+
+snippet assert
+  assert(${1});
+
+snippet expect
+  expect(${1});
+
+snippet io
+options word
+  io.on('connetction', function (socket) {
+    ${1}
+  });
+
+snippet socket
+options word
+  socket.on('${1:event}', function (socket) {
+    ${2}
+  });
+

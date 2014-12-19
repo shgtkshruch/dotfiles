@@ -1,15 +1,168 @@
+snippet usestrict
+abbr use strict mode
+  'use strict';
+
 snippet var
 abbr variable
 options word
   var ${1:#:variavle name} = ${2:#:contents};
 
-snippet fun
+
+# Function
+
+snippet function
 abbr function
-alias    fu fun func
 options word
-  function ${1:#:function_name}(${2:#:arg}) {
+  function ${1:#:function_name} (${2:#:arg}) {
+    'use strict';
+
     ${3}
   }
+
+snippet immediate_function
+abbr immediate function
+  (function(${1}) {
+    ${0}
+  }(${2}));
+
+snippet generator
+abbr generator function
+  function *(${1:#:arg}) {
+    'use strict';
+
+    ${2}
+  }
+
+
+# Flow control
+
+snippet if
+options head
+  if (${1:true}) {
+    ${0:TARGET}
+  }
+
+snippet if-else
+abbr ife
+options head
+  if (${1:#:condition}) {
+    ${0:TARGET}
+  } else {
+  }
+
+snippet for
+options head
+  for (var ${1:i}=0; l < ${2:#:Things}.length; i < l; $1++) {
+    ${0:TARGET}
+  }
+
+snippet forin
+options head
+  for (var ${1:i} in ${2:#:Things}) {
+    ${0:TARGET}
+  }
+
+snippet while
+	while (${1:/* condition */}) {
+		${0}
+	}
+
+snippet do_while
+	do {
+		${0}
+	} while (${1:/* condition */});
+
+snippet switch
+options indent
+  switch (${1:expression}) {
+  case '${3:case}':
+    ${4}
+    break;
+  ${0}
+    default:
+     ${2}
+	}
+
+snippet case
+	case '${1:case}':
+		${2}
+		break;
+	${0}
+
+snippet try
+	try {
+		${1}
+	} catch (${2:e}) {
+		${0:/* handle error */}
+	}
+
+snippet setTimeout
+options head
+  setTimeout(function() {
+    ${0}
+  }, ${1:10});
+
+
+# Documentation
+
+# docstring
+snippet /**
+	/**
+	 * ${0:description}
+	 *
+	 */
+
+snippet @par
+	@param {${1:type}} ${2:name} ${0:description}
+
+snippet @ret
+	@return {${1:type}} ${0:description}
+
+
+# JSON
+
+snippet JSON_parse
+	JSON.parse(${1:jstr});${2}
+
+snippet JSON_stringify
+	JSON.stringify(${1:object});${2}
+
+
+# DOM selectors
+
+snippet getElementById
+	var ${1:#:variable} = document.getElementById('#${2:#:id selector}');${3}
+
+snippet getElementsByClassName
+	var ${1:#:variable} = document.getElementsByClassName('.${2:#:class selector}');${3}
+
+snippet queryselector
+  var ${1:#:variable} = document.querySelector('${2:#:selector}');${3}
+
+snippet queryselectorall
+  var ${1:#:variable} = document.querySelectorAll('${2:#:selector}');${3}
+
+
+# Event
+
+snippet addEventListener
+  ${1:#:target}.addEventListener('${2:#:type}', ${3:#:listener}, ${4:false});${5}
+
+
+# XMLHttpRequest
+
+snippet XMLHttpRequest
+  var ${1:req} = new XMLHttpRequest();${2}
+
+snippet open
+abbr XHR open
+  ${1:req}.open('${2:GET}', '${3:#:path}', ${4:true});${5}
+
+snippet send
+abbr XHR send
+  ${1:req}.send();${2}
+
+# Debugging
 
 snippet log
 abbr console.log
@@ -26,69 +179,3 @@ abbr console.error
 options word
   console.error(${1});
 
-snippet http#get
-abbr http.get
-alias hget
-options word
-  http.get(${1:#:url}, function (${2:#:arg}) {
-    ${3}
-  });
-
-snippet on#event
-alias on
-options word
-  on('${1:#:event}', function (${2:#:arg}) {
-    ${3}
-  });
-
-snippet callforeach
-abbr [].forEach.call
-alias eachc
-options word
-  [].forEach.call(${1:#:array like object}, function (${2:#:arg}) {
-    ${3}
-  });
-
-snippet appget
-  ${1:app}.get('${2}', function (req, res) {
-    ${3}
-  });
-
-snippet appuse
-  ${1:app}.use(function (req, res, next) {
-    ${3}
-  });
-
-snippet appset
-  app.set('${1}', ${2});
-
-snippet appengine
-  app.engine('${1}', ${2});
-
-snippet suite
-  suite('${1}', function () {
-    ${2} 
-  });
-
-snippet test
-  test('${1}', function (done) {
-    ${2}
-  });
-
-snippet assert
-  assert(${1});
-
-snippet expect
-  expect(${1});
-
-snippet io
-options word
-  io.on('connetction', function (socket) {
-    ${1}
-  });
-
-snippet socket
-options word
-  socket.on('${1:event}', function (socket) {
-    ${2}
-  });
