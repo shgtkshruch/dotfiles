@@ -13,15 +13,14 @@ options word
 snippet function
 abbr function
 options word
-  function ${1:#:function_name} (${2:#:arg}) {
-    'use strict';
-
+  function ${1:#:function_name}(${2:#:arg}) {
     ${3}
   }
 
 snippet immediate_function
 abbr immediate function
   (function(${1}) {
+    'use strict';
     ${0}
   }(${2}));
 
@@ -162,6 +161,7 @@ snippet send
 abbr XHR send
   ${1:req}.send();${2}
 
+
 # Debugging
 
 snippet log
@@ -178,4 +178,27 @@ snippet error
 abbr console.error
 options word
   console.error(${1});
+
+snippet alert
+abbr alert
+options word
+  alert(${1});
+
+
+# Backbone.js
+
+snippet backboneModel
+abbr Bacbone Model
+options word
+  var ${1} = Backbone.Model.extend({${2}});
+
+snippet backboneView
+abbr Bacbone View
+options word
+  var ${1} = Backbone.View.extend({${2}});
+
+snippet backboneCollection
+abbr Bacbone Collection
+options word
+  var ${1} = Backbone.Collection.extend({${2}});
 
