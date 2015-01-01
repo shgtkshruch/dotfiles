@@ -1320,6 +1320,7 @@ inoremap <C-e> <Esc>$a
 inoremap <C-a> <Esc>^i
 inoremap <C-w> <Esc>Wi
 inoremap <C-b> <Esc>Bi
+inoremap <C-l> <Esc>li
 
 " Emmet comment for slim
 " inoremap <C-y>, <Esc>yypI/! <Esc>A end<Esc><<O
