@@ -923,12 +923,12 @@ NeoBundle 'tpope/vim-endwise'
 " https://github.com/tpope/vim-fugitive
 NeoBundle 'tpope/vim-fugitive'
 
-nnoremap gs :Gstatus<CR>
-nnoremap ga :Git add .<CR>
-nnoremap gc :Git commit<CR>
-nnoremap gca :Git commit --amend<CR>
-nnoremap gp :Gpush origin master<CR>
-nnoremap gbr :Gbrowse<CR>
+nnoremap <Space>gs :Gstatus<CR>
+nnoremap <Space>ga :Git add .<CR>
+nnoremap <Space>gc :Git commit<CR>
+nnoremap <Space>gca :Git commit --amend<CR>
+nnoremap <Space>gp :Gpush origin master<CR>
+nnoremap <Space>gbr :Gbrowse<CR>
 "}}}
 
 " commita.vim "{{{
