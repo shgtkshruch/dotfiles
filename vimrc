@@ -237,6 +237,13 @@ vmap <Space> <Plug>(EasyAlign)
 NeoBundle 'tpope/vim-surround'
 "}}}
 
+" vim-better-whitespace  "{{{
+" https://github.com/ntpeters/vim-better-whitespace
+
+NeoBundle 'ntpeters/vim-better-whitespace'
+
+"}}}
+
 " syntax  "{{{
 NeoBundle 'scrooloose/syntastic.git'
 
@@ -1435,6 +1442,12 @@ augroup END
 augroup numberwidth
     autocmd!
     autocmd BufEnter,WinEnter,BufWinEnter * let &l:numberwidth = len(line("$")) + 2
+augroup END
+
+" To clean extra whitespace using vim-better-whitespace
+augroup claen_extra_whitespace
+    autocmd!
+    autocmd BufWritePre * :StripWhitespace
 augroup END
 
 "}}}
