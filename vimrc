@@ -251,7 +251,7 @@ NeoBundle 'scrooloose/syntastic.git'
 " https://github.com/othree/html5.vim
 NeoBundleLazy 'othree/html5.vim', {
       \ 'autoload' : {
-      \   'filetypes' : 'html'
+      \   'filetypes' : ['html']
       \ }
       \}
 "}}}
@@ -289,7 +289,7 @@ NeoBundleLazy 'wavded/vim-stylus', {
 
 NeoBundleLazy 'digitaltoad/vim-jade', {
       \ 'autoload' : {
-      \   'filetypes' : 'jade'
+      \   'filetypes' : ['jade']
       \ }
       \}
 "}}}
@@ -299,7 +299,7 @@ NeoBundleLazy 'digitaltoad/vim-jade', {
 
 NeoBundleLazy 'tpope/vim-haml', {
       \ 'autoload' : {
-      \   'filetypes' : 'haml'
+      \   'filetypes' : ['haml']
       \ }
       \}
 "}}}
@@ -309,7 +309,7 @@ NeoBundleLazy 'tpope/vim-haml', {
 
 NeoBundleLazy 'slim-template/vim-slim', {
       \ 'autoload' : {
-      \   'filetypes' : 'slim'
+      \   'filetypes' : ['slim']
       \ }
       \}
 "}}}
@@ -319,7 +319,7 @@ NeoBundleLazy 'slim-template/vim-slim', {
 
 NeoBundleLazy 'kchmck/vim-coffee-script', {
       \ 'autoload' : {
-      \   'filetypes' : 'coffee'
+      \   'filetypes' : ['coffee']
       \ }
       \}
 
@@ -336,7 +336,7 @@ nnoremap <silent><C-C> :CoffeeCompile vert <CR><C-w>h
 
 NeoBundleLazy 'nono/vim-handlebars', {
       \ 'autoload' : {
-      \   'filetypes' : 'hbs'
+      \   'filetypes' : ['hbs']
       \ }
       \}
 "}}}
@@ -346,7 +346,7 @@ NeoBundleLazy 'nono/vim-handlebars', {
 
 NeoBundleLazy 'tpope/vim-markdown', {
       \ 'autoload' : {
-      \   'filetypes' : 'md'
+      \   'filetypes' : ['md']
       \ }
       \}
 "}}}
@@ -478,13 +478,7 @@ nnoremap <Space>sp y:OverCommandLine<CR>%s!<C-r>=substitute(@0, '!', '\\!', 'g')
 
 NeoBundleLazy 'Lokaltog/vim-easymotion', {
       \ 'autoload' : {
-      \   'mappings' : [
-      \     '<Plug>(easymotion-prefix)',
-      \     '<Plug>(easymotion-tn)',
-      \     '<Plug>(easymotion-sn)',
-      \     '<Plug>(easymotion-next)',
-      \     '<Plug>(easymotion-prev)'
-      \   ]
+      \   'mappings' : ['<Plug>(easymotion-']
       \ }
       \}
 
@@ -520,7 +514,7 @@ unlet s:bundle
 
 NeoBundleLazy 'haya14busa/incsearch.vim', {
       \ 'autoload': {
-      \   'mappings': ['<Plug>(incsearch-)'],
+      \   'mappings': ['<Plug>(incsearch-']
       \ }
       \}
 
@@ -901,7 +895,7 @@ NeoBundle 'tomtom/tcomment_vim'
 
 NeoBundleLazy 'kana/vim-submode', {
       \ 'autoload': {
-      \   'functions': 'submode#enter_with'
+      \   'functions': ['submode#enter_with']
       \ }
       \}
 
@@ -961,11 +955,11 @@ endfunction
 "}}}
 
 " open-browser  "{{{
-" https://github.com/tyru/open-browser.vim/blob/master/doc/openbrowser.txt
+" https://github.com/tyru/open-browser.vim
 
 NeoBundleLazy 'tyru/open-browser.vim', {
       \ 'autoload' : {
-      \   'mappings' : ['<Plug>(openbrowser-smart-search)', '<Plug>(openbrowser-search)']
+      \   'mappings' : ['<Plug>(openbrowser-']
       \ }
       \}
 
@@ -1051,7 +1045,7 @@ unlet s:bundle
 
 NeoBundleLazy 'AndrewRadev/switch.vim', {
       \ 'autoload' : {
-      \   'commands' : 'Switch'
+      \   'commands' : ['Switch']
       \ }
       \}
 
@@ -1132,7 +1126,7 @@ augroup END
 
 NeoBundleLazy 'itchyny/calendar.vim', {
       \ 'autoload' : {
-      \   'commands' : 'Calendar'
+      \   'commands' : ['Calendar']
       \ }
       \}
 
