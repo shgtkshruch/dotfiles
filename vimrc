@@ -515,6 +515,39 @@ unlet s:bundle
 
 "}}}
 
+" incsearch.vim  "{{{
+" https://github.com/haya14busa/incsearch.vim
+
+NeoBundleLazy 'haya14busa/incsearch.vim', {
+      \ 'autoload': {
+      \   'mappings': ['<Plug>(incsearch-)'],
+      \ }
+      \}
+
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+let s:bundle = neobundle#get('incsearch.vim')
+function! s:bundle.hooks.on_source(bundle)
+
+  set hlsearch
+  let g:incsearch#auto_nohlsearch = 1
+
+  map n  <Plug>(incsearch-nohl-n)
+  map N  <Plug>(incsearch-nohl-N)
+  map *  <Plug>(incsearch-nohl-*)
+  map #  <Plug>(incsearch-nohl-#)
+  map g* <Plug>(incsearch-nohl-g*)
+  map g# <Plug>(incsearch-nohl-g#)
+
+  let g:incsearch#emacs_like_keymap = 1
+
+endfunction
+unlet s:bundle
+
+"}}}
+
 " clever-f.vim  "{{{
 " https://github.com/rhysd/clever-f.vim
 " http://rhysd.hatenablog.com/entry/2013/09/17/220837
