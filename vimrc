@@ -954,6 +954,19 @@ function! g:committia_hooks.edit_open(info)
 endfunction
 "}}}
 
+" Agit.vim "{{{
+" https://github.com/cohama/agit.vim
+" http://qiita.com/c0hama/items/05fadf117c605aa8b592
+" http://qiita.com/c0hama/items/99a6f92323ca5e6fb730
+
+NeoBundleLazy 'cohama/agit.vim', {
+      \ 'autoload': {
+      \   'commands': ['Agit-']
+      \ }
+      \}
+
+"}}}
+
 " open-browser  "{{{
 " https://github.com/tyru/open-browser.vim
 
