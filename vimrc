@@ -331,6 +331,13 @@ nnoremap <silent><C-C> :CoffeeCompile vert <CR><C-w>h
 
 "}}}
 
+" vim-php
+NeoBundleLazy 'StanAngeloff/php.vim', {
+      \ 'autoload': {
+      \   'filetypes': 'php'
+      \ }
+      \}
+
 " vim-handlebars  "{{{
 " https://github.com/nono/vim-handlebars
 
