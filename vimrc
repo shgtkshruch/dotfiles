@@ -1465,6 +1465,33 @@ set helplang=ja,en
 
 "}}}
 
+" language"{{{
+
+" php
+
+" 文字列中でSQL構文ハイライト
+let php_sql_query = 1
+
+" Baselibメソッドのハイライト
+let php_baselib = 1
+
+" 文字列中でHTML構文ハイライト
+let php_htmlInStrings = 1
+
+" ショートタグを無効化したいなら: >
+let php_noShortTags = 1
+
+" ] や ) の対応エラーをハイライト
+let php_parent_error_close = 1
+
+" 対応する閉じ括弧がない開き括弧 ( や [ が存在する場合、php終了タグをスキップ
+let php_parent_error_open = 1
+
+" クラスや関数の折り畳みを有効
+let php_folding = 1
+
+"}}}
+
 " autocmd  "{{{
 
 augroup leav_paste_mode
