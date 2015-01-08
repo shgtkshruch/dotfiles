@@ -245,7 +245,7 @@ NeoBundle 'ntpeters/vim-better-whitespace'
 "}}}
 
 " syntax  "{{{
-NeoBundle 'scrooloose/syntastic.git'
+NeoBundle 'scrooloose/syntastic'
 
 " html5.vim  "{{{
 " https://github.com/othree/html5.vim
