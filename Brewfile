@@ -48,6 +48,7 @@ install imagemagick || true
 install unrar || true
 install unar || true
 install ansible || true
+install packer || true
 install awscli || true
 install jq || true
 install gnu-sed || true
