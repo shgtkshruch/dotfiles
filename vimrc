@@ -13,7 +13,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundleLazy 'mattn/emmet-vim', {
       \ 'autoload' : {
-      \   'filetypes' : ['css', 'html', 'slim', 'haml', 'jade', 'scss', 'sass', 'less', 'stylus', 'php']
+      \   'filetypes' : ['css', 'html', 'php', 'slim', 'haml', 'jade', 'scss', 'sass', 'less', 'stylus']
       \ }
       \}
 
