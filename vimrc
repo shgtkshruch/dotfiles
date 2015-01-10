@@ -1495,7 +1495,10 @@ let php_parent_error_close = 1
 let php_parent_error_open = 1
 
 " クラスや関数の折り畳みを有効
-let php_folding = 1
+let php_folding = 0
+
+" すべてのPHPの行に対してインデントをする
+let g:PHP_default_indenting = 1
 
 "}}}
 
