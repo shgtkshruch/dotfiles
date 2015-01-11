@@ -1279,6 +1279,7 @@ call submode#map('changetab', 'n', '', 'p', 'gT')
 " NORMAL MODE
 nnoremap <Space>s. :<C-u>source $MYVIMRC<Enter>
 nnoremap <Space>. :<C-u>edit $MYVIMRC<Enter>
+
 nnoremap j gj
 nnoremap k gk
 nnoremap gj j
@@ -1361,9 +1362,11 @@ inoremap <C-k> <Up>
 inoremap <C-h> <Left>
 inoremap <C-l> <Right>
 
-" insert semicolon
+" insert synbol
 inoremap ;<CR> <end>;
 inoremap ;;<CR> <C-e><down><end>;
+inoremap ,<CR> <end>,
+inoremap :<CR> <end>:
 
 " VISUAL MODE
 vnoremap <silent> > >gv
