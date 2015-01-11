@@ -312,7 +312,7 @@ function peco_ghq () {
 
 function peco_history () {
   # history | sort -r | sed -re 's/^\s+[0-9]+\s{2}//' | peco | bash
-  $(history | sort -r | sed -re 's/^\s+[0-9]+\s{2}//' | peco)
+  $(history | sort -r | sed -re 's/^\s+[0-9]+\s{2}//' | awk '!a[$0]++' | peco)
 }
 
 function peco_vim_open () {
