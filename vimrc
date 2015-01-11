@@ -1336,12 +1336,18 @@ nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR> " バッファ一覧を表�
 " http://vim-users.jp/2009/08/hack62/
 nnoremap <expr> s* ':%substitute/\<' . expand('<cword>') . '\>/'
 
+
+
 " Insert Mode
-inoremap <C-e> <Esc>$a
-inoremap <C-a> <Esc>^i
-inoremap <C-w> <Esc>Wi
-inoremap <C-b> <Esc>Bi
-inoremap <C-l> <Esc>li
+
+" 挿入モードでのカーソル移動
+inoremap <C-f> <C-o>l
+inoremap <C-b> <C-o>h
+inoremap <C-j> <C-o>j
+inoremap <C-k> <C-o>k
+inoremap <C-e> <C-o>A
+inoremap <C-a> <C-o>I
+inoremap <C-w> <C-o>W
 
 " Emmet comment for slim
 " inoremap <C-y>, <Esc>yypI/! <Esc>A end<Esc><<O
@@ -1355,12 +1361,6 @@ inoremap <silent> kk <ESC>
 " 行頭・行末移動方向をキーの相対位置にあわせる
 " nnoremap 0 $
 " nnoremap 1 0
-
-" 挿入モードでのカーソル移動
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-h> <Left>
-inoremap <C-l> <Right>
 
 " insert synbol
 inoremap ;<CR> <end>;
