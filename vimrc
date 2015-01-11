@@ -1401,11 +1401,12 @@ set number         " 行番号を表示する
 set laststatus=2   " ステータス行を常に表示
 set cmdheight=1    " メッセージ表示欄を2行確保
 set showmatch      " 対応する括弧を強調表示
-set helpheight=999 " ヘルプを画面いっぱいに開く
+set matchtime=1 "showmatch時のカーソルが飛ぶ時間を0.1秒の何倍かで設定
 " set list           " 不可視文字を表示
 " set listchars=tab:▸\ ,eol:↲,extends:❯,precedes:❮ " 不可視文字の表示記号指定
 set foldmethod=marker " {{{}}}でフォールディング（折りたたみ）を有効
 set showcmd   " 入力途中のコマンドをウィンドウの右下に表示
+set display=lastline " 一行の文字数が多くても描画
 
 " タブ/インデントの設定
 
@@ -1443,39 +1444,29 @@ set wrapscan   " 最後尾まで検索を終えたら次の検索で先頭に移
 
 " 動作環境との統合関連の設定
 
-" OSのクリップボードをレジスタ指定無しで Yank, Put 出来るようにする
-set clipboard+=unnamed,unnamedplus
-" マウスの入力を受け付ける
-set mouse=a
-" Windows でもパスの区切り文字を / にする
-" set shellslash
-" インサートモードから抜けると自動的にIMEをオフにする
-" set iminsert=2
-" ドラッグを有効
-set ttymouse=xterm2
-" 自動補完を有効
-set omnifunc=syntaxcomplete#Complete
-" 数値の形式を10進数に設定
-set nrformats=
+set clipboard+=unnamed,unnamedplus " OSのクリップボードをレジスタ指定無しで Yank, Put 出来るようにする
+set mouse=a " マウスの入力を受け付ける
+" set shellslash " Windows でもパスの区切り文字を / にする
+" set iminsert=2 " インサートモードから抜けると自動的にIMEをオフにする
+set ttymouse=xterm2 " ドラッグを有効
+set omnifunc=syntaxcomplete#Complete " 自動補完を有効
+set pumheight=10 " 補完メニューの高さ
+set nrformats= " 数値の形式を10進数に設定
 
 " コマンドラインの設定
 
-" コマンドラインモードでTABキーによるファイル名補完を有効にする
-" set wildmenu wildmode=list:longest,full
-" コマンドラインの履歴を10000件保存する
-" set history=10000
+set wildmenu wildmode=list:longest,full " コマンドラインモードでTABキーによるファイル名補完を有効にする
+" set history=10000 " コマンドラインの履歴を10000件保存する
 
 " ビープの設定
 
 set visualbell t_vb= "ビープ音すべてを無効にする
 set noerrorbells "エラーメッセージの表示時にビープを鳴らさない
 
-" :help コマンドで日本語の優先順位をあげる
-set helplang=ja,en
-" 英語ヘルプを読みたい場合は以下のようにします
-" :help @en
+" HELPの設定
 
-" 色
+set helplang=ja,en " :help コマンドで日本語の優先順位をあげる。英語ヘルプを読みたい場合は :help @en
+set helpheight=999 " ヘルプを画面いっぱいに開く
 
 "}}}
 
