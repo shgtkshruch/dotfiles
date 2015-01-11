@@ -1347,7 +1347,11 @@ inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
 inoremap <C-e> <C-o>A
 inoremap <C-a> <C-o>I
-inoremap <C-w> <C-o>W
+
+" 挿入モードで文字列の削除
+inoremap <C-w> <Esc>bdwa
+inoremap <C-u> <Esc>d0
+inoremap <C-k> <C-o>C
 
 " Emmet comment for slim
 " inoremap <C-y>, <Esc>yypI/! <Esc>A end<Esc><<O
