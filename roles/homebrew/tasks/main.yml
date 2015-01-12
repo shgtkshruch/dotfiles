@@ -21,7 +21,7 @@
   homebrew_cask: name={{ item }}
   with_items: homebrew.casks
   ignore_errors: true
-  tags: csak
+  tags: cask
 
 - name: Install alfred
   homebrew_cask: name=alfred

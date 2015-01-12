@@ -82,18 +82,20 @@ homebrew:
     - opera
     - provisionql
     - qlcolorcode
-    - qlstephen
+    - qlimagesize
     - qlmarkdown
-    - quicklook-json
+    - qlstephen
     - qlprettypatch
     - quicklook-csv
+    - quicklook-json
     - skype
     - simple-comic
     - sublime-text
+    - suspicious-package
     - the-unarchiver
     - tinkertool
     - vagrant
     - virtualbox
     - vmware-fusion
     - vlc
-    - webp-quicklook
+    - webpquicklook
