@@ -17,10 +17,6 @@
   ignore_errors: true
   tags: brew
 
-- name: Install Vim
-  homebrew: name=vim install_options=with-lua,with-python,with-perl,with-ruby
-  tags: vim
-
 - name: Install Homebrew cask packages
   homebrew_cask: name={{ item }}
   with_items: homebrew.casks
