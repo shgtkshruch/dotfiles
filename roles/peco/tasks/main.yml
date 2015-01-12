@@ -1,0 +1,3 @@
+---
+- name: Create synbolic link
+  file: src=config.json dest=~/.peco/config.json state=link force=yes

@@ -4,4 +4,6 @@
   gather_facts: no
   sudo: no
   roles:
+    - dotfiles
+    - peco
     - homebrew
