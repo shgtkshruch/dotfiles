@@ -1,0 +1,4 @@
+---
+- name: alfred link
+  command: brew cask alfred link
+

@@ -1,0 +1,35 @@
+---
+- name: Update homebrew
+  command: brew update
+
+- name: Tap Homebrew repositories
+  homebrew_tap: name={{ item }}
+  with_items: homebrew.taps
+  ignore_errors: true
+  tags: tap
+
+- name: Install Homebrew cask
+  command: brew install caskroom/cask/brew-cask
+
+- name: Install Homebrew packages
+  homebrew: name={{ item }}
+  with_items: homebrew.packages
+  ignore_errors: true
+  tags: brew
+
+- name: Install Vim
+  homebrew: name=vim install_options=with-lua,with-python,with-perl,with-ruby
+  tags: vim
+
+- name: Install Homebrew cask packages
+  homebrew_cask: name={{ item }}
+  with_items: homebrew.casks
+  ignore_errors: true
+  tags: csak
+
+- name: Install alfred
+  homebrew_cask: name=alfred
+  notify: alfred link
+
+- name: Clean up
+  command: brew cleanup
