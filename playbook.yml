@@ -5,6 +5,7 @@
   sudo: no
   roles:
     - dotfiles
+    - karabiner
     - peco
     - vim
     - homebrew
