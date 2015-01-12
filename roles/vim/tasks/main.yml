@@ -1,0 +1,15 @@
+---
+- name: Crete synbolic link
+  file: src=vimrc dest=~/.vimrc state=link force=yes
+
+- name: Create directory for snippet
+  file: path=~/.vim/snippets/ state=directory
+
+- name: Snippets
+  file: src={{ item }} dest=~/.vim/snippets/{{ item | basename}} state=link force=yes
+  with_fileglob:
+    - ./vim/snippets/*
+
+- name: neobundle
+  git: repo=https://github.com/Shougo/neobundle.vim dest=~/.vim/bundle/neobundle.vim
+

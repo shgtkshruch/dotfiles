@@ -6,4 +6,5 @@
   roles:
     - dotfiles
     - peco
+    - vim
     - homebrew
