@@ -99,3 +99,13 @@ homebrew:
     - vmware-fusion
     - vlc
     - webpquicklook
+
+npm:
+  - bower
+  - gulp
+  - grunt
+  - yo
+
+gem:
+  - sass
+  - compass
