@@ -56,6 +56,7 @@ homebrew:
     - zsh
 
   casks:
+    - 1password
     - adobe-air
     - atom
     - dash
@@ -74,10 +75,9 @@ homebrew:
     - imageoptim
     - istat-menus
     - iterm2
-    - keyremap4macbook
+    - karabiner
     - lastfm
     - nitrous-desktop
-    - onepassword
     - onyx
     - opera
     - provisionql
