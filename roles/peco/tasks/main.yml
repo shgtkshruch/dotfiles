@@ -1,3 +1,7 @@
 ---
+- name: Create directory
+  file: path=~/.peco state=directory
+
 - name: Create synbolic link
-  file: src=config.json dest=~/.peco/config.json state=link force=yes
+  file: src={{ item }} dest=~/.peco/{{ item | basename }} state=link force=yes
+  with_fileglob: ./*
