@@ -5,6 +5,12 @@ source ~/.awsinit
 source ~/.githubinit
 #}}}
 
+# docker #{{{
+if [ "`boot2docker status`" = "running" ]; then
+  $(boot2docker shellinit 2>/dev/null)
+fi
+#}}}
+
 # bash_prompt #{{{
 # Bash prompt customization
 # https://gist.github.com/jmblog/d8f73c00f2705717940a
