@@ -19,7 +19,7 @@
 
 - name: Install Docker
   homebrew: name={{ item }}
-  with_items: docker
+  with_items: homebrew.docker
   notify: Initialize boot2docker
   tags: docker
 

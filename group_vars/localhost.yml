@@ -55,6 +55,11 @@ homebrew:
     - z
     - zsh
 
+  docker:
+    - boot2docker
+    - docker
+    - fig
+
   casks:
     - 1password
     - adobe-air
@@ -99,10 +104,6 @@ homebrew:
     - vmware-fusion
     - vlc
     - webpquicklook
-
-docker:
-  - boot2docker
-  - docker
 
 npm:
   - bower
