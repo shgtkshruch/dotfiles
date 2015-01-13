@@ -107,5 +107,6 @@ npm:
   - yo
 
 gem:
-  - sass
+  - bundler
   - compass
+  - sass
