@@ -4,10 +4,10 @@
   gather_facts: no
   sudo: no
   roles:
-    - dotfiles
-    - karabiner
-    - peco
-    - {role: vim, tags: ['vim']}
-    - homebrew
-    - docker
-    - packages
+    - { role: dotfiles, tags: ['dotfile'] }
+    - { role: karabiner, tags: ['karabiner'] }
+    - { role: peco, tags: ['peco'] }
+    - { role: vim, tags: ['vim'] }
+    - { role: homebrew, tags: ['homebrew'] }
+    - { role: docker, tags: ['docker'] }
+    - { role: packages: tags: ['package'] }
