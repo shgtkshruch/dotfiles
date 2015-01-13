@@ -2,3 +2,5 @@
 - name: alfred link
   command: brew cask alfred link
 
+- name: Initialize boot2docker
+  shell: boot2docker init && boot2docker start

@@ -9,5 +9,4 @@
     - { role: peco, tags: ['peco'] }
     - { role: vim, tags: ['vim'] }
     - { role: homebrew, tags: ['homebrew'] }
-    - { role: docker, tags: ['docker'] }
-    - { role: packages: tags: ['package'] }
+    - { role: packages, tags: ['package'] }
