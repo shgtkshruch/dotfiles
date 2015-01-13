@@ -3,7 +3,9 @@
   homebrew: name=vim install_options=with-lua,with-python,with-perl,with-ruby
 
 - name: Crete synbolic link
-  file: src=vimrc dest=~/.vimrc state=link force=yes
+  file: src={{ item }} dest=~/.vimrc state=link force=yes
+  with_fileglob:
+    - ./*
 
 - name: Create directory for snippet
   file: path=~/.vim/snippets/ state=directory
