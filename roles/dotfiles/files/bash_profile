@@ -249,25 +249,11 @@ export HISTSIZE=10000
 complete -C aws_completer aws
 #}}}
 
-# bash_completion #{{{
-if [ -f /usr/local/etc/bash_completion ]; then
-  . /usr/local/etc/bash_completion
-fi
+# bash-completion #{{{
 
-if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
-  source /usr/local/etc/bash_completion.d/git-completion.bash
-fi
-
-if [ -f /usr/local/etc/bash_completion.d/rails.bash ]; then
-  source /usr/local/etc/bash_completion.d/rails.bash
-fi
-
-if [ -f /usr/local/etc/bash_completion.d/vagrant ]; then
-  source /usr/local/etc/bash_completion.d/vagrant
-fi
-
-if [ -f /usr/local/etc/bash_completion.d/hub.bash_completion.sh ]; then
-  source /usr/local/etc/bash_completion.d/hub.bash_completion.sh
+# bash-completion1.3
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
 fi
 #}}}
 
