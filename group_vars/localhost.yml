@@ -107,7 +107,7 @@ homebrew:
 
 npm:
   - bower
-  - gulp
+  - gulp-cli
   - grunt
   - yo
 
