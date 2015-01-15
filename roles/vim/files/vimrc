@@ -331,12 +331,27 @@ nnoremap <silent><C-C> :CoffeeCompile vert <CR><C-w>h
 
 "}}}
 
-" vim-php
+" vim-php "{{{
 NeoBundleLazy 'StanAngeloff/php.vim', {
       \ 'autoload': {
       \   'filetypes': 'php'
       \ }
       \}
+"}}}
+
+" PHP-Indenting-for-Vim "{{{
+NeoBundleLazy '2072/PHP-Indenting-for-Vim', {
+      \ 'autoload': {
+      \   'filetypes': 'php'
+      \ }
+      \}
+
+let s:bundle = neobundle#get('PHP-Indenting-for-Vim')
+function! s:bundle.hooks.on_source(bundle)
+  let g:PHP_default_indenting = 0
+endfunction
+unlet s:bundle
+"}}}
 
 " vim-handlebars  "{{{
 " https://github.com/nono/vim-handlebars
@@ -1496,7 +1511,7 @@ let php_parent_error_open = 1
 let php_folding = 0
 
 " すべてのPHPの行に対してインデントをする
-let g:PHP_default_indenting = 1
+let g:PHP_default_indenting = 0
 
 "}}}
 
