@@ -129,7 +129,7 @@ snippet class_with_constructor
 
 snippet class
 options head
-	class ${2:#:ClassName} {
+	class ${1:#:ClassName} {
 		${0:TARGET}
 	}
 
@@ -217,11 +217,13 @@ snippet here
 	${2:TARGET:#:content here}
 	$1;
 
-snippet inc
+snippet include
+abbr include
 options head
 	include '${1:#:file}';${0}
 
-snippet inco
+snippet includeonce
+abbr include_once
 options head
 	include_once '${1:#:file}';${0}
 
@@ -7612,14 +7614,6 @@ snippet in_array
 abbr 配列に値があるかチェックする
   in_array(${1:$needle}, ${2:$haystack}, ${3:$strict})
 
-snippet include_once
-abbr include_once
-  include_once()
-
-snippet include
-abbr include
-  include()
-
 snippet inclued_get_data
 abbr inclued データを取得する
   inclued_get_data()
@@ -7966,7 +7960,7 @@ abbr is_writable()のエイリアス
 
 snippet isset
 abbr 変数がセットされていること、そして NULL でないことを検査する
-  isset(${1:$var}, ${2:$...})
+  isset(${1:$var})
 
 snippet iterator_apply
 abbr ユーザー関数をイテレータのすべての要素でコールする
@@ -18423,10 +18417,6 @@ abbr  UTF-8 エンコードされた ISO-8859-1 文字列をシングルバイ�
 snippet utf8_encode
 abbr ISO-8859-1 文字列を UTF-8 にエンコードする
   utf8_encode(${1:$data})
-
-snippet var_dump
-abbr  変数に関する情報をダンプする
-  var_dump(${1:$expression}, ${2:$...})
 
 snippet var_export
 abbr  変数の文字列表現を出力または返す
