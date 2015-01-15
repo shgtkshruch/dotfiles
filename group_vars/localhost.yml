@@ -21,6 +21,7 @@ homebrew:
     - bash-completion
     - casperjs
     - cliclick
+    - ctags
     - ghq
     - git
     - gitsh
