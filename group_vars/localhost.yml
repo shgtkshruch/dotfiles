@@ -94,6 +94,7 @@ homebrew:
     - qlprettypatch
     - quicklook-csv
     - quicklook-json
+    - sequel-pro
     - skype
     - simple-comic
     - sublime-text
