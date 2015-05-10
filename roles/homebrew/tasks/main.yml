@@ -10,6 +10,7 @@
 
 - name: Install Homebrew cask
   command: brew install caskroom/cask/brew-cask
+  ignore_errors: true
 
 - name: Install Homebrew packages
   homebrew: name={{ item }}
