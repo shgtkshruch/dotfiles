@@ -59,7 +59,7 @@ homebrew:
   docker:
     - boot2docker
     - docker
-    - fig
+    - docker-compose
 
   casks:
     - 1password
