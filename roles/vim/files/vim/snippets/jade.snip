@@ -71,11 +71,9 @@ snippet option
   option(value="${1}") ${2}
 
 snippet for
-  - for (var ${1:i} = 0; $1 < ${2}; $1++) {
+  - for (var ${1:i} = 0; $1 < ${2}; $1++)
     ${3:TARGET}
-  }
 
 snippet each
-  each val, i in ${1} {
-    ${2:TARGET}
-  }
+  each ${1:val}, ${2:i} in ${3}
+    ${4:TARGET}
