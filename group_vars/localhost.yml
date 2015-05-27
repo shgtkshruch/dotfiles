@@ -112,6 +112,7 @@ npm:
   - bower
   - gulp-cli
   - grunt
+  - jshint
   - n
   - yo
 
