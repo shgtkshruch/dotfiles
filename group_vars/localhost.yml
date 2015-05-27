@@ -120,3 +120,4 @@ gem:
   - compass
   - sass
   - serverspec
+  - travis
