@@ -121,4 +121,5 @@ gem:
   - compass
   - sass
   - serverspec
+  - slim
   - travis
