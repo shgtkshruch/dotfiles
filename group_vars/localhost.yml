@@ -76,6 +76,7 @@ homebrew:
     - github
     - google-chrome
     - google-chrome-canary
+    - heroku-toolbelt
     - hyperswitch
     - imagealpha
     - imageoptim

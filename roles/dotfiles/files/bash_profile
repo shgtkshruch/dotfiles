@@ -131,6 +131,9 @@ PS1+="${style_chars}\$ \[${RESET}\]" # $ (and reset color)
 # Path #{{{
 export PATH=/usr/local/bin:$PATH
 # export BUNDLER_EDITOR=vim
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
 # #}}}
 
 # rbenv #{{{
@@ -336,3 +339,4 @@ function aws_delete_subnets () {
 alias adv='aws_delete_vpc'
 alias as='get_subnet_id_from_vpc_id'
 #}}}
+
