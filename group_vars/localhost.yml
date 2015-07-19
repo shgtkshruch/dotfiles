@@ -5,6 +5,7 @@ homebrew:
     - homebrew/versions
     - homebrew/completions
     - homebrew/binary
+    - homebrew/php
     - caskroom/versions
     - caskroom/fonts
     - thoughtbot/formulae
@@ -36,6 +37,8 @@ homebrew:
     - mongodb
     - node
     - packer
+    - php56
+    - composer
     - phantomjs
     - peco
     - pv
