@@ -129,11 +129,14 @@ PS1+="${style_chars}\$ \[${RESET}\]" # $ (and reset color)
 #}}}
 
 # Path #{{{
-export PATH=/usr/local/bin:$PATH
-# export BUNDLER_EDITOR=vim
+export PATH="/usr/local/bin:$PATH"
+
+### Homwbrew
+export PATH="/usr/local/sbin:$PATH"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
 # #}}}
 
 # rbenv #{{{
