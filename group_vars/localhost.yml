@@ -106,7 +106,6 @@ homebrew:
     - suspicious-package
     - the-unarchiver
     - tinkertool
-    - utorrent
     - vagrant
     - virtualbox
     - vmware-fusion
