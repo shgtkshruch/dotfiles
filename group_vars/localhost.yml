@@ -104,6 +104,7 @@ homebrew:
     - simple-comic
     - sublime-text
     - suspicious-package
+    - teleport
     - the-unarchiver
     - tinkertool
     - vagrant
