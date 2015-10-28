@@ -74,6 +74,7 @@ homebrew:
     - dropbox
     - clamxav
     - cyberduck
+    - duet
     - evernote
     - firefox
     - github
