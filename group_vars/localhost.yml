@@ -78,7 +78,7 @@ homebrew:
     - duet
     - evernote
     - firefox
-    - github
+    - github-desktop
     - google-chrome
     - google-chrome-canary
     - heroku-toolbelt
