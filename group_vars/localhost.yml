@@ -16,7 +16,6 @@ homebrew:
 
   packages:
     - ag
-    - ansible
     - awscli
     - bash
     - bash-completion
