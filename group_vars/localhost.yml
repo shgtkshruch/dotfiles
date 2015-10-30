@@ -25,6 +25,7 @@ homebrew:
     - { name: ghq }
     - { name: git }
     - { name: gitsh }
+    - { name: go }
     - { name: googlecl }
     - { name: gnu-sed }
     - { name: hub }
