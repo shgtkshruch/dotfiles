@@ -50,8 +50,6 @@ homebrew:
     - tree
     - trash
     - unrar
-    - unar
-    - vagrant-completion
     - vagrant-completion
     - webkit2png
     - wget
