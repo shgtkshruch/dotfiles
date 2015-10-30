@@ -15,46 +15,47 @@ homebrew:
     - motemen/ghq
 
   packages:
-    - ag
-    - awscli
-    - bash
-    - bash-completion
-    - casperjs
-    - cliclick
-    - ctags
-    - ghq
-    - git
-    - gitsh
-    - googlecl
-    - gnu-sed
-    - hub
-    - imagemagick
-    - jq
-    - lua
-    - markdown
-    - massren
-    - mongodb
-    - node
-    - packer
-    - php56
-    - composer
-    - phantomjs
-    - peco
-    - pv
-    - python
-    - rails-completion
-    - rbenv
-    - rename
-    - ruby-build
-    - tag
-    - tree
-    - trash
-    - unrar
-    - vagrant-completion
-    - webkit2png
-    - wget
-    - z
-    - zsh
+    - { name: ag }
+    - { name: awscli }
+    - { name: bash }
+    - { name: bash-completion }
+    - { name: casperjs }
+    - { name: cliclick }
+    - { name: ctags }
+    - { name: ghq }
+    - { name: git }
+    - { name: gitsh }
+    - { name: googlecl }
+    - { name: gnu-sed }
+    - { name: hub }
+    - { name: imagemagick }
+    - { name: jq }
+    - { name: lua }
+    - { name: markdown }
+    - { name: massren }
+    - { name: mongodb }
+    - { name: node }
+    - { name: packer }
+    - { name: php56 }
+    - { name: composer }
+    - { name: phantomjs }
+    - { name: peco }
+    - { name: pv }
+    - { name: python }
+    - { name: rails-completion }
+    - { name: rbenv }
+    - { name: rename }
+    - { name: ruby-build }
+    - { name: tag }
+    - { name: tree }
+    - { name: trash }
+    - { name: unrar }
+    - { name: vagrant-completion }
+    - { name: vim, install_options: [with-lua, with-python3] }
+    - { name: webkit2png }
+    - { name: wget }
+    - { name: z }
+    - { name: zsh }
 
   docker:
     - boot2docker
