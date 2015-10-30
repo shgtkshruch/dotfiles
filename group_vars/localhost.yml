@@ -80,6 +80,7 @@ homebrew:
     - github-desktop
     - google-chrome
     - google-chrome-canary
+    - google-japanese-ime
     - heroku-toolbelt
     - hyperswitch
     - imagealpha
