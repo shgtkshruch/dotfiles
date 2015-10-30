@@ -55,7 +55,7 @@ homebrew:
     - { name: webkit2png }
     - { name: wget }
     - { name: z }
-    - { name: zsh }
+    - { name: zsh, install_options: without-etcdir }
 
   docker:
     - boot2docker
