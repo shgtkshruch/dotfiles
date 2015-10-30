@@ -71,9 +71,9 @@ homebrew:
     - dash
     - bettertouchtool
     - betterzipql
-    - dropbox
     - clamxav
     - cyberduck
+    - dropbox
     - duet
     - evernote
     - firefox
