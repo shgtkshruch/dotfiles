@@ -1,4 +1,0 @@
----
-- name: Create synbolic link
-  file: src={{ item }} dest=~/Library/Application\ Support/Karabiner/{{ item | basename }} state=link force=yes
-  with_fileglob: ./*

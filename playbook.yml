@@ -9,4 +9,3 @@
     - { role: vim, tags: ['vim'] }
     - { role: homebrew, tags: ['homebrew'] }
     - { role: packages, tags: ['package'] }
-    - { role: karabiner, tags: ['karabiner'] }
