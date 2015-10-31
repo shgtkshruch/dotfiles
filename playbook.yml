@@ -5,8 +5,8 @@
   sudo: no
   roles:
     - { role: dotfiles, tags: ['dotfile'] }
-    - { role: karabiner, tags: ['karabiner'] }
     - { role: peco, tags: ['peco'] }
     - { role: vim, tags: ['vim'] }
     - { role: homebrew, tags: ['homebrew'] }
     - { role: packages, tags: ['package'] }
+    - { role: karabiner, tags: ['karabiner'] }
