@@ -1,6 +1,6 @@
 ---
 - name: Update homebrew
-  command: brew update
+  homebrew: update_homebrew=yes
 
 - name: Tap Homebrew repositories
   homebrew_tap: name={{ item }}
