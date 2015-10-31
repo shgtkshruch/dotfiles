@@ -11,8 +11,6 @@ homebrew:
     - thoughtbot/formulae
     - laurent22/massren
     - sanemat/font
-    - peco/peco
-    - motemen/ghq
 
   packages:
     - { name: ag }
