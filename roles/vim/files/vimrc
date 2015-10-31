@@ -866,14 +866,10 @@ NeoBundle 'vimtaku/vim-textobj-sigil'
 NeoBundle 'tomtom/tcomment_vim'
 "}}}
 
-" vim-submodue "{{{
+" vim-submode "{{{
 " https://github.com/kana/vim-submode
 
-NeoBundleLazy 'kana/vim-submode', {
-      \ 'autoload': {
-      \   'functions': ['submode#enter_with']
-      \ }
-      \}
+NeoBundle 'kana/vim-submode'
 
 "}}}
 
