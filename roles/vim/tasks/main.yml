@@ -1,6 +1,6 @@
 ---
 - name: Install Vim
-  homebrew: name=vim install_options=with-lua,with-python,with-perl,with-ruby
+  homebrew: name=vim install_options=with-lua,with-python3
 
 - name: Crete synbolic link
   file: src={{ item }} dest=~/.vimrc state=link force=yes

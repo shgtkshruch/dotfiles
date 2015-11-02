@@ -50,7 +50,6 @@ homebrew:
     - { name: trash }
     - { name: unrar }
     - { name: vagrant-completion }
-    - { name: vim, install_options: [with-lua, with-python3] }
     - { name: webkit2png }
     - { name: wget }
     - { name: z }
