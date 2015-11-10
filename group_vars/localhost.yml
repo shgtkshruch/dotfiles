@@ -23,6 +23,7 @@ homebrew:
     - { name: ghq }
     - { name: git }
     - { name: gitsh }
+    - { name: git-extras }
     - { name: go }
     - { name: googlecl }
     - { name: gnu-sed }
