@@ -684,9 +684,6 @@ nnoremap <silent>[unite]f :<C-u>Unite file_rec/async:!<CR>
 " Similar to unite-source-file_rec, but get files by `git ls-files` command. It is faster than file_rec/async source.
 nnoremap <silent>[unite]fg :<C-u>Unite file_rec/git:--cached:--others:--exclude-standard<CR>
 
-" Search through yank history
-nnoremap <silent>[unite]y :<C-u>Unite history/yank<CR>
-
 " Nominates opend buffers as candidates
 nnoremap <silent>[unite]b :<C-u>Unite buffer<CR>
 
@@ -704,7 +701,6 @@ function! s:bundle.hooks.on_source(bundle)
   let g:unite_enable_start_insert=1
   let g:unite_enable_ignore_case = 1
   let g:unite_enable_smart_case = 1
-  let g:unite_source_history_yank_enable = 1
   let g:unite_source_file_mru_limit = 200
   let g:unite_source_rec_async_command = 'ag --follow --nocolor --nogroup --hidden -g ""'
 
@@ -716,6 +712,16 @@ function! s:bundle.hooks.on_source(bundle)
   endif
 endfunction
 unlet s:bundle
+
+"}}}
+
+" neoyank" {{{
+" https://github.com/Shougo/neoyank.vim
+
+NeoBundle 'Shougo/neoyank.vim'
+
+" Search through yank history
+nnoremap <silent>[unite]y :<C-u>Unite history/yank<CR>
 
 "}}}
 
