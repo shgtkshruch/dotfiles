@@ -25,9 +25,8 @@
   tags: brew
 
 - name: Install Docker
-  homebrew: name={{ item }}
-  with_items: homebrew.docker
-  notify: Initialize boot2docker
+  homebrew_cask: name=dockertoolbox
+  notify: Initialize docker
   tags: docker
 
 - name: Install Homebrew cask packages

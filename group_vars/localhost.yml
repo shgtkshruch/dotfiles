@@ -56,11 +56,6 @@ homebrew:
     - { name: z }
     - { name: zsh, install_options: without-etcdir }
 
-  docker:
-    - boot2docker
-    - docker
-    - docker-compose
-
   casks:
     - 1password
     - adobe-air

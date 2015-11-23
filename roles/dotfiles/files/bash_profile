@@ -6,8 +6,8 @@ source ~/.githubinit
 #}}}
 
 # docker #{{{
-if [ "`boot2docker status`" = "running" ]; then
-  $(boot2docker shellinit 2>/dev/null)
+if [ "`docker-machine status default`" = "Running" ]; then
+  eval "$(docker-machine env default)"
 fi
 #}}}
 
