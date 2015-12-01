@@ -96,6 +96,7 @@ homebrew:
     - quicklook-csv
     - quicklook-json
     - sequel-pro
+    - sharemouse
     - skype
     - sublime-text
     - suspicious-package
