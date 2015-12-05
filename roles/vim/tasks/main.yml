@@ -2,7 +2,7 @@
 - name: Install Vim
   homebrew: name=vim install_options=with-lua,with-python3
 
-- name: Crete synbolic link
+- name: Create synbolic link
   file: src={{ item }} dest=~/.vimrc state=link force=yes
   with_fileglob:
     - ./*
@@ -15,6 +15,6 @@
   with_fileglob:
     - ./vim/snippets/*
 
-- name: neobundle
+- name: Install NeoBundle
   git: repo=https://github.com/Shougo/neobundle.vim dest=~/.vim/bundle/neobundle.vim
 
