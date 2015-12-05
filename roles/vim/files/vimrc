@@ -300,6 +300,22 @@ nnoremap <silent><C-C> :CoffeeCompile vert <CR><C-w>h
 
 "}}}
 
+" vim-jsx  "{{{
+" https://github.com/mxw/vim-jsx
+
+NeoBundleLazy 'mxw/vim-jsx', {
+      \ 'autoload' : {
+      \   'filetypes' : ['javascript']
+      \ }
+      \}
+
+let s:bundle = neobundle#get('vim-jsx')
+function! s:bundle.hooks.on_source(bundle)
+  let g:jsx_ext_required = 0
+endfunction
+unlet s:bundle
+"}}}
+
 " vim-php "{{{
 NeoBundleLazy 'StanAngeloff/php.vim', {
       \ 'autoload': {
