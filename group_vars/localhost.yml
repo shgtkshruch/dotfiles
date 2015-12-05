@@ -112,9 +112,9 @@ homebrew:
 
 npm:
   - bower
+  - eslint
   - gulp-cli
   - grunt
-  - jshint
   - n
   - yo
 
