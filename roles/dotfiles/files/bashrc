@@ -1,3 +1,5 @@
+export EDITOR=vim
+
 # rbenv
 function gem(){
     $HOME/.rbenv/shims/gem $*
@@ -10,3 +12,6 @@ function gem(){
 
 # aws-cli
 complete -C aws_completer aws
+
+# direnv
+eval "$(direnv hook bash)"

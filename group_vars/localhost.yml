@@ -20,6 +20,7 @@ homebrew:
     - { name: casperjs }
     - { name: cliclick }
     - { name: ctags }
+    - { name: direnv }
     - { name: ghq }
     - { name: git }
     - { name: gitsh }
