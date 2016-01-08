@@ -283,6 +283,16 @@ NeoBundleLazy 'slim-template/vim-slim', {
       \}
 "}}}
 
+" vim-javascript  "{{{
+" https://github.com/pangloss/vim-javascript
+
+NeoBundleLazy 'pangloss/vim-javascript', {
+      \ 'autoload' : {
+      \   'filetypes' : ['javascript']
+      \ }
+      \}
+"}}}
+
 " vim-coffee-script  "{{{
 " https://github.com/kchmck/vim-coffee-script
 
