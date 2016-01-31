@@ -1,3 +1,7 @@
+snippet usestrict
+abbr use strict
+  'use strict'
+
 snippet log
 abbr console.log
   console.log ${0}
@@ -9,3 +13,37 @@ abbr console.dir
 snippet fun
   ${1:name} = (${2:args}) ->
     ${0:# body...}
+
+snippet getElementById
+  document.getElementById '${0:id}'
+
+snippet createElement
+  document.createElement '${0:element}'
+
+snippet querySelector
+  ${1:element}.querySelector '${0:selectors}'
+
+snippet querySelectorAll
+  ${1:element}.querySelectorAll '${0:selectors}'
+
+snippet innnerHTML
+  ${1:element}.innerHTML = ${0:content}
+
+snippet textContent
+  ${1:node}.textContent = ${0:content}
+
+snippet appendChiild
+  ${1:node}.appendChild ${0:child}
+
+snippet removeChiild
+  ${1:node}.removeChild ${0:child}
+
+snippet addEventListener
+  ${1:eventTarget}.addEventListener '${2:type}', ${3:listener}
+
+snippet preventDefault
+  ${1:event}.preventDefault()
+
+snippet encodeURI
+  encodeURI ${0}
+
