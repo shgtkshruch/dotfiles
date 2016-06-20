@@ -99,6 +99,7 @@ homebrew:
     - quicklook-json
     - sequel-pro
     - sharemouse
+    - skitch
     - skype
     - sublime-text
     - suspicious-package
