@@ -28,6 +28,7 @@ homebrew:
     - { name: go }
     - { name: googlecl }
     - { name: gnu-sed }
+    - { name: heroku }
     - { name: hub }
     - { name: imagemagick }
     - { name: jq }
@@ -76,7 +77,6 @@ homebrew:
     - google-chrome
     - google-chrome-canary
     - google-japanese-ime
-    - heroku-toolbelt
     - hyperswitch
     - imagealpha
     - imageoptim
