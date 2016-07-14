@@ -98,6 +98,7 @@ homebrew:
     - qlprettypatch
     - quicklook-csv
     - quicklook-json
+    - recordit
     - sequel-pro
     - sharemouse
     - skitch
