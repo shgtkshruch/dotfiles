@@ -253,12 +253,12 @@ NeoBundleLazy 'wavded/vim-stylus', {
       \}
 "}}}
 
-" vim-jade  "{{{
-" https://github.com/digitaltoad/vim-jade
+" vim-pug  "{{{
+" https://github.com/digitaltoad/vim-pug
 
-NeoBundleLazy 'digitaltoad/vim-jade', {
+NeoBundleLazy 'digitaltoad/vim-pug', {
       \ 'autoload' : {
-      \   'filetypes' : ['jade']
+      \   'filetypes' : ['pug']
       \ }
       \}
 "}}}
