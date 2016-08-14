@@ -7,6 +7,15 @@ abbr variable
 options word
   var ${1:#:variavle name} = ${2:#:contents};
 
+snippet let
+abbr variable
+options word
+  let ${1:#:variavle name} = ${2:#:contents};
+
+snippet const
+abbr variable
+options word
+  const ${1:#:variavle name} = ${2:#:contents};
 
 # Function
 
@@ -17,12 +26,12 @@ options word
     ${3}
   }
 
-snippet immediate_function
+snippet immediate function
 abbr immediate function
-  (function(${1}) {
+  ((${1}) => {
     'use strict';
     ${0}
-  }(${2}));
+  })(${2});
 
 snippet generator
 abbr generator function
@@ -51,13 +60,13 @@ options head
 
 snippet for
 options head
-  for (var ${1:i}=0; l < ${2:#:Things}.length; i < l; $1++) {
+  for (let ${1:i} = 0; i < ${2:things}; $1++) {
     ${0:TARGET}
   }
 
 snippet forin
 options head
-  for (var ${1:i} in ${2:#:Things}) {
+  for (let ${1:i} in ${2:#:Things}) {
     ${0:TARGET}
   }
 
@@ -96,11 +105,17 @@ snippet try
 	}
 
 snippet setTimeout
-options head
-  setTimeout(function() {
+  setTimeout(() => {
     ${0}
   }, ${1:10});
 
+snippet setInterval
+  setInterval(() => {
+    ${0}
+  }, ${1:10});
+
+snippet clearTimeout
+  clearTimeout(${0:timer id});
 
 # Documentation
 
@@ -130,16 +145,16 @@ snippet JSON_stringify
 # DOM selectors
 
 snippet getElementById
-	var ${1:#:variable} = document.getElementById('${2:#:id selector}');${3}
+	const ${1:#:variable} = document.getElementById('${2:#:id selector}');${3}
 
 snippet getElementsByClassName
-	var ${1:#:variable} = document.getElementsByClassName('${2:#:class selector}');${3}
+	const ${1:#:variable} = document.getElementsByClassName('${2:#:class selector}');${3}
 
 snippet queryselector
-  var ${1:#:variable} = document.querySelector('${2:#:selector}');${3}
+  const ${1:#:variable} = document.querySelector('${2:#:selector}');${3}
 
 snippet queryselectorall
-  var ${1:#:variable} = document.querySelectorAll('${2:#:selector}');${3}
+  const ${1:#:variable} = document.querySelectorAll('${2:#:selector}');${3}
 
 
 # Event
