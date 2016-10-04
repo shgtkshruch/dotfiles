@@ -61,6 +61,7 @@ homebrew:
   casks:
     - 1password
     - adobe-air
+    - adobe-photoshop-cc
     - alfred
     - appcleaner
     - atom
