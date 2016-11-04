@@ -69,6 +69,7 @@ homebrew:
     - dash
     - bettertouchtool
     - betterzipql
+    - chatwork
     - clamxav
     - cyberduck
     - docker
