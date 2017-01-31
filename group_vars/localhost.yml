@@ -55,6 +55,7 @@ homebrew:
     - { name: vagrant-completion }
     - { name: webkit2png }
     - { name: wget }
+    - { name: yarn }
     - { name: z }
     - { name: zsh, install_options: without-etcdir }
 
