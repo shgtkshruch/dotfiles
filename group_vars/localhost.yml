@@ -45,10 +45,12 @@ homebrew:
     - { name: pv }
     - { name: python }
     - { name: rails-completion }
+    - { name: reattach-to-user-namespace }
     - { name: rbenv }
     - { name: rename }
     - { name: ruby-build }
     - { name: tag }
+    - { name: tmux }
     - { name: tree }
     - { name: trash }
     - { name: unrar }
