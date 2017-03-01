@@ -1248,6 +1248,12 @@ nnoremap <silent>[unite]gs :Unite giti/status<CR>
 nnoremap <silent>[unite]gb :Unite giti/branch<CR>
 " "}}}
 
+" vim-tmux-navigator  "{{{
+
+NeoBundle 'christoomey/vim-tmux-navigator'
+
+"}}}
+
 call neobundle#end()
 filetype plugin indent on
 NeoBundleCheck
