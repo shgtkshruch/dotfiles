@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-# Source #{{{
-source ~/.awsinit
-source ~/.githubinit
-#}}}
-
 # docker #{{{
 if [ "`docker-machine status default`" = "Running" ]; then
   eval "$(docker-machine env default)"
