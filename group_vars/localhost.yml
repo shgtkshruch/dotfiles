@@ -84,6 +84,7 @@ homebrew:
     - google-chrome
     - google-chrome-canary
     - google-japanese-ime
+    - hyper
     - hyperswitch
     - imagealpha
     - imageoptim
@@ -107,6 +108,7 @@ homebrew:
     - recordit
     - sequel-pro
     - sharemouse
+    - simple-comic
     - skitch
     - skype
     - slack
@@ -115,7 +117,6 @@ homebrew:
     - spotify
     - sublime-text
     - suspicious-package
-    - techstoreclub-simple-comic
     - teleport
     - the-unarchiver
     - unity
