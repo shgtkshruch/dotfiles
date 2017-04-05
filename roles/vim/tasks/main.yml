@@ -14,7 +14,3 @@
   file: src={{ item }} dest=~/.vim/snippets/{{ item | basename}} state=link force=yes
   with_fileglob:
     - ./vim/snippets/*
-
-- name: Install NeoBundle
-  git: repo=https://github.com/Shougo/neobundle.vim dest=~/.vim/bundle/neobundle.vim
-
