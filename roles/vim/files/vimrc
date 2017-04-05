@@ -99,10 +99,10 @@ let g:user_emmet_settings = {
 
 
 
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-let g:ctrlp_map = '<c-p>'
+nnoremap <C-f> :GFiles<Enter>
 
 
 
