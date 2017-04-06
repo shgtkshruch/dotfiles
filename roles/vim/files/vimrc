@@ -78,7 +78,6 @@ Plug 'Yggdroot/indentLine'
 Plug 'jiangmiao/auto-pairs'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'Shougo/vimproc', { 'do': 'make' }
-Plug 'Shougo/neomru.vim'
 
 
 
