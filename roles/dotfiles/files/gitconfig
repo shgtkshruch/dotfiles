@@ -47,9 +47,9 @@
 [ghq]
   root = ~/dev/ghq
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true
 [filter "npmignore"]
   smudge = cat
   clean = sed '/registry.*/d'
