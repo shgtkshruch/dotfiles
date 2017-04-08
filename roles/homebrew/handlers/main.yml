@@ -2,5 +2,3 @@
 - name: alfred link
   command: brew cask alfred link
 
-- name: Initialize docker
-  shell: docker-machine create --driver virtualbox default
