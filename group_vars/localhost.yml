@@ -131,14 +131,10 @@ npm:
   - bower
   - eslint
   - gulp-cli
-  - grunt
-  - n
   - yo
 
 gem:
   - bundler
-  - compass
-  - sass
   - serverspec
   - slim
   - travis
