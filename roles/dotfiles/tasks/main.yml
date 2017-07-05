@@ -1,5 +1,10 @@
 ---
-- name: Crete synbolic link
+- name: Create synbolic link
   file: src={{ item }} dest=~/.{{ item | basename }} state=link force=yes
   with_fileglob:
     - ./*
+
+- name: Create config.fish
+  file: src={{ item }} dest=~/.config/fish/{{ item | basename }} state=link force=yes
+  with_file:
+    - config.fish
