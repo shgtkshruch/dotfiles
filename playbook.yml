@@ -1,8 +1,9 @@
 ---
-- hosts: localhost
+- name: OSX provisoner
+  hosts: localhost
   connection: local
   gather_facts: no
-  sudo: no
+  become: no
   roles:
     - { role: dotfiles, tags: ['dotfile'] }
     - { role: peco, tags: ['peco'] }

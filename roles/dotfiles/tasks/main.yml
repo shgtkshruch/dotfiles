@@ -4,7 +4,10 @@
   with_fileglob:
     - ./*
 
+- name: Create directories for fish
+  file: path=~/.config/fish state=directory
+
 - name: Create config.fish
-  file: src={{ item }} dest=~/.config/fish/{{ item | basename }} state=link force=yes
+  file: src={{ item }} dest=~/.config/fish/config.fish state=link force=yes
   with_file:
     - config.fish

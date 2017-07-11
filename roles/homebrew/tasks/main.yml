@@ -4,13 +4,11 @@
 
 - name: Tap Homebrew repositories
   homebrew_tap: name={{ item }}
-  with_items: homebrew.taps
-  ignore_errors: true
+  with_items: "{{ homebrew.taps }}"
   tags: tap
 
 - name: Install Homebrew cask
   command: brew install caskroom/cask/brew-cask
-  ignore_errors: true
 
 - name: Install Homebrew packages
   homebrew:
@@ -20,14 +18,12 @@
       if item.install_options is not string
       else item.install_options
     }}
-  with_items: homebrew.packages
-  ignore_errors: true
+  with_items: "{{ homebrew.packages }}"
   tags: brew
 
 - name: Install Homebrew cask packages
   homebrew_cask: name={{ item }}
-  with_items: homebrew.casks
-  ignore_errors: true
+  with_items: "{{ homebrew.casks }}"
   tags: cask
 
 - name: Install alfred
