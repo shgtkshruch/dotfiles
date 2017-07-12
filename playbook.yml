@@ -10,3 +10,4 @@
     - { role: vim, tags: ['vim'] }
     - { role: homebrew, tags: ['homebrew'] }
     - { role: packages, tags: ['package'] }
+    - { role: fish, tags: ['fish'] }
