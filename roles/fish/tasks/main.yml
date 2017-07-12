@@ -1,7 +1,7 @@
 ---
 - name: Create fish directory
   file:
-    path: ~/.config/fish
+    path: ~/.config/fish/functions
     state: directory
 
 - name: Create symbolic link
@@ -24,6 +24,3 @@
   command: ./install.sh arg1
   args:
     chdir: fonts-master
-
-- debug:
-  msg: "Please execute fisher command to install fish plugins"

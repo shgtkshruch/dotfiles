@@ -1,10 +1,10 @@
 ---
-- name: Insatll npm packages
+- name: Install npm packages
   npm: name={{ item }} global=yes
   with_items: "{{ npm }}"
   tags: npm
 
-- name: Insatll gem packages
+- name: Install gem packages
   gem: name={{ item }}
   with_items: "{{ gem }}"
   tags: gem

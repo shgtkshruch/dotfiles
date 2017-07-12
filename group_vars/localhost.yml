@@ -130,6 +130,4 @@ npm:
 
 gem:
   - bundler
-  - serverspec
-  - slim
   - travis
