@@ -14,5 +14,16 @@
     url: https://git.io/fisher
     dest: ~/.config/fish/functions/fisher.fish
 
+- name: Download powerline fonts
+  unarchive:
+    src: https://github.com/powerline/fonts/archive/master.zip
+    dest: ./
+    remote_src: true
+
+- name: Install powerline fonts
+  command: ./install.sh arg1
+  args:
+    chdir: fonts-master
+
 - debug:
   msg: "Please execute fisher command to install fish plugins"
