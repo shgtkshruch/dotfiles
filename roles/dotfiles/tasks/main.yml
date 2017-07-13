@@ -3,6 +3,3 @@
   file: src={{ item }} dest=~/.{{ item | basename }} state=link force=yes
   with_fileglob:
     - ./*
-
-- name: Create directories for fish
-  file: path=~/.config/fish state=directory
