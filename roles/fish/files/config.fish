@@ -6,3 +6,6 @@ end
 alias vim 'reattach-to-user-namespace vim'
 
 set PATH $HOME/.rbenv/shims $PATH
+
+export EDITOR=vim
+eval (direnv hook fish)
