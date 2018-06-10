@@ -40,6 +40,7 @@
   p = push
   pn = push origin refs/notes/*
   re = rebase -i --root
+  rei = !git rebase --interactive $(git log --oneline | peco | awk '{print $1}')
   rea = rebase --abort
   rec = rebase --continue
   res = rebase --skip
