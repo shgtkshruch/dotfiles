@@ -84,6 +84,7 @@ homebrew:
     - google-chrome-canary
     - google-japanese-ime
     - hyper
+    - iina
     - imagealpha
     - imageoptim
     - istat-menus
@@ -118,7 +119,6 @@ homebrew:
     - vagrant
     - virtualbox
     - vmware-fusion
-    - vlc
     - webpquicklook
     - xld
 
