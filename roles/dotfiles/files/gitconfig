@@ -18,12 +18,12 @@
   al = config --global --get-regexp alias
   amend = commit --amend
   ama = commit --all --amend
-  br = branch --verbose --verbose --color
+  br = branch -v --color
   cat = cat-file -p
   cf = config --global --edit
   cm = commit
   cma = commit --all
-  co = checkout
+  co = !git checkout $(git branch -v | peco | awk '{print $1}')
   cr = clone --recursive
   d = diff
   dmb = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
