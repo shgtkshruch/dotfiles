@@ -45,6 +45,7 @@
   res = rebase --skip
   remotes = remote -v
   s = status --branch --short
+  sh = !git show $(git log --all --oneline --decorate=short| peco | awk '{print $1}')
 [ghq]
   root = ~/dev/ghq
 [filter "lfs"]
