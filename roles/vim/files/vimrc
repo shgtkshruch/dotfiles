@@ -592,7 +592,7 @@ if &t_Co > 1
   syntax enable
 endif
 
-set background=light
+set background=dark
 set t_Co=256
 set laststatus=2
 let g:solarized_termcolors=16
