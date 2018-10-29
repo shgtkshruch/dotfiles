@@ -513,7 +513,6 @@ let g:lightline = {
       \   'left': [
       \     ['mode', 'paste'],
       \     ['readonly', 'fugitive', 'filename'],
-      \     ['ale']
       \   ],
       \   'right': [
       \     ['lineinfo'],
@@ -530,7 +529,6 @@ let g:lightline = {
       \   'filetype': 'MyFiletype',
       \   'fileencoding': 'MyFileencoding',
       \   'mode': 'MyMode',
-      \   'ale': 'ALEStatus',
       \ }
       \}
 
@@ -575,12 +573,6 @@ endfunction
 function! MyMode()
   return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
-
-function! ALEStatus()
-  return ALEGetStatusLine()
-endfunction
-
-
 
 call plug#end()
 
@@ -886,4 +878,3 @@ nnoremap <Space>d :Dash
 "}}}
 
 "}}}
-
