@@ -24,6 +24,7 @@
   cm = commit
   cma = commit --all
   co = !git checkout $(git branch -v | peco | awk '{print $1}')
+  cho = checkout
   cr = clone --recursive
   d = diff
   dmb = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
