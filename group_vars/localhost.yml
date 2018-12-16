@@ -49,6 +49,7 @@ homebrew:
     - { name: reattach-to-user-namespace }
     - { name: rbenv }
     - { name: rename }
+    - { name: ripgrep }
     - { name: ruby-build }
     - { name: tag }
     - { name: tmux }
