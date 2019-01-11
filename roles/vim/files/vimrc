@@ -105,7 +105,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 nnoremap <C-f> :GFiles<Enter>
-nnoremap <C-r> :Rg!<Enter>
+nnoremap <C-g> :Rg!<Enter>
 
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
