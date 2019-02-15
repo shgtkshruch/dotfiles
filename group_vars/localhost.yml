@@ -52,6 +52,7 @@ homebrew:
     - { name: ripgrep }
     - { name: ruby-build }
     - { name: tag }
+    - { name: terraform }
     - { name: tmux }
     - { name: tree }
     - { name: trash }
