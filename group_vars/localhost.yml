@@ -29,6 +29,7 @@ homebrew:
     - { name: go }
     - { name: gnu-sed }
     - { name: heroku }
+    - { name: htop }
     - { name: hub }
     - { name: imagemagick }
     - { name: jq }
