@@ -4,6 +4,7 @@ function fish_user_key_bindings
 end
 
 alias vim 'reattach-to-user-namespace vim'
+alias tb 'tig blame (git ls | peco)'
 
 set PATH $HOME/.rbenv/shims $PATH
 
