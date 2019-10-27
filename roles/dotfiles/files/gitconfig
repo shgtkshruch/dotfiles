@@ -58,3 +58,7 @@
 [filter "npmignore"]
   smudge = cat
   clean = sed '/registry.*/d'
+[filter "clean-token"]
+  smudge = cat
+  clean = sed '/^ *token.*[0-9a-z]*/d'
+[pr-release]
