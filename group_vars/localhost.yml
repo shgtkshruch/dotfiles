@@ -84,6 +84,7 @@ homebrew:
     - duet
     - evernote
     - firefox
+    - falcon-sql-client
     - github-desktop
     - google-chrome
     - google-chrome-canary
