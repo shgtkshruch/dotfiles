@@ -246,22 +246,16 @@ let g:clever_f_chars_match_any_signs = ';'
 
 
 
-Plug 'Shougo/vimfiler' | Plug 'Shougo/unite.vim'
+Plug 'lambdalisue/fern.vim'
 
-noremap <Space>vf :VimFiler<CR>
+" Open fern on a current working directory
+nnoremap <Space>f :Fern .<CR>
 
-" セーフモードをデフォルトで解除
-let g:vimfiler_safe_mode_by_default = 0
+" Open fern on a current working directory with a current buffer focused
+nnoremap <Space>fr :Fern . -reveal=%<CR>
 
-" Edit file by tabedit.
-let g:vimfiler_edit_action = 'open'
-
-" Like Textmate icons.
-let g:vimfiler_tree_leaf_icon = ' '
-let g:vimfiler_tree_opened_icon = '▾'
-let g:vimfiler_tree_closed_icon = '▸'
-let g:vimfiler_file_icon = '-'
-let g:vimfiler_marked_file_icon = '*'
+" Open fern as project drawer style
+nnoremap <Space>fd :Fern . -drawer<CR>
 
 
 
